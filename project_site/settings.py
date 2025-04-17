@@ -91,8 +91,8 @@ SPECTACULAR_SETTINGS = {
     "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
     "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
     "REDOC_DIST": "SIDECAR",
-    "TITLE": "Mario Shop API",
-    "DESCRIPTION": "Api de la tienda de Mario",
+    "TITLE": "Mi Isla API",
+    "DESCRIPTION": "Api de la tienda de Mi Isla",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     # OTHER SETTINGS
