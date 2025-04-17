@@ -4,8 +4,6 @@ from django.utils.translation import gettext_lazy as _
 from apps.business_app.models.product import Product
 
 
-
-
 class ProductGallery(models.Model):
     product = models.ForeignKey(
         to=Product,

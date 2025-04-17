@@ -16,8 +16,6 @@ router.register(
     ProductViewSet,
     basename="products",
 )
-urlpatterns = [
-
-]
+urlpatterns = []
 
 urlpatterns += router.urls

@@ -29,6 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
         "sell_price",
     ]
 
+
 @admin.register(ProductGallery)
 class ProductGalleryAdmin(admin.ModelAdmin):
     empty_value_display = "-empty-"

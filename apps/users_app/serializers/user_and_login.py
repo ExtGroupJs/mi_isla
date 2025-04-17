@@ -6,12 +6,6 @@ from apps.users_app.models.system_user import SystemUser
 
 class UserSerializer(serializers.ModelSerializer):
     full_name = serializers.CharField(read_only=True)
-    shop_name = serializers.CharField(read_only=True)
-    # country = serializers.PrimaryKeyRelatedField(
-    #     queryset=Country.objects.all(), write_only=True
-    # )
-    # uploaded_files_count = serializers.IntegerField(read_only=True)
-    # country_name = serializers.CharField(read_only=True, source="country.name")
 
     class Meta:
         model = SystemUser
@@ -25,14 +19,11 @@ class UserSerializer(serializers.ModelSerializer):
             # "internal_status",
             "password",
             "groups",
-            "shop",
-            "shop_name",
         ]
         extra_kwargs = {
             "password": {"write_only": True},
             "is_staff": {"write_only": True},
         }
-        read_only_fields = ["shop_name"]
 
     def create(self, validated_data):
         user = super().create(validated_data)

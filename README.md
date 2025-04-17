@@ -2,7 +2,7 @@
 # STEPS FOR CLONING 
 ```
 cd existing_folder
-git remote add origin https://github.com/ExtGroupJs/supermario_shop.git
+git remote add origin https://github.com/ExtGroupJs/mi_isla.git
 git branch -M main
 git push -uf origin main
 ```
@@ -23,8 +23,8 @@ pip install -r requirements.txt
 5. Run migrations (with this we have created a superuser):
 python manage.py migrate
 
-6. Create some dummy user objects (300):
-python manage.py create_test_users
+6. Load initial data (with this de admin default user is promoted to SUPER_ADMIN):
+python manage.py load_data
 
 7. run server:
 python manage.py runserver

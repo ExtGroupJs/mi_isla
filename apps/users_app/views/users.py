@@ -1,5 +1,5 @@
 import random
-from django.db.models import Value, F
+from django.db.models import Value
 from django.db.models.functions import Concat
 
 from django.contrib.auth import login, logout
@@ -28,11 +28,9 @@ class UserViewSet(viewsets.ModelViewSet, GenericAPIView):
     API endpoint that allows users to be viewed or edited.
     """
 
-    queryset = (
-        SystemUser.objects.exclude(username="admin")
-        .annotate(full_name=Concat("first_name", Value(" "), "last_name"))
+    queryset = SystemUser.objects.exclude(username="admin").annotate(
+        full_name=Concat("first_name", Value(" "), "last_name")
     )
-    # .select_related("user_ptr", "country")
 
     serializer_class = UserSerializer
     filter_backends = [
