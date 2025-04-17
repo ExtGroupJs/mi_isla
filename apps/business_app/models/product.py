@@ -23,6 +23,10 @@ class Product(BaseModel):
         verbose_name="Precio",
         validators=[validators.MinValueValidator(limit_value=0)],
     )
+    weight = models.FloatField(
+        verbose_name="Peso",
+        validators=[validators.MinValueValidator(limit_value=0)],
+    )
 
     class Meta:
         verbose_name = "Producto"

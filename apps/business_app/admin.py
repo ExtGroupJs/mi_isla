@@ -19,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
         "image",
         "quantity",
         "sell_price",
+        "weight",
     )
     fields = [
         "name",
@@ -27,6 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
         "image",
         "quantity",
         "sell_price",
+        "weight",
     ]
 
 
