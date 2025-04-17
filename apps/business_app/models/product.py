@@ -1,23 +1,32 @@
 from django.db import models
-from safedelete import SOFT_DELETE_CASCADE
+from django.core import validators
 
-from apps.business_app.models.model import Model
+from apps.business_app.models.category import Category
 from apps.common.models import BaseModel
-from safedelete.models import SafeDeleteModel
 
 
-class Product(SafeDeleteModel, BaseModel):
-    _safedelete_policy = SOFT_DELETE_CASCADE
+class Product(BaseModel):
     name = models.CharField(verbose_name="Nombre", max_length=200)
-    model = models.ForeignKey(
-        to=Model, verbose_name="Modelo", on_delete=models.CASCADE, null=True, blank=True
+    category = models.ForeignKey(
+        to=Category,
+        verbose_name="Categoría",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(verbose_name="Imagen", null=True, blank=True)
+
+    quantity = models.PositiveIntegerField(verbose_name="Cantidad", default=0)
+
+    sell_price = models.FloatField(
+        verbose_name="Precio",
+        validators=[validators.MinValueValidator(limit_value=0)],
+    )
 
     class Meta:
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
 
     def __str__(self):
-        return f"{self.name} ({self.model})"
+        return f"{self.name} ({self.category})"

@@ -18,11 +18,12 @@ from django.db.models.functions import Concat
 
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = Product.objects.all().annotate(
-        model_name=Concat(F("model__brand__name"), Value(" - "), F("model__name"))
+    queryset = (
+        Product.objects.all()
+        .select_related("category")
+        .annotate(category_name=F("category__name"))
     )
     serializer_class = ProductSerializer
-    list_serializer_class = ReadProductSerializer
     permission_classes = [CommonRolePermission]
     filter_backends = [
         DjangoFilterBackend,
@@ -31,12 +32,11 @@ class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
     ]
     pagination_class = AllResultsSetPagination
     filterset_fields = [
-        "model",
-        "model__brand",
+        "category",
     ]
     search_fields = [
         "name",
         "description",
     ]
     ordering = ["name"]
-    ordering_fields = ["name", "model_name", "description"]
+    ordering_fields = ["name", "category__name", "description"]

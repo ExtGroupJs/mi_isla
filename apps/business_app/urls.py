@@ -3,7 +3,7 @@ from rest_framework_extensions.routers import ExtendedSimpleRouter
 
 from apps.business_app.views.brand import BrandViewSet
 from apps.business_app.views.dashboard import DashboardViewSet
-from apps.business_app.views.model import ModelViewSet
+from apps.business_app.views.category import CategoryViewSet
 from apps.business_app.views.product import ProductViewSet
 from apps.business_app.views.sell_group import PaymentMethodsViewSet, SellGroupViewSet
 from apps.business_app.views.shop import ShopViewSet
@@ -56,7 +56,7 @@ router.register(
 )
 router.register(
     "models",
-    ModelViewSet,
+    CategoryViewSet,
     basename="models",
 )
 router.register(

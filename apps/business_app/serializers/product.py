@@ -1,9 +1,9 @@
+from unicodedata import category
 from rest_framework import serializers
 
 from apps.business_app.models.product import Product
-from apps.business_app.serializers.model import (
-    CatalogModelSerializer,
-    ReadModelSerializer,
+from apps.business_app.serializers.category import (
+    CategorySerializer,
 )
 
 
@@ -17,21 +17,9 @@ class ProductSerializer(serializers.ModelSerializer):
             "model",
             "image",
         )
-
-
-class ReadProductSerializer(ProductSerializer):
-    model = ReadModelSerializer()
-    model_name = serializers.CharField(read_only=True)
-
-    class Meta(ProductSerializer.Meta):
-        model = Product
-        fields = ProductSerializer.Meta.fields + ("id", "model_name", "__str__")
-
-
 class CatalogProductSerializer(ProductSerializer):
-    model = CatalogModelSerializer()
-    model_name = serializers.CharField(read_only=True)
+    category = CategorySerializer()
 
     class Meta(ProductSerializer.Meta):
         model = Product
-        fields = ("name", "model", "image", "model_name", "__str__")
+        fields = ("name", "category_name", "image", "__str__")

@@ -1,8 +1,11 @@
 from rest_framework import filters, viewsets
 from rest_framework.generics import GenericAPIView
 
-from apps.business_app.models.model import Model
-from apps.business_app.serializers.model import ModelSerializer, ReadModelSerializer
+from apps.business_app.models.category import Category, Model
+from apps.business_app.serializers.category import (
+    CategorySerializer,
+    ReadModelSerializer,
+)
 from django_filters.rest_framework import DjangoFilterBackend
 
 from apps.common.common_ordering_filter import CommonOrderingFilter
@@ -14,10 +17,9 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 
 
-class ModelViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = Model.objects.all().annotate(brand_name=F("brand__name"))
-    serializer_class = ModelSerializer
-    list_serializer_class = ReadModelSerializer
+class CategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
     permission_classes = [CommonRolePermission]
     filter_backends = [
         DjangoFilterBackend,
@@ -34,7 +36,6 @@ class ModelViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
     ordering = ["name"]
     ordering_fields = [
         "name",
-        "brand_name",
     ]
 
     def get_permissions(self):
