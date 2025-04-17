@@ -307,7 +307,7 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.dummy.DummyCache"
         if DEBUG
         else "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379",
+        "LOCATION": f"redis://127.0.0.1:{env.int('REDIS_PORT', default=6379)}",
         "TIMEOUT": CACHE_DEFAULT_TIMEOUT,
     }
 }
