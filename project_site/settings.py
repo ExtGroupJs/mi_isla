@@ -159,7 +159,7 @@ if RUNNING_FROM == RUNNING_FROM_LOCAL:
 else:
     conexion = {
         "ENGINE": env("DB_REMOTE_ENGINE"),
-        "NAME": f"{WEBSITE_NAME}_db",
+        "NAME": f"{WEBSITE_SLUG_NAME}_db",
         "USER": env("DB_REMOTE_USER"),
         "PASSWORD": env("DB_REMOTE_PASSWORD"),
         "HOST": env("DB_REMOTE_HOST"),
