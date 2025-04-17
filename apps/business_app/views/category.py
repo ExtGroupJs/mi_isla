@@ -24,9 +24,7 @@ class CategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView)
         filters.SearchFilter,
         CommonOrderingFilter,
     ]
-    filterset_fields = [
-        "brand",
-    ]
+
     search_fields = [
         "name",
         "extra_info",
