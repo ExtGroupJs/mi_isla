@@ -31,7 +31,6 @@ class UserViewSet(viewsets.ModelViewSet, GenericAPIView):
     queryset = (
         SystemUser.objects.exclude(username="admin")
         .annotate(full_name=Concat("first_name", Value(" "), "last_name"))
-        .annotate(shop_name=F("shop__name"))
     )
     # .select_related("user_ptr", "country")
 

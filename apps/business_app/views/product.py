@@ -5,7 +5,6 @@ from rest_framework.generics import GenericAPIView
 from apps.business_app.models.product import Product
 from apps.business_app.serializers.product import (
     ProductSerializer,
-    ReadProductSerializer,
 )
 
 from apps.common.common_ordering_filter import CommonOrderingFilter
@@ -13,8 +12,7 @@ from apps.common.mixins.serializer_map import SerializerMapMixin
 from apps.common.pagination import AllResultsSetPagination
 
 from apps.common.permissions import CommonRolePermission
-from django.db.models import Value, F
-from django.db.models.functions import Concat
+from django.db.models import F
 
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):

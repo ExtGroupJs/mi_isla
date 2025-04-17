@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from apps.business_app.models.category import Category
-from apps.business_app.serializers.brand import BrandSerializer, CatalogBrandSerializer
 
 
 class CategorySerializer(serializers.ModelSerializer):

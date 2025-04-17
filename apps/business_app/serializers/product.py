@@ -1,4 +1,3 @@
-from unicodedata import category
 from rest_framework import serializers
 
 from apps.business_app.models.product import Product
@@ -17,6 +16,8 @@ class ProductSerializer(serializers.ModelSerializer):
             "model",
             "image",
         )
+
+
 class CatalogProductSerializer(ProductSerializer):
     category = CategorySerializer()
 
