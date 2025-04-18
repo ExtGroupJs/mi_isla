@@ -12,13 +12,13 @@ from apps.common.mixins.serializer_map import SerializerMapMixin
 
 from apps.common.permissions import CommonRolePermission, SellViewSetPermission
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class CategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [CommonRolePermission]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [
         DjangoFilterBackend,
         filters.SearchFilter,
@@ -33,14 +33,3 @@ class CategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView)
     ordering_fields = [
         "name",
     ]
-
-    def get_permissions(self):
-        if self.action == "list":
-            permission_classes = [SellViewSetPermission]
-        else:
-            permission_classes = self.permission_classes
-        return [permission() for permission in permission_classes]
-
-    @action(detail=False, methods=["GET"], permission_classes=[AllowAny])
-    def catalog(self, request):
-        return self.list(request)

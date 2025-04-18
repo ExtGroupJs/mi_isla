@@ -7,18 +7,24 @@ from apps.business_app.serializers.category import (
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    category_info = CategorySerializer(source="category", read_only=True)
+
     class Meta:
         model = Product
         fields = (
             "id",
             "name",
             "category",
+            "category_info",
             "description",
             "image",
             "quantity",
             "sell_price",
             "weight",
         )
+        extra_kwargs = {
+            "category": {"write_only": True},
+        }
 
 
 class CatalogProductSerializer(ProductSerializer):

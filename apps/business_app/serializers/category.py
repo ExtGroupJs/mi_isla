@@ -11,5 +11,4 @@ class CategorySerializer(serializers.ModelSerializer):
             "name",
             "extra_info",
             "price_by_weight",
-            "__str__",
         )

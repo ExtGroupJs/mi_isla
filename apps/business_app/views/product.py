@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, viewsets
+from rest_framework import filters, viewsets, permissions
 from rest_framework.generics import GenericAPIView
 
 from apps.business_app.models.product import Product
@@ -16,13 +16,9 @@ from django.db.models import F
 
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = (
-        Product.objects.all()
-        .select_related("category")
-        .annotate(category_name=F("category__name"))
-    )
+    queryset = Product.objects.all().select_related("category")
     serializer_class = ProductSerializer
-    permission_classes = [CommonRolePermission]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
         DjangoFilterBackend,
         filters.SearchFilter,
