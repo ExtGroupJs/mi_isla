@@ -54,7 +54,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	/*Header Right*/
 	.header-middle-right {
 		display: flex;
-		justify-content: center;
+		justify-content: space-evenly;
 	}
 	/*Header Middle*/
 	.hm-searchbox {
@@ -65,6 +65,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	/*Header Bottom*/
 	.header-bottom, .header-sticky.sticky {
+		display: none;
 		background: transparent;
 	}
 	/*Mobile Menu*/
@@ -229,7 +230,8 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	.header-middle-right {
 		display: flex;
-		justify-content: center;
+		justify-content: space-evenly;
+		
 	}
 	.hm-wishlist {
 		margin-right: 15px;
@@ -267,6 +269,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	/*Header Bottom*/
 	.header-bottom, .header-sticky.sticky {
+		display: none;
 		background: transparent;
 	}
 	/*Mobile Menu*/
@@ -421,7 +424,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	.header-middle-right {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-evenly;
 		padding-top: 30px;
 	}
 	.mean-container a.meanmenu-reveal {
@@ -446,6 +449,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	/*Header Bottom*/
 	.header-bottom, .header-sticky.sticky {
+		display: none;
 		background: transparent;
 	}
 	/*Mobile Menu*/
@@ -645,14 +649,14 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 		float: unset;
 	}
 	.hm-searchbox .nice-select.select-search-category {
-		display: none;
+		
 	}
 	.hm-searchbox input {
 		padding: 0 60px 0 15px;
 	}
 	.header-middle-right {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-evenly;
 		padding-top: 40px;
 	}
 	.mean-container a.meanmenu-reveal {
@@ -673,6 +677,7 @@ Note: responsive.css, All Responsive CSS Style For This Theme Included In This F
 	}
 	/*Header Bottom*/
 	.header-bottom, .header-sticky.sticky {
+		display: none;
 		background: transparent;
 	}
 	/*Mobile Menu*/

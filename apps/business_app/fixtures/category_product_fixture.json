@@ -1,0 +1,747 @@
+[
+  {
+    "model": "business_app.category",
+    "pk": 1,
+    "fields": {
+      "name": "Electrónica",
+      "extra_info": "Dispositivos electrónicos y gadgets",
+      "price_by_weight": 0.0
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ropa",
+      "extra_info": "Ropa y accesorios de moda",
+      "price_by_weight": 0.0
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 3,
+    "fields": {
+      "name": "Hogar",
+      "extra_info": "Artículos para el hogar y decoración",
+      "price_by_weight": 0.0
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 4,
+    "fields": {
+      "name": "Juguetes",
+      "extra_info": "Juguetes y juegos para niños",
+      "price_by_weight": 0.0
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 5,
+    "fields": {
+      "name": "Libros",
+      "extra_info": "Libros y material de lectura",
+      "price_by_weight": 0.0
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 1,
+    "fields": {
+      "name": "Producto 1",
+      "category": 1,
+      "description": "Descripción del producto 1",
+      "image": "media/product_1.jpg",
+      "quantity": 10,
+      "sell_price": 19.99,
+      "weight": 1.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 2,
+    "fields": {
+      "name": "Producto 2",
+      "category": 2,
+      "description": "Descripción del producto 2",
+      "image": "media/product_2.jpg",
+      "quantity": 20,
+      "sell_price": 29.99,
+      "weight": 2.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 3,
+    "fields": {
+      "name": "Producto 3",
+      "category": 3,
+      "description": "Descripción del producto 3",
+      "image": "media/product_3.jpg",
+      "quantity": 30,
+      "sell_price": 39.99,
+      "weight": 2.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 4,
+    "fields": {
+      "name": "Producto 4",
+      "category": 4,
+      "description": "Descripción del producto 4",
+      "image": "media/product_4.jpg",
+      "quantity": 40,
+      "sell_price": 49.99,
+      "weight": 3.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 5,
+    "fields": {
+      "name": "Producto 5",
+      "category": 5,
+      "description": "Descripción del producto 5",
+      "image": "media/product_5.jpg",
+      "quantity": 50,
+      "sell_price": 59.99,
+      "weight": 3.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 6,
+    "fields": {
+      "name": "Producto 6",
+      "category": 1,
+      "description": "Descripción del producto 6",
+      "image": "media/product_6.jpg",
+      "quantity": 60,
+      "sell_price": 69.99,
+      "weight": 4.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 7,
+    "fields": {
+      "name": "Producto 7",
+      "category": 2,
+      "description": "Descripción del producto 7",
+      "image": "media/product_7.jpg",
+      "quantity": 70,
+      "sell_price": 79.99,
+      "weight": 4.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 8,
+    "fields": {
+      "name": "Producto 8",
+      "category": 3,
+      "description": "Descripción del producto 8",
+      "image": "media/product_8.jpg",
+      "quantity": 80,
+      "sell_price": 89.99,
+      "weight": 5.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 9,
+    "fields": {
+      "name": "Producto 9",
+      "category": 4,
+      "description": "Descripción del producto 9",
+      "image": "media/product_9.jpg",
+      "quantity": 90,
+      "sell_price": 99.99,
+      "weight": 5.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 10,
+    "fields": {
+      "name": "Producto 10",
+      "category": 5,
+      "description": "Descripción del producto 10",
+      "image": "media/product_10.jpg",
+      "quantity": 100,
+      "sell_price": 109.99,
+      "weight": 6.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 11,
+    "fields": {
+      "name": "Producto 11",
+      "category": 1,
+      "description": "Descripción del producto 11",
+      "image": "media/product_11.jpg",
+      "quantity": 110,
+      "sell_price": 119.99,
+      "weight": 6.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 12,
+    "fields": {
+      "name": "Producto 12",
+      "category": 2,
+      "description": "Descripción del producto 12",
+      "image": "media/product_12.jpg",
+      "quantity": 120,
+      "sell_price": 129.99,
+      "weight": 7.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 13,
+    "fields": {
+      "name": "Producto 13",
+      "category": 3,
+      "description": "Descripción del producto 13",
+      "image": "media/product_13.jpg",
+      "quantity": 130,
+      "sell_price": 139.99,
+      "weight": 7.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 14,
+    "fields": {
+      "name": "Producto 14",
+      "category": 4,
+      "description": "Descripción del producto 14",
+      "image": "media/product_14.jpg",
+      "quantity": 140,
+      "sell_price": 149.99,
+      "weight": 8.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 15,
+    "fields": {
+      "name": "Producto 15",
+      "category": 5,
+      "description": "Descripción del producto 15",
+      "image": "media/product_15.jpg",
+      "quantity": 150,
+      "sell_price": 159.99,
+      "weight": 8.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 16,
+    "fields": {
+      "name": "Producto 16",
+      "category": 1,
+      "description": "Descripción del producto 16",
+      "image": "media/product_16.jpg",
+      "quantity": 160,
+      "sell_price": 169.99,
+      "weight": 9.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 17,
+    "fields": {
+      "name": "Producto 17",
+      "category": 2,
+      "description": "Descripción del producto 17",
+      "image": "media/product_17.jpg",
+      "quantity": 170,
+      "sell_price": 179.99,
+      "weight": 9.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 18,
+    "fields": {
+      "name": "Producto 18",
+      "category": 3,
+      "description": "Descripción del producto 18",
+      "image": "media/product_18.jpg",
+      "quantity": 180,
+      "sell_price": 189.99,
+      "weight": 10.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 19,
+    "fields": {
+      "name": "Producto 19",
+      "category": 4,
+      "description": "Descripción del producto 19",
+      "image": "media/product_19.jpg",
+      "quantity": 190,
+      "sell_price": 199.99,
+      "weight": 10.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 20,
+    "fields": {
+      "name": "Producto 20",
+      "category": 5,
+      "description": "Descripción del producto 20",
+      "image": "media/product_20.jpg",
+      "quantity": 200,
+      "sell_price": 209.99,
+      "weight": 11.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 21,
+    "fields": {
+      "name": "Producto 21",
+      "category": 1,
+      "description": "Descripción del producto 21",
+      "image": "media/product_21.jpg",
+      "quantity": 210,
+      "sell_price": 219.99,
+      "weight": 11.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 22,
+    "fields": {
+      "name": "Producto 22",
+      "category": 2,
+      "description": "Descripción del producto 22",
+      "image": "media/product_22.jpg",
+      "quantity": 220,
+      "sell_price": 229.99,
+      "weight": 12.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 23,
+    "fields": {
+      "name": "Producto 23",
+      "category": 3,
+      "description": "Descripción del producto 23",
+      "image": "media/product_23.jpg",
+      "quantity": 230,
+      "sell_price": 239.99,
+      "weight": 12.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 24,
+    "fields": {
+      "name": "Producto 24",
+      "category": 4,
+      "description": "Descripción del producto 24",
+      "image": "media/product_24.jpg",
+      "quantity": 240,
+      "sell_price": 249.99,
+      "weight": 13.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 25,
+    "fields": {
+      "name": "Producto 25",
+      "category": 5,
+      "description": "Descripción del producto 25",
+      "image": "media/product_25.jpg",
+      "quantity": 250,
+      "sell_price": 259.99,
+      "weight": 13.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 26,
+    "fields": {
+      "name": "Producto 26",
+      "category": 1,
+      "description": "Descripción del producto 26",
+      "image": "media/product_26.jpg",
+      "quantity": 260,
+      "sell_price": 269.99,
+      "weight": 14.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 27,
+    "fields": {
+      "name": "Producto 27",
+      "category": 2,
+      "description": "Descripción del producto 27",
+      "image": "media/product_27.jpg",
+      "quantity": 270,
+      "sell_price": 279.99,
+      "weight": 14.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 28,
+    "fields": {
+      "name": "Producto 28",
+      "category": 3,
+      "description": "Descripción del producto 28",
+      "image": "media/product_28.jpg",
+      "quantity": 280,
+      "sell_price": 289.99,
+      "weight": 15.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 29,
+    "fields": {
+      "name": "Producto 29",
+      "category": 4,
+      "description": "Descripción del producto 29",
+      "image": "media/product_29.jpg",
+      "quantity": 290,
+      "sell_price": 299.99,
+      "weight": 15.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 30,
+    "fields": {
+      "name": "Producto 30",
+      "category": 5,
+      "description": "Descripción del producto 30",
+      "image": "media/product_30.jpg",
+      "quantity": 300,
+      "sell_price": 309.99,
+      "weight": 16.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 31,
+    "fields": {
+      "name": "Producto 31",
+      "category": 1,
+      "description": "Descripción del producto 31",
+      "image": "media/product_31.jpg",
+      "quantity": 310,
+      "sell_price": 319.99,
+      "weight": 16.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 32,
+    "fields": {
+      "name": "Producto 32",
+      "category": 2,
+      "description": "Descripción del producto 32",
+      "image": "media/product_32.jpg",
+      "quantity": 320,
+      "sell_price": 329.99,
+      "weight": 17.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 33,
+    "fields": {
+      "name": "Producto 33",
+      "category": 3,
+      "description": "Descripción del producto 33",
+      "image": "media/product_33.jpg",
+      "quantity": 330,
+      "sell_price": 339.99,
+      "weight": 17.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 34,
+    "fields": {
+      "name": "Producto 34",
+      "category": 4,
+      "description": "Descripción del producto 34",
+      "image": "media/product_34.jpg",
+      "quantity": 340,
+      "sell_price": 349.99,
+      "weight": 18.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 35,
+    "fields": {
+      "name": "Producto 35",
+      "category": 5,
+      "description": "Descripción del producto 35",
+      "image": "media/product_35.jpg",
+      "quantity": 350,
+      "sell_price": 359.99,
+      "weight": 18.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 36,
+    "fields": {
+      "name": "Producto 36",
+      "category": 1,
+      "description": "Descripción del producto 36",
+      "image": "media/product_36.jpg",
+      "quantity": 360,
+      "sell_price": 369.99,
+      "weight": 19.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 37,
+    "fields": {
+      "name": "Producto 37",
+      "category": 2,
+      "description": "Descripción del producto 37",
+      "image": "media/product_37.jpg",
+      "quantity": 370,
+      "sell_price": 379.99,
+      "weight": 19.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 38,
+    "fields": {
+      "name": "Producto 38",
+      "category": 3,
+      "description": "Descripción del producto 38",
+      "image": "media/product_38.jpg",
+      "quantity": 380,
+      "sell_price": 389.99,
+      "weight": 20.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 39,
+    "fields": {
+      "name": "Producto 39",
+      "category": 4,
+      "description": "Descripción del producto 39",
+      "image": "media/product_39.jpg",
+      "quantity": 390,
+      "sell_price": 399.99,
+      "weight": 20.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 40,
+    "fields": {
+      "name": "Producto 40",
+      "category": 5,
+      "description": "Descripción del producto 40",
+      "image": "media/product_40.jpg",
+      "quantity": 400,
+      "sell_price": 409.99,
+      "weight": 21.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 41,
+    "fields": {
+      "name": "Producto 41",
+      "category": 1,
+      "description": "Descripción del producto 41",
+      "image": "media/product_41.jpg",
+      "quantity": 410,
+      "sell_price": 419.99,
+      "weight": 21.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 42,
+    "fields": {
+      "name": "Producto 42",
+      "category": 2,
+      "description": "Descripción del producto 42",
+      "image": "media/product_42.jpg",
+      "quantity": 420,
+      "sell_price": 429.99,
+      "weight": 22.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 43,
+    "fields": {
+      "name": "Producto 43",
+      "category": 3,
+      "description": "Descripción del producto 43",
+      "image": "media/product_43.jpg",
+      "quantity": 430,
+      "sell_price": 439.99,
+      "weight": 22.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 44,
+    "fields": {
+      "name": "Producto 44",
+      "category": 4,
+      "description": "Descripción del producto 44",
+      "image": "media/product_44.jpg",
+      "quantity": 440,
+      "sell_price": 449.99,
+      "weight": 23.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 45,
+    "fields": {
+      "name": "Producto 45",
+      "category": 5,
+      "description": "Descripción del producto 45",
+      "image": "media/product_45.jpg",
+      "quantity": 450,
+      "sell_price": 459.99,
+      "weight": 23.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 46,
+    "fields": {
+      "name": "Producto 46",
+      "category": 1,
+      "description": "Descripción del producto 46",
+      "image": "media/product_46.jpg",
+      "quantity": 460,
+      "sell_price": 469.99,
+      "weight": 24.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 47,
+    "fields": {
+      "name": "Producto 47",
+      "category": 2,
+      "description": "Descripción del producto 47",
+      "image": "media/product_47.jpg",
+      "quantity": 470,
+      "sell_price": 479.99,
+      "weight": 24.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 48,
+    "fields": {
+      "name": "Producto 48",
+      "category": 3,
+      "description": "Descripción del producto 48",
+      "image": "media/product_48.jpg",
+      "quantity": 480,
+      "sell_price": 489.99,
+      "weight": 25.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 49,
+    "fields": {
+      "name": "Producto 49",
+      "category": 4,
+      "description": "Descripción del producto 49",
+      "image": "media/product_49.jpg",
+      "quantity": 490,
+      "sell_price": 499.99,
+      "weight": 25.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 50,
+    "fields": {
+      "name": "Producto 50",
+      "category": 5,
+      "description": "Descripción del producto 50",
+      "image": "media/product_50.jpg",
+      "quantity": 500,
+      "sell_price": 509.99,
+      "weight": 26.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  }
+]
