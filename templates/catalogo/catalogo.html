@@ -1,4 +1,6 @@
-{% load static %} {% load i18n %} {% block head-extra %}
+{% load static %}
+{% load i18n %} 
+{% block head-extra %}
 
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -125,8 +127,8 @@
                       </ul>
                       <p class="minicart-total">SUBTOTAL: <span>0</span></p>
                       <div class="minicart-button">
-                        <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
-                          <span>View Full Cart</span>
+                        <a href="{% url 'shopping-cart' %}" class="li-button li-button-fullwidth li-button-dark">
+                          <span>Ver Carrito</span>
                         </a>
                         <a href="checkout.html" class="li-button li-button-fullwidth">
                           <span>Checkout</span>
@@ -144,6 +146,7 @@
       </div>
     </header>
     <!-- Header Area End Here -->
+   {% block content %}
     <!-- Begin Li's Breadcrumb Area -->
     <div class="breadcrumb-area header-bottom">
       <div class="container">
@@ -252,6 +255,8 @@
           </div>
         </div>
       </div>
+
+      {% endblock %}
       <!-- Content Wraper Area End Here -->
       <!-- Begin Footer Area -->
       <div class="footer">

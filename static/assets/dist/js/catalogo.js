@@ -242,6 +242,7 @@ function updatePagination() {
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts(currentPage);
   loadCategory();
+  updateMiniCart()
 });
 
 function updateProductsPerPage() {
@@ -477,16 +478,11 @@ function contactWhatsApp(productName, price) {
 // Función para agregar un producto al carrito
 function addToCart(product) {
   const quantityInput = document.getElementById("quantityInput");
-  console.log("%c⧭ cantidad", "color: #e57373", quantityInput.value);
-  console.log("%c⧭ detail", "color: #40c617", product.detail);
   // Obtener el carrito del localStorage o inicializarlo si no existe
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  console.log("%c⧭", "color: #007300", cart);
-
   // Verificar si el producto ya está en el carrito
   const existingProductIndex = cart.findIndex((item) => item.id === product.id);
-  console.log("%c⧭", "color: #006dcc", product);
-
+ 
   if (product.detail) {
     if (existingProductIndex !== -1) {
       // Si el producto ya está en el carrito, incrementar la cantidad
@@ -550,8 +546,7 @@ function updateMiniCart() {
     total += product.sell_price * product.quantity;
     totalQuantity += product.quantity;
   });
-  console.log("%c⧭", "color: #807160", totalQuantity);
-  // Actualizar el total en el minicart
+    // Actualizar el total en el minicart
   minicartTotalItems.textContent = totalQuantity;
   minicartTotal.textContent = `$${total.toFixed(2)}`;
   // Actualizar solo el texto de la cantidad de dinero
