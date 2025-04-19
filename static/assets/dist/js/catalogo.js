@@ -3,11 +3,9 @@ let currentPage = 1;
 let productsPerPage = 12;
 let totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos por página
 let totalPages = 0; // Variable global para almacenar la cantidad de páginas
-let product__model = "";
+let product__category = "";
 let searchValue = "";
-let shopValue = "";
 let orderingValue = "";
-let product__model__brand = "";
 let currentViewMode = "grid";
 
 // Función para cargar productos
@@ -19,9 +17,7 @@ function loadProducts(page) {
     page: page,
     search: searchValue, // Aquí puedes agregar la lógica para manejar la búsqueda si es necesario
     ordering: orderingValue, // Aquí puedes agregar la lógica para manejar el ordenamiento si es necesario
-    product__model: product__model,
-    product__model__brand: product__model__brand,
-    shop: shopValue,
+    category: product__category,
   };
 
   axios
@@ -55,109 +51,133 @@ function renderProducts(products) {
   productArea.innerHTML = ""; // Limpiar productos existentes
 
   products.forEach((product) => {
-    console.log("%c⧭", "color: #ffa640", product);
+    let productHTML;
     if (currentViewMode === "grid") {
-      const productHTML = `
-        <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
-          <div class="single-product-wrap">
-            <div class="product-image">
-              <a>
-                <img src="${
-                  product.image ||
-                  "/static_output/assets/dist/img/producto-sin-imagen.jpg"
-                }" 
-                     alt="${product.name} "
-                     onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
-              </a>
-              ${product.is_new ? '<span class="sticker">New</span>' : ""}
-            </div>
-            <div class="product_desc">
-              <div class="product_desc_info">
-                <div class="product-review">
-                  <h5 class="manufacturer">
-                   <span class="new-price">$${product.sell_price}</span>
-                  </h5>
-                  <div class="rating-box">
-                      <ul class="rating">
-                         <li><i class="fa fa-star-o"></i></li>
-                         <li><i class="fa fa-star-o"></i></li>
-                         <li><i class="fa fa-star-o"></i></li>
-                         <li class="no-star"><i class="fa fa-star-o"></i></li>
-                         <li class="no-star"><i class="fa fa-star-o"></i></li>
-                     </ul>
-                  </div>
-                </div>
-                <h4><a class="product_name" href="#">${product.name}--> ${product.category}</a></h4>
-                <div class="price-box">
-                  <span class="new-price">${product.weight} lbs</span>
-                </div>
-              </div>
-              <div class="add-actions">
-                <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-                  <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="viewProductDetails(${
-                    product.id
-                  })"><i class="fa fa-eye"></i></a></li>
-                  <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
-                    product.name
-                  }', ${
-        product.sell_price
-      })"><i class="fa fa-whatsapp"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      productArea.insertAdjacentHTML("beforeend", productHTML);
+      productHTML = renderGridProduct(product);
     } else {
-      const productHTML = `
-        <div class="col-12 mt-40">
-          <div class="single-product-wrap d-flex">
-            <div class="product-image">
-              <a>
-                <img src="${
-                  product.image ||
-                  "/static_output/assets/dist/img/producto-sin-imagen.jpg"
-                }" 
-                     alt="${product.name}"
-                     onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
-              </a>
-              ${product.is_new ? '<span class="sticker">New</span>' : ""}
+      productHTML = renderListProduct(product);
+    }
+    productArea.insertAdjacentHTML("beforeend", productHTML);
+  });
+}
+
+function renderGridProduct(product) {
+  return `
+    <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
+      <div class="single-product-wrap">
+        <div class="product-image">
+          <a>
+            <img src="${
+              product.image ||
+              "/static_output/assets/dist/img/producto-sin-imagen.jpg"
+            }" 
+                 alt="${product.name}"
+                 onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
+          </a>
+          ${product.is_new ? '<span class="sticker">New</span>' : ""}
+        </div>
+        <div class="product_desc">
+          <div class="product_desc_info">
+            <div class="product-review">
+              <h5 class="manufacturer">
+               <span class="new-price">$${product.sell_price}</span>
+              </h5>
+              <div class="rating-box">
+                  <ul class="rating">
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                 </ul>
+              </div>
             </div>
-            <div class="product_desc flex-grow-1 ml-4">
-              <div class="product_desc_info">
-                <div class="product-review">
-                  <h5 class="manufacturer">
-                    <a>otra cosa </a>
-                  </h5>
-                  <div class="rating-box">
-                    <ul class="rating">
-                    otra
-                    </ul>
-                  </div>
-                </div>
-                <h4><a class="product_name" href="#">${product.name}--> ${product.category}</a></h4>
-                <div class="price-box">
-                  <span class="new-price">$${product.sell_price}</span>
-                </div>
-              </div>
-              <div class="add-actions">
-                <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-                  <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="viewProductDetails(${
-                    product.id
-                  })"><i class="fa fa-eye"></i></a></li>
-                  <li class="li-btn" style="color: red"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
-                    product.name 
-                  }', ${
-        product.sell_price
-      })"><i class="fa fa-whatsapp"></i></a></li>
-                </ul>
-              </div>
+            <h4><a class="product_name" href="#">${product.name}</a></h4>
+            <div class="price-box">
+              <span class="new-price">${product.weight} lbs</span>
             </div>
           </div>
-        </div>`;
-      productArea.insertAdjacentHTML("beforeend", productHTML);
-    }
-  });
+          <div class="add-actions">
+            <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${
+                product.id
+              }, name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${product.sell_price}})">Add to cart</a></li>
+              <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
+                product.id
+              })"><i class="fa fa-eye"></i></a></li>
+              <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
+                product.name
+              }', ${
+    product.sell_price
+  })"><i class="fa fa-whatsapp"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderListProduct(product) {
+  return `
+    <div class="col-12 mt-40">
+      <div class="single-product-wrap d-flex">
+        <div class="product-image">
+          <a>
+            <img src="${
+              product.image ||
+              "/static_output/assets/dist/img/producto-sin-imagen.jpg"
+            }" 
+                 alt="${product.name}" style="max-width:281px"
+                 onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
+          </a>
+          ${product.is_new ? '<span class="sticker">New</span>' : ""}
+        </div>
+        <div class="product_desc flex-grow-1 ml-4">
+          <div class="product_desc_info">
+             <div class="product-review">
+              <h5 class="manufacturer">
+               <span class="new-price">$${product.sell_price}</span>
+              </h5>
+              <div class="rating-box">
+                  <ul class="rating">
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                 </ul>
+              </div>
+            </div>
+            <h4><a class="product_name" href="#">${product.name}</a></h4>
+            <div class="price-box">
+               <span class="new-price">${product.weight} lbs</span>
+            </div>
+             <div class="product-description">
+            <p>${product.description || "Sin descripción"}</p>
+          </div>
+          <div >
+            <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${
+                product.id
+              }, name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${product.sell_price}})">Add to cart</a></li>
+              <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
+                product.id
+              })"><i class="fa fa-eye"></i></a></li>
+              <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
+                product.name
+              }', ${
+    product.sell_price
+  })"><i class="fa fa-whatsapp"></i></a></li>
+            </ul>
+          </div>
+          </div>       
+         </div>
+      </div>
+    </div>`;
 }
 
 // Función para generar las estrellas basadas en las ventas
@@ -218,19 +238,10 @@ function updatePagination() {
   }
 }
 
-// Función para ver detalles del producto
-function viewProductDetails(productId) {
-  // Aquí puedes implementar la lógica para mostrar los detalles del producto en un modal
-  showProductDetails(productId);
-  // Puedes cargar los detalles del producto y mostrarlos en el modal correspondiente
-}
-
 // Cargar productos al iniciar la página
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts(currentPage);
-  loadModels("");
   loadCategory();
-  // populateShopsList();
 });
 
 function updateProductsPerPage() {
@@ -251,27 +262,6 @@ function updateProductsPerPage() {
   selectElement.value = selectedValue;
 }
 
-function loadModels(id) {
-  const params = {
-    brand: id,
-  };
-  axios
-    .get(`/business-gestion/models/catalog/`, { params })
-    .then((res) => {
-      const models = res.data.results;
-      populateCategorysList(models);
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Error al cargar los modelos",
-        text: error.message,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    });
-}
-
 function populateCategorysList(categorys) {
   const categoryList = document.getElementById("category-list");
   categoryList.innerHTML = ""; // Limpiar opciones anteriores
@@ -285,7 +275,7 @@ function populateCategorysList(categorys) {
   // Agregar evento para mostrar todos los productos
   showAllLink.addEventListener("click", (e) => {
     e.preventDefault(); // Prevenir el enlace por defecto
-    loadProductsByModel(""); // Cargar todos los productos
+    selectCategoryInit("");
   });
 
   showAllItem.appendChild(showAllLink);
@@ -300,7 +290,7 @@ function populateCategorysList(categorys) {
     // Agregar evento para filtrar productos por modelo
     link.addEventListener("click", (e) => {
       e.preventDefault(); // Prevenir el enlace por defecto
-      loadProductsByModel(category.id); // Cargar productos por el modelo seleccionado
+      selectCategoryInit(category.id);
     });
 
     listItem.appendChild(link);
@@ -308,18 +298,6 @@ function populateCategorysList(categorys) {
   });
 }
 
-function loadProductsByModel(modelId) {
-  const url = "/business-gestion/shop-products/catalog/";
-  currentPage = 1;
-  product__model = modelId;
-  loadProducts(currentPage);
-  // updatePagination();
-}
-function loadProductsByModel(modelId) {
-  currentPage = 1;
-  product__model = modelId;
-  loadProducts(currentPage);
-}
 function searchProducts() {
   currentPage = 1;
   searchValue = document.getElementById("searchInput").value;
@@ -328,7 +306,7 @@ function searchProducts() {
 
 function loadCategory() {
   axios
-    .get("/business-gestion/category/catalog/")
+    .get("/business-gestion/category/")
     .then((res) => {
       const category = res.data.results;
       populateCategorysSelect(category);
@@ -352,6 +330,15 @@ function populateCategorysSelect(categorys) {
 
   populateCategorysList(categorys);
 
+  const option_todos = document.createElement("li");
+  option_todos.setAttribute("class", "option");
+  option_todos.textContent = "Todos"; // Asignar el nombre de la category como texto
+  option_todos.class = "option"; // Asignar el nombre de la category como texto
+  option_todos.addEventListener("click", () => {
+    selectCategoryInit("");
+  });
+  categorysSelectUL.appendChild(option_todos);
+
   categorys.forEach((category) => {
     const option = document.createElement("li");
     option.setAttribute("data-value", category.id);
@@ -359,15 +346,14 @@ function populateCategorysSelect(categorys) {
     option.textContent = category.name; // Asignar el nombre de la category como texto
     option.class = "option"; // Asignar el nombre de la category como texto
     option.addEventListener("click", () => {
-      console.log("Valor seleccionado:", option.getAttribute("data-value"));
+      selectCategoryInit(category.id);
     });
     categorysSelectUL.appendChild(option);
   });
 }
 
 function selectCategoryInit(categoryId) {
-  product__model__brand = categoryId;
-  product__model = "";
+  product__category = categoryId;
   currentPage = 1;
   loadProducts(currentPage);
 }
@@ -410,22 +396,33 @@ async function showProductDetails(productId) {
       `/business-gestion/products/${productId}/`
     );
     const product = response.data;
-    console.log("product", product);
     // Actualizar los elementos de la modal con los datos del producto
+    const quantityInput = document.getElementById("quantityInput");
+    quantityInput.value = 1;
     document.getElementById("modalProductImage").src = product.image;
-    document.getElementById("modalProductName").textContent =
-      product.name;
-    // document.getElementById("modalBrandName").textContent =
-    //   product.product.model.brand.name;
+    document.getElementById("modalProductName").textContent = product.name;
+    document.getElementById("modalCategoryName").textContent =
+      "Categoría: " + product.category_info.name;
     // document.getElementById("modalModelName").textContent =
     //   product.product.model.__str__;
     document.getElementById(
       "modalPrice"
     ).textContent = `$${product.sell_price}`;
-    document.getElementById("modalShopName").textContent = product.shop_name;
+    document.getElementById(
+      "modalWeight"
+    ).textContent = `${product.weight} Lbs`;
     document.getElementById("modalDescription").textContent =
       product.description || "Sin descripción";
-
+    const addToCartDetail = document.getElementById("addToCartDetail");
+    addToCartDetail.onclick = () => {
+      addToCart({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        sell_price: product.sell_price,
+        detail: true,
+      });
+    };
     // Agregar botón de WhatsApp en el modal
     const whatsappButton = document.createElement("button");
     whatsappButton.className = "btn btn-success mt-3";
@@ -435,7 +432,7 @@ async function showProductDetails(productId) {
       contactWhatsApp(product.name, product.sell_price);
 
     const modalFooter = document.querySelector(
-      "#productDetailModal .modal-footer"
+      "#productDetailModal .product-social-sharing"
     );
     // Limpiar footer anterior
     modalFooter.innerHTML = "";
@@ -476,3 +473,113 @@ function contactWhatsApp(productName, price) {
   // Abrir WhatsApp
   window.location.href = whatsappUrl;
 }
+
+// Función para agregar un producto al carrito
+function addToCart(product) {
+  const quantityInput = document.getElementById("quantityInput");
+  console.log("%c⧭ cantidad", "color: #e57373", quantityInput.value);
+  console.log("%c⧭ detail", "color: #40c617", product.detail);
+  // Obtener el carrito del localStorage o inicializarlo si no existe
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  console.log("%c⧭", "color: #007300", cart);
+
+  // Verificar si el producto ya está en el carrito
+  const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+  console.log("%c⧭", "color: #006dcc", product);
+
+  if (product.detail) {
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, incrementar la cantidad
+      cart[existingProductIndex].quantity += parseInt(quantityInput.value);
+    } else {
+      // Si el producto no está en el carrito, agregarlo con cantidad 1
+      cart.push({ ...product, quantity: parseInt(quantityInput.value) });
+    }
+  } else {
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, incrementar la cantidad
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // Si el producto no está en el carrito, agregarlo con cantidad 1
+      cart.push({ ...product, quantity: 1 });
+    }
+  }
+
+  // Guardar el carrito actualizado en el localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Actualizar el minicart
+  updateMiniCart();
+}
+
+// Función para actualizar el contenido del minicart
+function updateMiniCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const minicartProductList = document.querySelector(".minicart-product-list");
+  const minicartTotal = document.querySelector(".minicart-total span");
+  const minicartTotalItems = document.querySelector(
+    ".hm-minicart-trigger .cart-item-count"
+  );
+  const minicartTotalMoneyQuantity = document.querySelector(
+    ".hm-minicart-trigger .item-text.money-quantity"
+  );
+
+  // Limpiar el contenido actual del minicart
+  minicartProductList.innerHTML = "";
+
+  // Calcular el total
+  let total = 0;
+  let totalQuantity = 0;
+
+  // Agregar cada producto al minicart
+  cart.forEach((product) => {
+    const productHTML = `
+      <li>
+        <a href="#" class="minicart-product-image">
+          <img src="${product.image}" alt="${product.name}">
+        </a>
+        <div class="minicart-product-details">
+          <h6><a href="#">${product.name}</a></h6>
+          <span>$${product.sell_price} x ${product.quantity}</span>
+        </div>
+        <button class="close" title="Remove" onclick="removeFromCart(${product.id})">
+          <i class="fa fa-close"></i>
+        </button>
+      </li>`;
+    minicartProductList.insertAdjacentHTML("beforeend", productHTML);
+    total += product.sell_price * product.quantity;
+    totalQuantity += product.quantity;
+  });
+  console.log("%c⧭", "color: #807160", totalQuantity);
+  // Actualizar el total en el minicart
+  minicartTotalItems.textContent = totalQuantity;
+  minicartTotal.textContent = `$${total.toFixed(2)}`;
+  // Actualizar solo el texto de la cantidad de dinero
+  const moneyQuantityText = minicartTotalMoneyQuantity.firstChild;
+  moneyQuantityText.textContent = `$${total.toFixed(2)}`;
+}
+
+// Función para eliminar un producto del carrito
+function removeFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter((product) => product.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateMiniCart();
+}
+
+// Modificar el evento del botón "Add to cart"
+document.querySelectorAll(".add-cart a").forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+    const productElement = this.closest(".single-product-wrap");
+    const product = {
+      id: productElement.dataset.productId,
+      name: productElement.querySelector(".product_name").textContent,
+      image: productElement.querySelector(".product-image img").src,
+      sell_price: parseFloat(
+        productElement.querySelector(".new-price").textContent.replace("$", "")
+      ),
+    };
+    addToCart(product);
+  });
+});
