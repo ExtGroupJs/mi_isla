@@ -95,13 +95,11 @@ function renderGridProduct(product) {
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
               <span class="new-price">${product.weight} lbs</span>
-            </div>
+                </div>
           </div>
           <div class="add-actions">
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${
-                product.id
-              }, name: '${product.name}', image: '${
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight}, name: '${product.name}', image: '${
     product.image
   }', sell_price: ${product.sell_price}})">Add to cart</a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -159,9 +157,7 @@ function renderListProduct(product) {
           </div>
           <div >
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${
-                product.id
-              }, name: '${product.name}', image: '${
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight}, name: '${product.name}', image: '${
     product.image
   }', sell_price: ${product.sell_price}})">Add to cart</a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -420,6 +416,7 @@ async function showProductDetails(productId) {
         id: product.id,
         name: product.name,
         image: product.image,
+        data_price_by_weight: product.category_info.price_by_weight,
         sell_price: product.sell_price,
         detail: true,
       });
@@ -575,6 +572,8 @@ document.querySelectorAll(".add-cart a").forEach((button) => {
         productElement.querySelector(".new-price").textContent.replace("$", "")
       ),
     };
-    addToCart(product);
+   
+    // addToCart(product);
+    
   });
 });
