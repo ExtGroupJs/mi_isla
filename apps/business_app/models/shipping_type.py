@@ -11,8 +11,12 @@ class ShippingType(BaseModel):
     min_weight_allowed = models.PositiveSmallIntegerField(
         verbose_name="Peso mínimo permitido"
     )
-    price_by_weight_unit = models.FloatField(verbose_name="Precio por libra", null=True, blank=True)
-    time_to_delivery=models.CharField(verbose_name="Tiempo para llegada de envío", max_length=100)
+    price_by_weight_unit = models.FloatField(
+        verbose_name="Precio por libra", null=True, blank=True
+    )
+    time_to_delivery = models.CharField(
+        verbose_name="Tiempo para llegada de envío", max_length=100
+    )
 
     class Meta:
         verbose_name = "Tipo de envío"
