@@ -11,9 +11,6 @@ from apps.common.common_ordering_filter import CommonOrderingFilter
 from apps.common.mixins.serializer_map import SerializerMapMixin
 from apps.common.pagination import AllResultsSetPagination
 
-from apps.common.permissions import CommonRolePermission
-from django.db.models import F
-
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
     queryset = Product.objects.all().select_related("category")

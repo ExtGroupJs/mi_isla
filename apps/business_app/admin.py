@@ -3,6 +3,7 @@ from django.contrib import admin
 from apps.business_app.models.category import Category
 from apps.business_app.models.product import Product
 from apps.business_app.models.product_gallery import ProductGallery
+from apps.business_app.models.shipping_type import ShippingType
 # from apps.business_app.models.sell import Sell
 # from apps.business_app.models.sell_group import SellGroup
 # from apps.business_app.models.shop_products import ShopProducts
@@ -29,6 +30,28 @@ class ProductAdmin(admin.ModelAdmin):
         "quantity",
         "sell_price",
         "weight",
+    ]
+
+
+@admin.register(ShippingType)
+class ShippingTypeAdmin(admin.ModelAdmin):
+    empty_value_display = "-empty-"
+    list_display = (
+        "id",
+        "name",
+        "description",
+        "image",
+        "min_weight_allowed",
+        "price_by_weight_unit",
+        "time_to_delivery",
+    )
+    fields = [
+        "name",
+        "description",
+        "image",
+        "min_weight_allowed",
+        "price_by_weight_unit",
+        "time_to_delivery",
     ]
 
 
