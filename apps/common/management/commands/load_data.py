@@ -36,3 +36,11 @@ class Command(BaseCommand):
                 attrs=["blink"],
             )
         )
+        call_command("loaddata", "shipping_type.json")
+        print(
+            colored(
+                "Successfully added Shipping Types",
+                "green",
+                attrs=["blink"],
+            )
+        )
