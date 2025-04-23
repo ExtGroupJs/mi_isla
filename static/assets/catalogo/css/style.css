@@ -316,8 +316,8 @@ textarea {
 /*----------------------------------------*/
 button.li-btn {
   border: none;
-  background: #fed700;
-  color: #242424;
+  background: #2e5e90;
+  color: #f3f9fdd2;
   font-size: 20px;
   width: 45px;
   border-radius: 0 2px 2px 0;
@@ -330,7 +330,7 @@ button.li-btn {
   cursor: pointer;
 }
 button.li-btn:hover {
-  background: #333333;
+  background: #2a397e;
   color: #ffffff;
 }
 a.links,
@@ -1636,7 +1636,7 @@ textarea:focus {
   position: relative;
 }
 .select-search-category ul.list {
-  height: 440px;
+  /* height: 440px; */
   overflow-y: auto;
   overscroll-behavior-x: none;
 }
@@ -1668,7 +1668,7 @@ textarea:focus {
 /*Header Middle Right*/
 .header-middle-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 /*Header Middle Wishlist*/
 .hm-wishlist {
@@ -1752,7 +1752,7 @@ textarea:focus {
   position: absolute;
   right: 0;
   top: 100%;
-  z-index: 9;
+  z-index: 999;
   display: none;
   border: 1px solid #e5e5e5;
   padding: 20px;
@@ -3103,6 +3103,9 @@ textarea:focus {
 .facebook {
    background: #3c5b9b;
 }
+.whatsapp {
+   background: #28a745;
+}
 .youtube {
   background: #c72982;
 }
@@ -3560,7 +3563,7 @@ li.right-menu .cat-mega-menu-2 > li {
 /*Li's Breadcrumb*/
 .breadcrumb-area {
   padding: 21px 0 22px;
-  background: #fed700;
+  background: #46a5e7;
 }
 .breadcrumb-content li {
   color: #a4a4a4;
@@ -5207,7 +5210,7 @@ span.required {
   height: 30px;
   line-height: 30px;
   width: 320px;
-  z-index: 999;
+  z-index: 899;
 }
 @media only screen and (max-width: 767px) {
   .product-short .nice-select {
