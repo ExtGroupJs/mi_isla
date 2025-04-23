@@ -44,3 +44,19 @@ class Command(BaseCommand):
                 attrs=["blink"],
             )
         )
+        call_command("loaddata", "category.json")
+        print(
+            colored(
+                "Successfully added Categories",
+                "green",
+                attrs=["blink"],
+            )
+        )        
+        call_command("loaddata", "product.json")
+        print(
+            colored(
+                "Successfully added Products",
+                "green",
+                attrs=["blink"],
+            )
+        )
