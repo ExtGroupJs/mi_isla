@@ -29,7 +29,8 @@ class ShippingTypeViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIV
         "name",
         "description",
     ]
-    ordering = ["name"]
+    ordering = ["id"]
     ordering_fields = [
+        "id",
         "name",
     ]
