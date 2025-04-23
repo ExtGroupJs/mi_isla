@@ -61,6 +61,7 @@ def create_products(request):
 def shopping_cart(request):
     return render(request, "catalogo/shopping-cart.html")
 
+
 def catalog(request):
     return render(request, "catalogo/catalogo.html")
 

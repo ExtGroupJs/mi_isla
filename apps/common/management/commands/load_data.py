@@ -51,7 +51,7 @@ class Command(BaseCommand):
                 "green",
                 attrs=["blink"],
             )
-        )        
+        )
         call_command("loaddata", "product.json")
         print(
             colored(
