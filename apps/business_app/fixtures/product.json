@@ -1,50 +1,5 @@
 [
   {
-    "model": "business_app.category",
-    "pk": 1,
-    "fields": {
-      "name": "Electrónica",
-      "extra_info": "Dispositivos electrónicos y gadgets",
-      "price_by_weight": 0.0
-    }
-  },
-  {
-    "model": "business_app.category",
-    "pk": 2,
-    "fields": {
-      "name": "Ropa",
-      "extra_info": "Ropa y accesorios de moda",
-      "price_by_weight": 0.0
-    }
-  },
-  {
-    "model": "business_app.category",
-    "pk": 3,
-    "fields": {
-      "name": "Hogar",
-      "extra_info": "Artículos para el hogar y decoración",
-      "price_by_weight": 0.0
-    }
-  },
-  {
-    "model": "business_app.category",
-    "pk": 4,
-    "fields": {
-      "name": "Juguetes",
-      "extra_info": "Juguetes y juegos para niños",
-      "price_by_weight": 0.0
-    }
-  },
-  {
-    "model": "business_app.category",
-    "pk": 5,
-    "fields": {
-      "name": "Libros",
-      "extra_info": "Libros y material de lectura",
-      "price_by_weight": 0.0
-    }
-  },
-  {
     "model": "business_app.product",
     "pk": 1,
     "fields": {
