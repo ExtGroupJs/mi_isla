@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "name": "Producto 1",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 1",
       "image": "media/product_1.jpg",
       "quantity": 10,
@@ -18,7 +18,7 @@
     "pk": 2,
     "fields": {
       "name": "Producto 2",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 2",
       "image": "media/product_2.jpg",
       "quantity": 20,
@@ -74,7 +74,7 @@
     "pk": 6,
     "fields": {
       "name": "Producto 6",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 6",
       "image": "media/product_6.jpg",
       "quantity": 60,
@@ -88,7 +88,7 @@
     "pk": 7,
     "fields": {
       "name": "Producto 7",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 7",
       "image": "media/product_7.jpg",
       "quantity": 70,
@@ -144,7 +144,7 @@
     "pk": 11,
     "fields": {
       "name": "Producto 11",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 11",
       "image": "media/product_11.jpg",
       "quantity": 110,
@@ -158,7 +158,7 @@
     "pk": 12,
     "fields": {
       "name": "Producto 12",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 12",
       "image": "media/product_12.jpg",
       "quantity": 120,
@@ -214,7 +214,7 @@
     "pk": 16,
     "fields": {
       "name": "Producto 16",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 16",
       "image": "media/product_16.jpg",
       "quantity": 160,
@@ -228,7 +228,7 @@
     "pk": 17,
     "fields": {
       "name": "Producto 17",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 17",
       "image": "media/product_17.jpg",
       "quantity": 170,
@@ -284,7 +284,7 @@
     "pk": 21,
     "fields": {
       "name": "Producto 21",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 21",
       "image": "media/product_21.jpg",
       "quantity": 210,
@@ -298,7 +298,7 @@
     "pk": 22,
     "fields": {
       "name": "Producto 22",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 22",
       "image": "media/product_22.jpg",
       "quantity": 220,
@@ -354,7 +354,7 @@
     "pk": 26,
     "fields": {
       "name": "Producto 26",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 26",
       "image": "media/product_26.jpg",
       "quantity": 260,
@@ -368,7 +368,7 @@
     "pk": 27,
     "fields": {
       "name": "Producto 27",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 27",
       "image": "media/product_27.jpg",
       "quantity": 270,
@@ -424,7 +424,7 @@
     "pk": 31,
     "fields": {
       "name": "Producto 31",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 31",
       "image": "media/product_31.jpg",
       "quantity": 310,
@@ -438,7 +438,7 @@
     "pk": 32,
     "fields": {
       "name": "Producto 32",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 32",
       "image": "media/product_32.jpg",
       "quantity": 320,
@@ -494,7 +494,7 @@
     "pk": 36,
     "fields": {
       "name": "Producto 36",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 36",
       "image": "media/product_36.jpg",
       "quantity": 360,
@@ -508,7 +508,7 @@
     "pk": 37,
     "fields": {
       "name": "Producto 37",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 37",
       "image": "media/product_37.jpg",
       "quantity": 370,
@@ -564,7 +564,7 @@
     "pk": 41,
     "fields": {
       "name": "Producto 41",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 41",
       "image": "media/product_41.jpg",
       "quantity": 410,
@@ -578,7 +578,7 @@
     "pk": 42,
     "fields": {
       "name": "Producto 42",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 42",
       "image": "media/product_42.jpg",
       "quantity": 420,
@@ -634,7 +634,7 @@
     "pk": 46,
     "fields": {
       "name": "Producto 46",
-      "category": 7,
+      "category": 4,
       "description": "Descripción del producto 46",
       "image": "media/product_46.jpg",
       "quantity": 460,
@@ -648,7 +648,7 @@
     "pk": 47,
     "fields": {
       "name": "Producto 47",
-      "category": 8,
+      "category": 5,
       "description": "Descripción del producto 47",
       "image": "media/product_47.jpg",
       "quantity": 470,
