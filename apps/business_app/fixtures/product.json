@@ -698,5 +698,411 @@
       "weight": 26.0,
       "created_timestamp": "2023-10-10 00:00:00"
     }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 51,
+    "fields": {
+      "name": "Jabón Líquido",
+      "category": 1,
+      "description": "Jabón líquido para manos.",
+      "image": "51.jpg",
+      "quantity": 200,
+      "sell_price": 2.99,
+      "weight": 0.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 52,
+    "fields": {
+      "name": "Champú Hidratante",
+      "category": 1,
+      "description": "Champú para todo tipo de cabello.",
+      "image": "52.jpg",
+      "quantity": 150,
+      "sell_price": 5.49,
+      "weight": 0.3,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 53,
+    "fields": {
+      "name": "Acondicionador Suave",
+      "category": 1,
+      "description": "Acondicionador para cabello suave.",
+      "image": "53.jpg",
+      "quantity": 180,
+      "sell_price": 5.99,
+      "weight": 0.3,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 54,
+    "fields": {
+      "name": "Desodorante Roll-On",
+      "category": 1,
+      "description": "Desodorante roll-on de larga duración.",
+      "image": "54.jpg",
+      "quantity": 220,
+      "sell_price": 3.49,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 55,
+    "fields": {
+      "name": "Crema Hidratante",
+      "category": 1,
+      "description": "Crema hidratante para la piel.",
+      "image": "55.jpg",
+      "quantity": 160,
+      "sell_price": 6.99,
+      "weight": 0.2,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 56,
+    "fields": {
+      "name": "Pasta Dental",
+      "category": 1,
+      "description": "Pasta dental con flúor.",
+      "image": "56.jpg",
+      "quantity": 300,
+      "sell_price": 2.29,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 57,
+    "fields": {
+      "name": "Gel de Baño",
+      "category": 1,
+      "description": "Gel de baño con fragancia fresca.",
+      "image": "57.jpg",
+      "quantity": 250,
+      "sell_price": 4.99,
+      "weight": 0.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 58,
+    "fields": {
+      "name": "Toallitas Húmedas",
+      "category": 1,
+      "description": "Toallitas húmedas para el cuidado personal.",
+      "image": "58.jpg",
+      "quantity": 400,
+      "sell_price": 3.99,
+      "weight": 0.2,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 59,
+    "fields": {
+      "name": "Rasuradora Desechable",
+      "category": 1,
+      "description": "Rasuradora desechable de alta calidad.",
+      "image": "59.jpg",
+      "quantity": 500,
+      "sell_price": 1.50,
+      "weight": 0.05,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 60,
+    "fields": {
+      "name": "Crema Solar",
+      "category": 1,
+      "description": "Protector solar de alta protección.",
+      "image": "60.jpg",
+      "quantity": 100,
+      "sell_price": 8.99,
+      "weight": 0.15,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 61,
+    "fields": {
+      "name": "Paracetamol",
+      "category": 2,
+      "description": "Analgésico y antipirético.",
+      "image": "61.jpg",
+      "quantity": 500,
+      "sell_price": 0.99,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 62,
+    "fields": {
+      "name": "Ibuprofeno",
+      "category": 2,
+      "description": "Antiinflamatorio no esteroideo.",
+      "image": "62.jpg",
+      "quantity": 300,
+      "sell_price": 1.49,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 63,
+    "fields": {
+      "name": "Antihistamínico",
+      "category": 2,
+      "description": "Medicamento para alergias.",
+      "image": "63.jpg",
+      "quantity": 250,
+      "sell_price": 2.99,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 64,
+    "fields": {
+      "name": "Jarabe para la Tos",
+      "category": 2,
+      "description": "Jarabe para aliviar la tos.",
+      "image": "64.jpg",
+      "quantity": 150,
+      "sell_price": 3.99,
+      "weight": 0.25,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 65,
+    "fields": {
+      "name": "Vitamina C",
+      "category": 2,
+      "description": "Suplemento de vitamina C.",
+      "image": "65.jpg",
+      "quantity": 400,
+      "sell_price": 4.99,
+      "weight": 0.05,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 66,
+    "fields": {
+      "name": "Antibiótico",
+      "category": 2,
+      "description": "Medicamento para infecciones.",
+      "image": "66.jpg",
+      "quantity": 200,
+      "sell_price": 5.99,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 67,
+    "fields": {
+      "name": "Medicamento para el Corazón",
+      "category": 2,
+      "description": "Medicamento para regular la presión arterial.",
+      "image": "67.jpg",
+      "quantity": 100,
+      "sell_price": 9.99,
+      "weight": 0.15,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 68,
+    "fields": {
+      "name": "Antidepresivo",
+      "category": 2,
+      "description": "Medicamento para tratar la depresión.",
+      "image": "68.jpg",
+      "quantity": 80,
+      "sell_price": 12.99,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 69,
+    "fields": {
+      "name": "Antiinflamatorio",
+      "category": 2,
+      "description": "Medicamento para reducir la inflamación.",
+      "image": "69.jpg",
+      "quantity": 150,
+      "sell_price": 3.49,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 70,
+    "fields": {
+      "name": "Arroz",
+      "category": 3,
+      "description": "Arroz blanco de grano largo.",
+      "image": "70.jpg",
+      "quantity": 1000,
+      "sell_price": 1.29,
+      "weight": 1.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 71,
+    "fields": {
+      "name": "Frijoles Negros",
+      "category": 3,
+      "description": "Frijoles negros enlatados.",
+      "image": "71.jpg",
+      "quantity": 800,
+      "sell_price": 0.99,
+      "weight": 0.8,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 72,
+    "fields": {
+      "name": "Aceite de Oliva",
+      "category": 3,
+      "description": "Aceite de oliva virgen extra.",
+      "image": "72.jpg",
+      "quantity": 500,
+      "sell_price": 6.99,
+      "weight": 0.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 73,
+    "fields": {
+      "name": "Sal",
+      "category": 3,
+      "description": "Sal de mesa.",
+      "image": "73.jpg",
+      "quantity": 300,
+      "sell_price": 0.50,
+      "weight": 0.1,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 74,
+    "fields": {
+      "name": "Pasta",
+      "category": 3,
+      "description": "Pasta de trigo duro.",
+      "image": "74.jpg",
+      "quantity": 600,
+      "sell_price": 1.89,
+      "weight": 0.5,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 75,
+    "fields": {
+      "name": "Salsa de Tomate",
+      "category": 3,
+      "description": "Salsa de tomate natural.",
+      "image": "75.jpg",
+      "quantity": 400,
+      "sell_price": 2.49,
+      "weight": 0.3,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 76,
+    "fields": {
+      "name": "Galletas",
+      "category": 3,
+      "description": "Galletas de chocolate.",
+      "image": "76.jpg",
+      "quantity": 250,
+      "sell_price": 3.99,
+      "weight": 0.2,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 77,
+    "fields": {
+      "name": "Leche",
+      "category": 3,
+      "description": "Leche entera pasteurizada.",
+      "image": "77.jpg",
+      "quantity": 300,
+      "sell_price": 1.79,
+      "weight": 1.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 78,
+    "fields": {
+      "name": "Cereal",
+      "category": 3,
+      "description": "Cereal integral.",
+      "image": "78.jpg",
+      "quantity": 350,
+      "sell_price": 3.49,
+      "weight": 0.4,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "pk": 79,
+    "fields": {
+      "name": "Frutas Frescas",
+      "category": 3,
+      "description": "Mezcla de frutas frescas.",
+      "image": "79.jpg",
+      "quantity": 200,
+      "sell_price": 4.99,
+      "weight": 1.0,
+      "created_timestamp": "2023-10-10 00:00:00"
+    }
   }
 ]
