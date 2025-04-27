@@ -99,7 +99,7 @@ function renderGridProduct(product) {
           </div>
           <div class="add-actions">
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight}, name: '${product.name}', image: '${
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${product.weight}', name: '${product.name}', image: '${
     product.image
   }', sell_price: ${product.sell_price}})">Add to cart</a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -157,7 +157,7 @@ function renderListProduct(product) {
           </div>
           <div >
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight}, name: '${product.name}', image: '${
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${product.weight}', name: '${product.name}', image: '${
     product.image
   }', sell_price: ${product.sell_price}})">Add to cart</a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -418,6 +418,7 @@ async function showProductDetails(productId) {
         image: product.image,
         data_price_by_weight: product.category_info.price_by_weight,
         sell_price: product.sell_price,
+        weight: product.weight,
         detail: true,
       });
     };
@@ -474,6 +475,8 @@ function contactWhatsApp(productName, price) {
 
 // Función para agregar un producto al carrito
 function addToCart(product) {
+  console.log('%c⧭', 'color: #ffcc00', product);
+
   const quantityInput = document.getElementById("quantityInput");
   // Obtener el carrito del localStorage o inicializarlo si no existe
   let cart = JSON.parse(localStorage.getItem("cart")) || [];

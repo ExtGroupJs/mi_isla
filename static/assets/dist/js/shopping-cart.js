@@ -1,10 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  loadCartItems();
+  
+  loadShippingCategories();
+  
 
   document.getElementById("proceed-to-checkout").addEventListener("click", (event) => {
     event.preventDefault();
     sendWhatsAppMessage();
   });
+
+  document.getElementById("shipping-category").addEventListener("change", (event) => {
+    const selectedCategoryId = event.target.value;
+    displayShippingDetails(selectedCategoryId);    
+   
+  });
+
+   
 });
 
 function loadCartItems() {
@@ -13,10 +23,18 @@ function loadCartItems() {
   cartItemsContainer.innerHTML = "";
 
   let subtotal = 0;
+  let totalWeight = 0;
+  let shippingCost = 0;
+
+  const selectedShippingCategory = document.getElementById("shipping-category").value;
+  const shippingDetails = JSON.parse(localStorage.getItem("shippingDetails")) || {};
+  let categorylocal = JSON.parse(localStorage.getItem("category")) || {};
 
   cart.forEach((product) => {
     const productTotal = product.sell_price * product.quantity;
+    const productWeightTotal = product.weight * product.quantity;
     subtotal += productTotal;
+    totalWeight += productWeightTotal;
 
     const productHTML = `
       <tr>
@@ -32,14 +50,36 @@ function loadCartItems() {
             <div class="inc qtybutton" onclick="changeQuantity(${product.id}, 1)"><i class="fa fa-angle-up"></i></div>
           </div>
         </td>
+        <td class="product-weight"><span class="amount">${productWeightTotal.toFixed(2)} lbs</span></td>
         <td class="product-subtotal"><span class="amount">$${productTotal.toFixed(2)}</span></td>
       </tr>`;
 
     cartItemsContainer.insertAdjacentHTML("beforeend", productHTML);
   });
 
+  if (selectedShippingCategory == 1) {
+    shippingCost = cart.reduce((acc, product) => {
+      return acc + ((product.weight * product.data_price_by_weight) * product.quantity);
+    }, 0);
+  } else {
+    categorylocal = JSON.parse(localStorage.getItem("category")) || {};
+    shippingCost = totalWeight * categorylocal.price_by_weight_unit;
+console.log('✌️categorylocal.price_by_weight_unit --->', categorylocal);
+  }
+
+  const total = subtotal + shippingCost;
   document.getElementById("cart-subtotal").textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById("cart-total").textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
+
+  // Actualizar o añadir fila para el peso total
+  const cartTotalTable = document.querySelector(".cart-page-total ul");
+  let weightRow = document.querySelector(".cart-page-total ul .weight-row");
+  if (!weightRow) {
+    weightRow = document.createElement("li");
+    weightRow.classList.add("weight-row");
+    cartTotalTable.insertBefore(weightRow, cartTotalTable.firstChild);
+  }
+  weightRow.innerHTML = `Peso Total <span>${totalWeight.toFixed(2)} lbs</span>`;
 }
 
 function changeQuantity(productId, change) {
@@ -62,8 +102,10 @@ function sendWhatsAppMessage() {
     message += `- ${product.name}: $${product.sell_price.toFixed(2)} x ${product.quantity}\n`;
   });
 
-  const subtotal = cart.reduce((acc, product) => acc + product.sell_price * product.quantity, 0);
-  message += `\nTotal de la compra: $${subtotal.toFixed(2)}`;
+  const subtotal = document.getElementById("cart-subtotal").textContent;
+  const total = document.getElementById("cart-total").textContent;
+  message += `\nTotal de la compra: ${subtotal}`;
+  message += `\nTotal de la compra con envio incluido: ${total}`;
 
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`;
@@ -76,4 +118,74 @@ function removeFromCart(productId) {
   cart = cart.filter((product) => product.id !== productId);
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCartItems();
+}
+
+function loadShippingCategories() {
+  axios.get("/business-gestion/shipping-type/")
+    .then((response) => {
+      const categories = response.data.results;
+      const selectElement = document.getElementById("shipping-category");
+
+      categories.forEach((category) => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.textContent = category.name;
+        selectElement.appendChild(option);
+
+        if (category.id==1) {
+          selectElement.value = category.id;
+          displayShippingDetails(category.id);
+        }
+      });
+      loadCartItems();
+    })
+    .catch((error) => {
+      console.error("Error al cargar las categorías de envío:", error);
+    });
+}
+
+function displayShippingDetails(categoryId) {
+  if (!categoryId) {
+    document.getElementById("shipping-details").innerHTML = "";
+    return;
+  }
+
+  axios.get(`/business-gestion/shipping-type/${categoryId}/`)
+    .then((response) => {
+      const category = response.data;
+      localStorage.setItem("category", JSON.stringify(category));
+      categorylocal = JSON.parse(localStorage.getItem("category")) || {};
+console.log('✌️categorylocal2 --->', categorylocal);
+      let detailsHTML = `<div class="contact-page-side-content">
+        <h3 class="contact-page-title">${category.name}</h3>
+        <p class="contact-page-message mb-25">${category.description}</p>`;
+
+      if (category.min_weight_allowed !== null) {
+        detailsHTML += `<div class="single-contact-block">
+          <h4><i class="fa fa-weight"></i> Peso mínimo permitido</h4>
+          <p>${category.min_weight_allowed} lbs</p>
+        </div>`;
+      }
+
+      if (category.price_by_weight_unit !== null) {
+        detailsHTML += `<div class="single-contact-block">
+          <h4><i class="fa fa-money"></i> Precio por unidad de peso</h4>
+          <p>$${category.price_by_weight_unit}</p>
+        </div>`;
+      }
+
+      if (category.time_to_delivery !== null) {
+        detailsHTML += `<div class="single-contact-block last-child">
+          <h4><i class="fa fa-clock-o"></i> Tiempo de entrega</h4>
+          <p>${category.time_to_delivery}</p>
+        </div>`;
+      }
+
+      detailsHTML += `</div>`;
+      document.getElementById("shipping-details").innerHTML = detailsHTML;
+      loadCartItems();
+    })
+    .catch((error) => {
+      console.error("Error al cargar los detalles de la categoría de envío:", error);
+    });
 }

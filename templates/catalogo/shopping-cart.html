@@ -29,6 +29,7 @@
                                                 <th class="cart-product-name">Producto</th>
                                                 <th class="li-product-price">Precio Unitario</th>
                                                 <th class="li-product-quantity">Cantidad</th>
+                                                <th class="li-product-weight">Peso Total</th>
                                                 <th class="li-product-subtotal">Total</th>
                                             </tr>
                                         </thead>
@@ -37,21 +38,23 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
+                    <div class="row">
+                                    <div class="col-6">
                                         <div class="coupon-all">
                                             <div class="coupon">
-                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Código de cupón" type="text">
-                                                <input class="button" name="apply_coupon" value="Aplicar cupón" type="submit">
+                                                <select id="shipping-category" class="input-text">
+                                                    <option value="">Seleccione una categoría de envío</option>
+                                                    <!-- Las opciones se llenarán dinámicamente -->
+                                                </select>
                                             </div>
-                                            <div class="coupon2">
-                                                <input class="button" name="update_cart" value="Actualizar carrito" type="submit">
+                                         </div>
+                                         <div id="shipping-details" class="shipping-details" style="display: inline-block; padding-top: 20;" >
+                                                <!-- Los detalles de la categoría de envío seleccionada se mostrarán aquí -->
                                             </div>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-5 ml-auto">
+                                  
+                                <div class="col-6">
+                                    <div class=" ml-auto">
                                         <div class="cart-page-total">
                                             <h2>Total del carrito</h2>
                                             <ul>
@@ -62,12 +65,16 @@
                                         </div>
                                     </div>
                                 </div>
+                             </div>
                             </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>
             {% endblock %}
             {% block script %}
-            <script src="{% static 'assets/dist/js/shopping-cart.js' %}"></script>
+              <script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
+             <script src="{% static 'assets/dist/js/shopping-cart.js' %}"></script>
             {% endblock %}
+           

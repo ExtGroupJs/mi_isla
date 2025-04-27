@@ -23,7 +23,7 @@
       "description": "Este tipo de envío se realiza a clientes de toda Cuba",
       "image": "",
       "min_weight_allowed": 10,
-      "price_by_weight_unit": 3.5,
+      "price_by_weight_unit": 3.50,
       "time_to_delivery": "15 a 21 días"
     }
   },
@@ -37,7 +37,7 @@
       "description": "Este tipo de envío se realiza a clientes de toda Cuba",
       "image": "",
       "min_weight_allowed": 20,
-      "price_by_weight_unit": 1.8,
+      "price_by_weight_unit": 1.80,
       "time_to_delivery": "35 a 45 días"
     }
   }
