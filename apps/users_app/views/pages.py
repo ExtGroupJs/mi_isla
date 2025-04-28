@@ -105,6 +105,10 @@ def salescar(request):
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
 
+@user_passes_test(is_owner)
+def category(request):
+    return render(request, "category/category.html")
+
 
 def user_redirect(request):
     if request.user.groups.filter(id=Groups.SHOP_OWNER.value).exists():

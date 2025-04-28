@@ -20,12 +20,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Modelos</h1>
+          <h1>Categorías</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-            <li class="breadcrumb-item active">Modelos</li>
+            <li class="breadcrumb-item active">Categorías</li>
           </ol>
         </div>
       </div>
@@ -68,18 +68,18 @@
 <!-- /.content-wrapper -->
 
 <!-- modal para crear modelo -->
-<div class="modal fade" id="modal-crear-models" data-backdrop="static" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal-crear-category" data-backdrop="static" tabindex="-1" role="dialog"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Adicionar Modelo</h4>
+        <h4 class="modal-title">Adicionar Categoría</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
-      <form id="form-create-models">
+      <form id="form-create-category">
         <div class="card-body">
 
           <div class="row">
@@ -88,8 +88,8 @@
               <input type="text" class="form-control" id="name" name="name" placeholder="Entre el nombre" required>
             </div>
             <div class="form-group col-sm-6">
-              <label for="name">Marca</label>
-              <select class="form-control " id="selectbrands" name="selectbrands" tabindex="-1"></select>
+              <label for="name">Precio por peso</label>
+              <select class="form-control " id="price_by_weight" name="price_by_weight" tabindex="-1"></select>
             </div>
           </div>
         
@@ -141,7 +141,7 @@
 <script src="{% static 'assets/plugins/jquery-validation/localization/messages_es.js' %}"></script>
 <script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
 
-<script src="{% static 'assets/dist/js/models.js' %}"></script>
+<script src="{% static 'assets/dist/js/category.js' %}"></script>
 <script src="{% static 'assets/plugins/select2/js/select2.full.min.js' %}"></script>
 
 <!-- Page specific script -->

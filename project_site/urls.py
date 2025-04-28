@@ -85,6 +85,7 @@ urlpatterns = [
     path("sales_tienda/", login_required(pages.sales_tienda), name="sales_tienda"),
     path("salescar/", login_required(pages.salescar), name="salescar"),
     path("dashboard/", login_required(pages.dashboard), name="dashboard"),
+    path("category/", login_required(pages.category), name="category"),
     path("redireccionar/", login_required(pages.user_redirect), name="redireccionar"),
 ]
 

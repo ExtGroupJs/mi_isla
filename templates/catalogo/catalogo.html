@@ -70,7 +70,7 @@
                 <ul class="phone-wrap">
                   <li>
                     <span>Telefonos:</span><a href="#">
-                      +1 (305) 877-0178 : Miami, +53 5104-6908 : Cuba</a>
+                      +1 (786) 893-6390 : Miami</a>
                   </li>
                 </ul>
               </div>
@@ -130,9 +130,9 @@
                         <a href="{% url 'shopping-cart' %}" class="li-button li-button-fullwidth li-button-dark">
                           <span>Ver Carrito</span>
                         </a>
-                        <a href="checkout.html" class="li-button li-button-fullwidth">
+                        {% comment %} <a href="checkout.html" class="li-button li-button-fullwidth">
                           <span>Checkout</span>
-                        </a>
+                        </a> {% endcomment %}
                       </div>
                     </div>
                   </li>
@@ -348,18 +348,17 @@
                     <h3 class="footer-block-title">Contáctenos</h3>
                     <ul class="des">
                       <li>
-                        <span>Dirección Miami: </span>
+                        <span>Dirección: </span>
                         5704 West Flagler ST Miami FL 33144
                       </li>
                       <li>
-                        <span>Dirección Cuba: </span>
-                        Calle H. Castillo #111/ Máximo Gómez & Serafín Sánchez
-                        Ciego de Ávila, CUBA
+                        <span>Dirección: </span>
+                        7295 sw 24 st Miami FL 33155
                       </li>
                       <li>
                         <span>Telefono: </span>
-                        <a href="#">+1 (305) 877-0178 : Miami</a>
-                        <a href="#">+53 5104-6908 : Cuba</a>
+                        <a href="#">+1 (786) 893-6390 : Tienda</a>
+                        <a href="#">+1 (786) 483-7665 : Agencia</a>
                       </li>
                     </ul>
                   </div>
@@ -567,6 +566,7 @@
       <script src="{% static 'assets/catalogo/js/main.js' %}"></script>
       <script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
       <script src="{% static 'assets/dist/js/catalogo.js' %}"></script>
+      <script src="{% static 'assets/dist/js/whatsapp.js' %}"></script>
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {

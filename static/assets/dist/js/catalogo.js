@@ -453,30 +453,9 @@ async function showProductDetails(productId) {
   }
 }
 
-// Función para contactar por WhatsApp
-function contactWhatsApp(productName, price) {
-  const STORE_PHONE = "+13058770178"; // Número fijo de la tienda
-
-  // Formatear el mensaje
-  const message = `Hola, estoy interesado en el producto: ${productName} - Precio: $${price}`;
-  const encodedMessage = encodeURIComponent(message);
-
-  // Detectar si es dispositivo móvil
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-  // Crear el enlace de WhatsApp según el dispositivo
-  const whatsappUrl = isMobile
-    ? `whatsapp://send?phone=${STORE_PHONE}&text=${encodedMessage}` // Enlace para app móvil
-    : `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`; // Enlace para web
-
-  // Abrir WhatsApp
-  window.location.href = whatsappUrl;
-}
 
 // Función para agregar un producto al carrito
 function addToCart(product) {
-  console.log('%c⧭', 'color: #ffcc00', product);
-
   const quantityInput = document.getElementById("quantityInput");
   // Obtener el carrito del localStorage o inicializarlo si no existe
   let cart = JSON.parse(localStorage.getItem("cart")) || [];

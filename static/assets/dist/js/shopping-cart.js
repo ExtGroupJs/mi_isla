@@ -64,7 +64,6 @@ function loadCartItems() {
   } else {
     categorylocal = JSON.parse(localStorage.getItem("category")) || {};
     shippingCost = totalWeight * categorylocal.price_by_weight_unit;
-console.log('✌️categorylocal.price_by_weight_unit --->', categorylocal);
   }
 
   const total = subtotal + shippingCost;
@@ -92,26 +91,9 @@ function changeQuantity(productId, change) {
   }
 }
 
-function sendWhatsAppMessage() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const STORE_PHONE = "+13058770178";
+// 
 
-  let message = "Hola, estoy interesado en los siguientes productos:\n";
 
-  cart.forEach((product) => {
-    message += `- ${product.name}: $${product.sell_price.toFixed(2)} x ${product.quantity}\n`;
-  });
-
-  const subtotal = document.getElementById("cart-subtotal").textContent;
-  const total = document.getElementById("cart-total").textContent;
-  message += `\nTotal de la compra: ${subtotal}`;
-  message += `\nTotal de la compra con envio incluido: ${total}`;
-
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`;
-
-  window.location.href = whatsappUrl;
-}
 
 function removeFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -155,7 +137,6 @@ function displayShippingDetails(categoryId) {
       const category = response.data;
       localStorage.setItem("category", JSON.stringify(category));
       categorylocal = JSON.parse(localStorage.getItem("category")) || {};
-console.log('✌️categorylocal2 --->', categorylocal);
       let detailsHTML = `<div class="contact-page-side-content">
         <h3 class="contact-page-title">${category.name}</h3>
         <p class="contact-page-message mb-25">${category.description}</p>`;
