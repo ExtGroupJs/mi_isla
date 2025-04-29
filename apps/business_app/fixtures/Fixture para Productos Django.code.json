@@ -1,0 +1,210 @@
+[
+  {
+    "model": "tu_app.producto",
+    "pk": 1,
+    "fields": {
+      "nombre": "Refresco Zuko Sabor Mango",
+      "peso": 0.90,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0027.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 2,
+    "fields": {
+      "nombre": "Refresco Zuko Sabor Piña",
+      "peso": 0.90,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0027.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 3,
+    "fields": {
+      "nombre": "Refresco Zuko Sabor Melón",
+      "peso": 0.90,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0027.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 4,
+    "fields": {
+      "nombre": "Refresco Zuko Sabor Maracuyá",
+      "peso": 0.90,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0027.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 5,
+    "fields": {
+      "nombre": "Refresco Zuko Sabor Tamarindo",
+      "peso": 0.90,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0027.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 6,
+    "fields": {
+      "nombre": "Jamón Iberia (Lata)",
+      "peso": 1.00,
+      "precio": 4.80,
+      "imagen": "IMG-20250428-WA0028.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 7,
+    "fields": {
+      "nombre": "Jamón Goya (Lata)",
+      "peso": 1.00,
+      "precio": 6.25,
+      "imagen": "IMG-20250428-WA0028.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 8,
+    "fields": {
+      "nombre": "Leche Bambina (1 lb)",
+      "peso": 1.00,
+      "precio": 8.00,
+      "imagen": "IMG-20250428-WA0030.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 9,
+    "fields": {
+      "nombre": "Leche Bambina (2.2 lbs)",
+      "peso": 2.20,
+      "precio": 13.00,
+      "imagen": "IMG-20250428-WA0031.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 10,
+    "fields": {
+      "nombre": "Café El Ricote",
+      "peso": 0.65,
+      "precio": 3.00,
+      "imagen": "IMG-20250428-WA0033.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 11,
+    "fields": {
+      "nombre": "Frijol Negro Goya",
+      "peso": 0.85,
+      "precio": 1.85,
+      "imagen": "IMG-20250428-WA0059.jpg",
+      "categoria_id": 3,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 12,
+    "fields": {
+      "nombre": "Detergente Tide",
+      "peso": 1.10,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0064.jpg",
+      "categoria_id": 1,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 13,
+    "fields": {
+      "nombre": "Jabón Zote",
+      "peso": 0.40,
+      "precio": 1.50,
+      "imagen": "IMG-20250428-WA0065.jpg",
+      "categoria_id": 1,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 14,
+    "fields": {
+      "nombre": "Jabón Nara (Baño)",
+      "peso": 0.20,
+      "precio": 1.00,
+      "imagen": "IMG-20250428-WA0066.jpg",
+      "categoria_id": 1,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 15,
+    "fields": {
+      "nombre": "Pasta Dental Colgate Azul",
+      "peso": 0.20,
+      "precio": 2.50,
+      "imagen": "IMG-20250428-WA0069.jpg",
+      "categoria_id": 1,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  },
+  {
+    "model": "tu_app.producto",
+    "pk": 16,
+    "fields": {
+      "nombre": "Pasta Dental Colgate Verde",
+      "peso": 0.20,
+      "precio": 2.00,
+      "imagen": "IMG-20250428-WA0069.jpg",
+      "categoria_id": 1,
+      "created_at": "2025-04-29T18:48:46Z",
+      "updated_at": "2025-04-29T18:48:46Z"
+    }
+  }
+]

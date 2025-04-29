@@ -1,4 +1,6 @@
-const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
+ const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
+// const STORE_PHONE = "5359997418"; // Sin '+' para compatibilidad
+//const STORE_PHONE = "5352112115"; // Sin '+' para compatibilidad
       
 
 // Función para contactar por WhatsApp
@@ -44,6 +46,7 @@ function contactWhatsApp(productName, price) {
         primary: `https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`,
         fallbackWeb: `https://web.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`,
         business: `https://wa.me/${STORE_PHONE}?text=${encodedMessage}&app_absent=1`,
+        
         intent: `intent://send?phone=${STORE_PHONE}&text=${encodedMessage}#Intent;scheme=smsto;package=com.whatsapp;end`
       };
   
@@ -54,7 +57,9 @@ function contactWhatsApp(productName, price) {
         
         // Si falla, redirigir después de 500ms al método business
         setTimeout(() => {
-          window.location.href = urls.business;
+        //   window.location.href = urls.business;
+          window.open(`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`, '_blank');
+        
         }, 500);
       } else {
         // Para escritorio: intentar API primero
@@ -62,7 +67,10 @@ function contactWhatsApp(productName, price) {
         
         // Si está bloqueado, usar fallback
         setTimeout(() => {
-          window.open(urls.fallbackWeb || urls.business, '_blank');
+         // window.open(urls.fallbackWeb || urls.business, '_blank');
+        // window.open(`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`, '_blank');
+        window.open(`https://wamessage.me/${STORE_PHONE}?text=${encodedMessage}`);
+
         }, 300);
       }
   
@@ -70,5 +78,5 @@ function contactWhatsApp(productName, price) {
       console.error("Error al enviar:", error);
       alert("⚠️ Abre WhatsApp manualmente y pega este mensaje:\n\n" + message);
     }
-  }
+    }
   
