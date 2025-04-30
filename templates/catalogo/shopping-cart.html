@@ -1,14 +1,15 @@
 {% extends "catalogo/catalogo.html" %}
 {% load static %}
 {% load i18n %}
-
+{% comment %} {% block headAndCart %}
+{% endblock %} {% endcomment %}
 {% block content %}
             <div class="breadcrumb-area">
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
                             <li><a href="index.html">Inicio</a></li>
-                            <li class="active">Carrito de Compras</li>
+                            <li style="color: #fed700;">Carrito de Compras</li>
                         </ul>
                     </div>
                 </div>
@@ -21,22 +22,24 @@
                         <div class="col-12">
                             <form action="#">
                                 <div class="table-content table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="li-product-remove">Eliminar</th>
-                                                <th class="li-product-thumbnail">Imágenes</th>
-                                                <th class="cart-product-name">Producto</th>
-                                                <th class="li-product-price">Precio Unitario</th>
-                                                <th class="li-product-quantity">Cantidad</th>
-                                                <th class="li-product-weight">Peso Total</th>
-                                                <th class="li-product-subtotal">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="cart-items">
-                                            <!-- Los productos del carrito se llenarán aquí dinámicamente -->
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="li-product-remove">Eliminar</th>
+                                                    <th class="li-product-thumbnail">Imágenes</th>
+                                                    <th class="cart-product-name">Producto</th>
+                                                    <th class="li-product-price">Precio Unitario</th>
+                                                    <th class="li-product-quantity">Cantidad</th>
+                                                    <th class="li-product-weight">Peso Total</th>
+                                                    <th class="li-product-subtotal">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cart-items">
+                                                <!-- Los productos del carrito se llenarán aquí dinámicamente -->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                     <div class="row">
                                     <div class="col-6">
@@ -61,7 +64,7 @@
                                                 <li>Subtotal <span id="cart-subtotal">$0.00</span></li>
                                                 <li>Total <span id="cart-total">$0.00</span></li>
                                             </ul>
-                                            <a href="#" id="proceed-to-checkout">Proceder al pago</a>
+                                            <a href="#" id="proceed-to-checkout" >Proceder a ordenar</a>
                                         </div>
                                     </div>
                                 </div>

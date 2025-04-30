@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
-  loadShippingCategories();
+    loadShippingCategories();
   
 
   document.getElementById("proceed-to-checkout").addEventListener("click", (event) => {
@@ -79,6 +78,8 @@ function loadCartItems() {
     cartTotalTable.insertBefore(weightRow, cartTotalTable.firstChild);
   }
   weightRow.innerHTML = `Peso Total <span>${totalWeight.toFixed(2)} lbs</span>`;
+
+  toggleCheckoutButton(); // Llamar aquí
 }
 
 function changeQuantity(productId, change) {
@@ -90,10 +91,6 @@ function changeQuantity(productId, change) {
     loadCartItems();
   }
 }
-
-// 
-
-
 
 function removeFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -165,8 +162,27 @@ function displayShippingDetails(categoryId) {
       detailsHTML += `</div>`;
       document.getElementById("shipping-details").innerHTML = detailsHTML;
       loadCartItems();
+      toggleCheckoutButton(); // Llamar aquí
     })
     .catch((error) => {
       console.error("Error al cargar los detalles de la categoría de envío:", error);
     });
 }
+
+function toggleCheckoutButton() {
+  const weightRow = document.querySelector(".cart-page-total ul .weight-row");
+  const proceedButton = document.getElementById("proceed-to-checkout");
+  const category = JSON.parse(localStorage.getItem("category")) || {};
+
+  if (weightRow && category.min_weight_allowed) {
+    const totalWeight = parseFloat(weightRow.textContent.match(/\d+(\.\d+)?/)[0]);
+    if (totalWeight < category.min_weight_allowed) {
+      proceedButton.classList.add("enlace-deshabilitado");
+      proceedButton.textContent = `El peso total debe ser al menos ${category.min_weight_allowed} lbs para ordenar.`;
+    } else {
+      proceedButton.classList.remove("enlace-deshabilitado");      
+      proceedButton.textContent = "Crear Orden de Compra";
+    }
+  }
+}
+

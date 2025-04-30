@@ -71,6 +71,12 @@
 /*----------------------------------------*/
 /*  1.1 Basic
 /*----------------------------------------*/
+
+.enlace-deshabilitado {
+  pointer-events: none;
+  color: grey; /* Opción para cambiar el color para indicar que está deshabilitado */
+}
+
 body {
   color: #242424;
   font-family: "Rubik", sans-serif;

@@ -1,4 +1,5 @@
- const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
+ //const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
+ const STORE_PHONE = "13058770178"; // Sin '+' para compatibilidad
 // const STORE_PHONE = "5359997418"; // Sin '+' para compatibilidad
 //const STORE_PHONE = "5352112115"; // Sin '+' para compatibilidad
       
