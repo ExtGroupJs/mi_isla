@@ -1,0 +1,478 @@
+[
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Refresco Zuko (Mango/Piña/Melón)",
+      "category": 3,
+      "description": "Refresco en polvo con sabores variados",
+      "image": "IMG-20250428-WA0027.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 0.90,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Leche Bambina (1 lb)",
+      "category": 3,
+      "description": "Leche en polvo para bebés",
+      "image": "IMG-20250428-WA0030.jpg",
+      "quantity": 1,
+      "sell_price": 8.00,
+      "weight": 1.00,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Leche Bambina (2.2 lbs)",
+      "category": 3,
+      "description": "Leche en polvo para bebés, presentación grande",
+      "image": "IMG-20250428-WA0031.jpg",
+      "quantity": 1,
+      "sell_price": 13.00,
+      "weight": 2.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Leche Condensada",
+      "category": 3,
+      "description": "Leche condensada azucarada",
+      "image": "IMG-20250428-WA0049.jpg",
+      "quantity": 1,
+      "sell_price": 1.99,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Jamón Iberia (Lata)",
+      "category": 3,
+      "description": "Jamón cocido enlatado",
+      "image": "IMG-20250428-WA0028.jpg",
+      "quantity": 1,
+      "sell_price": 4.80,
+      "weight": 1.00,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Jamón Goya (Lata)",
+      "category": 3,
+      "description": "Jamón cocido premium enlatado",
+      "image": "IMG-20250428-WA0028.jpg",
+      "quantity": 1,
+      "sell_price": 6.25,
+      "weight": 1.00,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Jamón Goya (Lata pequeña)",
+      "category": 3,
+      "description": "Jamón cocido enlatado, presentación pequeña",
+      "image": "IMG-20250428-WA0048.jpg",
+      "quantity": 1,
+      "sell_price": 3.19,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Chorizo (Paquete grande)",
+      "category": 3,
+      "description": "Chorizo español, paquete familiar",
+      "image": "IMG-20250428-WA0045.jpg",
+      "quantity": 1,
+      "sell_price": 13.99,
+      "weight": 1.80,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Chorizo (Paquete mediano)",
+      "category": 3,
+      "description": "Chorizo español, paquete individual",
+      "image": "IMG-20250428-WA0046.jpg",
+      "quantity": 1,
+      "sell_price": 5.50,
+      "weight": 0.40,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Chorizo (Paquete pequeño)",
+      "category": 3,
+      "description": "Chorizo español, muestra gratuita",
+      "image": "IMG-20250428-WA0047.jpg",
+      "quantity": 1,
+      "sell_price": 2.60,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Frijol Negro Goya",
+      "category": 3,
+      "description": "Frijoles negros cocidos",
+      "image": "IMG-20250428-WA0059.jpg",
+      "quantity": 1,
+      "sell_price": 1.85,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Frijoles Colorados El Ricote",
+      "category": 3,
+      "description": "Frijoles colorados cocidos",
+      "image": "IMG-20250428-WA0060.jpg",
+      "quantity": 1,
+      "sell_price": 0.99,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Fideos Iberia",
+      "category": 3,
+      "description": "Pasta tipo fideo delgada",
+      "image": "IMG-20250428-WA0061.jpg",
+      "quantity": 1,
+      "sell_price": 2.00,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Coditos Iberia",
+      "category": 3,
+      "description": "Pasta tipo codito pequeño",
+      "image": "IMG-20250428-WA0062.jpg",
+      "quantity": 1,
+      "sell_price": 2.00,
+      "weight": 1.10,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Spaghetti Iberia",
+      "category": 3,
+      "description": "Pasta tipo spaghetti tradicional",
+      "image": "IMG-20250428-WA0063.jpg",
+      "quantity": 1,
+      "sell_price": 2.00,
+      "weight": 1.10,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Sazón Goya",
+      "category": 3,
+      "description": "Mezcla de especias para sazonar",
+      "image": "IMG-20250428-WA0034.jpg",
+      "quantity": 1,
+      "sell_price": 4.00,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Sazón Iberia",
+      "category": 3,
+      "description": "Mezcla de especias para sazonar",
+      "image": "IMG-20250428-WA0035.jpg",
+      "quantity": 1,
+      "sell_price": 2.99,
+      "weight": 0.40,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Sazón Tropical",
+      "category": 3,
+      "description": "Mezcla de especias con azafrán",
+      "image": "IMG-20250428-WA0036.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Cebolla en Polvo",
+      "category": 3,
+      "description": "Cebolla deshidratada molida",
+      "image": "IMG-20250428-WA0038.jpg",
+      "quantity": 1,
+      "sell_price": 3.79,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Ajo en Polvo",
+      "category": 3,
+      "description": "Ajo deshidratado molido",
+      "image": "IMG-20250428-WA0039.jpg",
+      "quantity": 1,
+      "sell_price": 2.79,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Comino Molido",
+      "category": 3,
+      "description": "Semillas de comino molidas",
+      "image": "IMG-20250428-WA0041.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Chupa Chupa",
+      "category": 3,
+      "description": "Caramelo de leche con chocolate",
+      "image": "IMG-20250428-WA0029.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Galletas Brinky (Dulces)",
+      "category": 3,
+      "description": "Galletas rellenas de crema",
+      "image": "IMG-20250428-WA0051.jpg",
+      "quantity": 1,
+      "sell_price": 2.19,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Galletas Chiky (Limón)",
+      "category": 3,
+      "description": "Galletas sabor limón",
+      "image": "IMG-20250428-WA0053.jpg",
+      "quantity": 1,
+      "sell_price": 2.19,
+      "weight": 0.85,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Galletas Dux (Soda)",
+      "category": 3,
+      "description": "Galletas tipo soda",
+      "image": "IMG-20250428-WA0054.jpg",
+      "quantity": 1,
+      "sell_price": 1.50,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Choco Listo (Fresa/Chocolate)",
+      "category": 3,
+      "description": "Bebida instantánea de chocolate",
+      "image": "IMG-20250428-WA0055.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Gelatina (Piña/Limón)",
+      "category": 3,
+      "description": "Gelatina en polvo con sabores",
+      "image": "IMG-20250428-WA0070.jpg",
+      "quantity": 1,
+      "sell_price": 0.89,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Café El Ricote",
+      "category": 3,
+      "description": "Café molido tradicional",
+      "image": "IMG-20250428-WA0033.jpg",
+      "quantity": 1,
+      "sell_price": 3.00,
+      "weight": 0.65,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Té de Manzanilla",
+      "category": 3,
+      "description": "Infusión de manzanilla",
+      "image": "IMG-20250428-WA0071.jpg",
+      "quantity": 1,
+      "sell_price": 1.19,
+      "weight": 0.07,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Detergente Tide",
+      "category": 1,
+      "description": "Detergente líquido para ropa",
+      "image": "IMG-20250428-WA0064.jpg",
+      "quantity": 1,
+      "sell_price": 2.50,
+      "weight": 1.10,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Jabón Zote",
+      "category": 1,
+      "description": "Jabón en barra para lavar ropa",
+      "image": "IMG-20250428-WA0065.jpg",
+      "quantity": 1,
+      "sell_price": 1.50,
+      "weight": 0.40,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Jabón Nara (Baño)",
+      "category": 1,
+      "description": "Jabón de tocador",
+      "image": "IMG-20250428-WA0066.jpg",
+      "quantity": 1,
+      "sell_price": 1.00,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Pasta Dental Colgate",
+      "category": 1,
+      "description": "Pasta dental con flúor",
+      "image": "IMG-20250428-WA0069.jpg",
+      "quantity": 1,
+      "sell_price": 2.25,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  },
+  {
+    "model": "business_app.product",
+    "fields": {
+      "name": "Pasta Dental Colgate Verde",
+      "category": 1,
+      "description": "Pasta dental con flúor",
+      "image": "IMG-20250428-WA0069.jpg",
+      "quantity": 1,
+      "sell_price": 2.0,
+      "weight": 0.20,
+      "created_timestamp": "2025-04-22T16:09:07.629",
+      "updated_timestamp": "2025-04-22T16:09:07.629"
+    }
+  }
+]

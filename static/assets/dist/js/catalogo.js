@@ -3,25 +3,21 @@ let currentPage = 1;
 let productsPerPage = 12;
 let totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos por página
 let totalPages = 0; // Variable global para almacenar la cantidad de páginas
-let product__model = "";
+let product__category = "";
 let searchValue = "";
-let shopValue = "";
 let orderingValue = "";
-let product__model__brand = "";
-let currentViewMode = 'grid';
+let currentViewMode = "grid";
 
 // Función para cargar productos
 function loadProducts(page) {
   currentPage = page;
-  const url = "/business-gestion/shop-products/catalog/"; // Asegúrate de que esta URL sea correcta
+  const url = "/business-gestion/products/"; // Asegúrate de que esta URL sea correcta
   const params = {
     page_size: productsPerPage === "all" ? Infinity : productsPerPage, // Ajustar según la selección
     page: page,
     search: searchValue, // Aquí puedes agregar la lógica para manejar la búsqueda si es necesario
     ordering: orderingValue, // Aquí puedes agregar la lógica para manejar el ordenamiento si es necesario
-    product__model: product__model,
-    product__model__brand: product__model__brand,
-    shop: shopValue,
+    category: product__category,
   };
 
   axios
@@ -54,87 +50,130 @@ function renderProducts(products) {
   const productArea = document.querySelector(".shop-products-wrapper .row");
   productArea.innerHTML = ""; // Limpiar productos existentes
 
-  products.forEach((product) => {  
-    if (currentViewMode === 'grid') {
-      const productHTML = `
-        <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
-          <div class="single-product-wrap">
-            <div class="product-image">
-              <a>
-                <img src="${product.product.image || '/static_output/assets/dist/img/producto-sin-imagen.jpg'}" 
-                     alt="${product.product.name}"
-                     onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
-              </a>
-              ${product.is_new ? '<span class="sticker">New</span>' : ''}
-            </div>
-            <div class="product_desc">
-              <div class="product_desc_info">
-                <div class="product-review">
-                  <h5 class="manufacturer">
-                    <a>${product.product.model.brand.name} ${product.product.model.name}</a>
-                  </h5>
-                  <div class="rating-box">
-                    <ul class="rating">
-                      ${generateStarsHTML(product.sales_count || 0)}
-                    </ul>
-                  </div>
-                </div>
-                <h4><a class="product_name" href="#">${product.product.name}</a></h4>
-                <div class="price-box">
-                  <span class="new-price">$${product.sell_price}</span>
-                </div>
-              </div>
-              <div class="add-actions">
-                <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-                  <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="viewProductDetails(${product.id})"><i class="fa fa-eye"></i></a></li>
-                  <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${product.product.name}', ${product.sell_price})"><i class="fa fa-whatsapp"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      productArea.insertAdjacentHTML("beforeend", productHTML);
+  products.forEach((product) => {
+    let productHTML;
+    if (currentViewMode === "grid") {
+      productHTML = renderGridProduct(product);
     } else {
-      const productHTML = `
-        <div class="col-12 mt-40">
-          <div class="single-product-wrap d-flex">
-            <div class="product-image">
-              <a>
-                <img src="${product.product.image || '/static_output/assets/dist/img/producto-sin-imagen.jpg'}" 
-                     alt="${product.product.name}"
-                     onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
-              </a>
-              ${product.is_new ? '<span class="sticker">New</span>' : ''}
-            </div>
-            <div class="product_desc flex-grow-1 ml-4">
-              <div class="product_desc_info">
-                <div class="product-review">
-                  <h5 class="manufacturer">
-                    <a>${product.product.model.brand.name} ${product.product.model.name}</a>
-                  </h5>
-                  <div class="rating-box">
-                    <ul class="rating">
-                      ${generateStarsHTML(product.sales_count || 0)}
-                    </ul>
-                  </div>
-                </div>
-                <h4><a class="product_name" href="#">${product.product.name}</a></h4>
-                <div class="price-box">
-                  <span class="new-price">$${product.sell_price}</span>
-                </div>
-              </div>
-              <div class="add-actions">
-                <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-                  <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="viewProductDetails(${product.id})"><i class="fa fa-eye"></i></a></li>
-                  <li class="li-btn" style="color: red"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${product.product.name}', ${product.sell_price})"><i class="fa fa-whatsapp"></i></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      productArea.insertAdjacentHTML("beforeend", productHTML);
+      productHTML = renderListProduct(product);
     }
+    productArea.insertAdjacentHTML("beforeend", productHTML);
   });
+}
+
+function renderGridProduct(product) {
+  return `
+    <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
+      <div class="single-product-wrap">
+        <div class="product-image">
+          <a>
+            <img src="${
+              product.image ||
+              "/static_output/assets/dist/img/producto-sin-imagen.jpg"
+            }" 
+                 alt="${product.name}"
+                 onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
+          </a>
+          ${product.is_new ? '<span class="sticker">New</span>' : ""}
+        </div>
+        <div class="product_desc">
+          <div class="product_desc_info">
+            <div class="product-review">
+              <h5 class="manufacturer">
+               <span class="new-price">$${product.sell_price}</span>
+              </h5>
+              <div class="rating-box">
+                  <ul class="rating">
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                 </ul>
+              </div>
+            </div>
+            <h4><a class="product_name" href="#">${product.name}</a></h4>
+            <div class="price-box">
+              <span class="new-price">${product.weight} lbs</span>
+                </div>
+          </div>
+          <div class="add-actions">
+            <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${product.weight}', name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${product.sell_price}})">Add to cart</a></li>
+              <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
+                product.id
+              })"><i class="fa fa-eye"></i></a></li>
+              <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
+                product.name
+              }', ${
+    product.sell_price
+  })"><i class="fa fa-whatsapp"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderListProduct(product) {
+  return `
+    <div class="col-12 mt-40">
+      <div class="single-product-wrap d-flex">
+        <div class="product-image">
+          <a>
+            <img src="${
+              product.image ||
+              "/static_output/assets/dist/img/producto-sin-imagen.jpg"
+            }" 
+                 alt="${product.name}" style="max-width:281px"
+                 onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
+          </a>
+          ${product.is_new ? '<span class="sticker">New</span>' : ""}
+        </div>
+        <div class="product_desc flex-grow-1 ml-4">
+          <div class="product_desc_info">
+             <div class="product-review">
+              <h5 class="manufacturer">
+               <span class="new-price">$${product.sell_price}</span>
+              </h5>
+              <div class="rating-box">
+                  <ul class="rating">
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                 </ul>
+              </div>
+            </div>
+            <h4><a class="product_name" href="#">${product.name}</a></h4>
+            <div class="price-box">
+               <span class="new-price">${product.weight} lbs</span>
+            </div>
+             <div class="product-description">
+            <p>${product.description || "Sin descripción"}</p>
+          </div>
+          <div >
+            <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${product.weight}', name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${product.sell_price}})">Add to cart</a></li>
+              <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
+                product.id
+              })"><i class="fa fa-eye"></i></a></li>
+              <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
+                product.name
+              }', ${
+    product.sell_price
+  })"><i class="fa fa-whatsapp"></i></a></li>
+            </ul>
+          </div>
+          </div>       
+         </div>
+      </div>
+    </div>`;
 }
 
 // Función para generar las estrellas basadas en las ventas
@@ -144,8 +183,8 @@ function generateStarsHTML(sales) {
   // Calculamos estrellas adicionales basadas en ventas (máximo 3 estrellas adicionales)
   const additionalStars = Math.min(Math.floor(sales / 5), 3);
   const totalStars = Math.max(minStars, additionalStars);
-  
-  let starsHTML = '';
+
+  let starsHTML = "";
   for (let i = 0; i < 5; i++) {
     if (i < totalStars) {
       starsHTML += '<li><i class="fa fa-star"></i></li>';
@@ -172,8 +211,12 @@ function updatePagination() {
   }
 
   // Mostrar tres botones de página
-  for (let i = Math.max(1, currentPage - 1); i <= Math.min(totalPages, Math.max(3, currentPage + 1)); i++) {
-    const isActive = i === currentPage ? 'class="active"' : '';
+  for (
+    let i = Math.max(1, currentPage - 1);
+    i <= Math.min(totalPages, Math.max(3, currentPage + 1));
+    i++
+  ) {
+    const isActive = i === currentPage ? 'class="active"' : "";
     paginationArea.insertAdjacentHTML(
       "beforeend",
       `<li ${isActive}><a href="#" onclick="loadProducts(${i})">${i}</a></li>`
@@ -191,19 +234,11 @@ function updatePagination() {
   }
 }
 
-// Función para ver detalles del producto
-function viewProductDetails(productId) {
-  // Aquí puedes implementar la lógica para mostrar los detalles del producto en un modal
-  showProductDetails(productId);
-  // Puedes cargar los detalles del producto y mostrarlos en el modal correspondiente
-}
-
 // Cargar productos al iniciar la página
 document.addEventListener("DOMContentLoaded", () => {
   loadProducts(currentPage);
-  loadModels("");
-  loadBrands();
-  populateShopsList();
+  loadCategory();
+  updateMiniCart()
 });
 
 function updateProductsPerPage() {
@@ -224,30 +259,9 @@ function updateProductsPerPage() {
   selectElement.value = selectedValue;
 }
 
-function loadModels(id) {
-  const params = {
-    brand: id,
-  };
-  axios
-    .get(`/business-gestion/models/catalog/`, { params })
-    .then((res) => {
-      const models = res.data.results;
-      populateModelsList(models);
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Error al cargar los modelos",
-        text: error.message,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    });
-}
-
-function populateModelsList(models) {
-  const modelList = document.getElementById("model-list");
-  modelList.innerHTML = ""; // Limpiar opciones anteriores
+function populateCategorysList(categorys) {
+  const categoryList = document.getElementById("category-list");
+  categoryList.innerHTML = ""; // Limpiar opciones anteriores
 
   // Opción para mostrar todos los modelos
   const showAllItem = document.createElement("li");
@@ -258,58 +272,46 @@ function populateModelsList(models) {
   // Agregar evento para mostrar todos los productos
   showAllLink.addEventListener("click", (e) => {
     e.preventDefault(); // Prevenir el enlace por defecto
-    loadProductsByModel(""); // Cargar todos los productos
+    selectCategoryInit("");
   });
 
   showAllItem.appendChild(showAllLink);
-  modelList.appendChild(showAllItem);
+  categoryList.appendChild(showAllItem);
 
-  models.forEach((model) => {
+  categorys.forEach((category) => {
     const listItem = document.createElement("li");
     const link = document.createElement("a");
     link.href = "#"; // Prevenir el comportamiento por defecto
-    link.textContent = model.name;
+    link.textContent = category.name;
 
     // Agregar evento para filtrar productos por modelo
     link.addEventListener("click", (e) => {
       e.preventDefault(); // Prevenir el enlace por defecto
-      loadProductsByModel(model.id); // Cargar productos por el modelo seleccionado
+      selectCategoryInit(category.id);
     });
 
     listItem.appendChild(link);
-    modelList.appendChild(listItem);
+    categoryList.appendChild(listItem);
   });
 }
 
-function loadProductsByModel(modelId) {
-  const url = "/business-gestion/shop-products/catalog/";
-  currentPage = 1;
-  product__model = modelId;
-  loadProducts(currentPage);
-  // updatePagination();
-}
-function loadProductsByModel(modelId) {
-  currentPage = 1;
-  product__model = modelId;
-  loadProducts(currentPage);
-}
 function searchProducts() {
   currentPage = 1;
   searchValue = document.getElementById("searchInput").value;
   loadProducts(currentPage);
 }
 
-function loadBrands() {
+function loadCategory() {
   axios
-    .get("/business-gestion/brands/catalog/")
+    .get("/business-gestion/category/")
     .then((res) => {
-      const brands = res.data.results;
-      populateBrandsSelect(brands);
+      const category = res.data.results;
+      populateCategorysSelect(category);
     })
     .catch((error) => {
       Swal.fire({
         icon: "error",
-        title: "Error al cargar las marcas",
+        title: "Error al cargar las Categorías",
         text: error.message,
         showConfirmButton: false,
         timer: 1500,
@@ -317,106 +319,38 @@ function loadBrands() {
     });
 }
 
-function populateBrandsSelect(brands) {
-  const brandsSelect = document.getElementById("brandsSelect");
-  brandsSelect.innerHTML = '<option value="">Seleccione una marca</option>'; // Limpiar opciones anteriores
+function populateCategorysSelect(categorys) {
+  const categorysSelect = document.getElementById("categorysSelect");
+  const categorysSelectUL = document.querySelector(".hm-searchbox .list");
+  categorysSelect.innerHTML =
+    '<option value="">Seleccione una Categoría</option>'; // Limpiar opciones anteriores
 
-  brands.forEach((brand) => {
-    const option = document.createElement("option");
-    option.value = brand.id; // Asignar el ID de la marca como valor
-    option.textContent = brand.name; // Asignar el nombre de la marca como texto
-    brandsSelect.appendChild(option);
+  populateCategorysList(categorys);
+
+  const option_todos = document.createElement("li");
+  option_todos.setAttribute("class", "option");
+  option_todos.textContent = "Todos"; // Asignar el nombre de la category como texto
+  option_todos.class = "option"; // Asignar el nombre de la category como texto
+  option_todos.addEventListener("click", () => {
+    selectCategoryInit("");
   });
+  categorysSelectUL.appendChild(option_todos);
 
-  // Agregar la clase nice-select al select
-  brandsSelect.classList.add("nice-select");
-
-  // Agregar evento para cargar modelos al seleccionar una marca
-  brandsSelect.addEventListener("change", () => {
-    const selectedId = brandsSelect.value; // Obtener el ID seleccionado
-    loadModels(selectedId); // Pasar el ID a la función loadModels
-    selectBrandInit(selectedId);
-  });
-
-
-}
-
-function selectBrandInit(brandId) {
-  product__model__brand = brandId;
-  product__model='';
-  currentPage = 1;
-  loadProducts(currentPage);
-}
-
-
-function populateShopsList() {
-  axios
-    .get("/business-gestion/shops/catalog/")
-    .then((response) => {
-      const shops = response.data.results; // Obtener los datos de la respuesta
-      // Asegurarte de que shops sea un array
-      if (Array.isArray(shops)) {
-        const shopsList = document.getElementById("shopsList");
-        shopsList.innerHTML = ""; // Limpiar la lista anterior
-
-        shops.forEach((shop) => {
-          const listItem = document.createElement("li");
-          listItem.innerHTML = `
-                        <input type="checkbox" name="product-category" id="shop-${shop.id}" class="shop-checkbox">
-                        <label for="shop-${shop.id}">${shop.name}</label>
-                    `;
-
-          // Agregar evento para manejar la selección de la tienda
-          listItem
-            .querySelector("input")
-            .addEventListener("change", function () {
-              handleShopSelection(this); // Llamar a la función con el checkbox actual
-            });
-
-          shopsList.appendChild(listItem); // Agregar el elemento a la lista
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error al cargar las tiendas",
-          text: "Se esperaba un array, pero se recibió: " + shops,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Error al cargar las tiendas",
-        text: error.message,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+  categorys.forEach((category) => {
+    const option = document.createElement("li");
+    option.setAttribute("data-value", category.id);
+    option.setAttribute("class", "option");
+    option.textContent = category.name; // Asignar el nombre de la category como texto
+    option.class = "option"; // Asignar el nombre de la category como texto
+    option.addEventListener("click", () => {
+      selectCategoryInit(category.id);
     });
-}
-
-// Función para manejar la selección de tiendas
-function handleShopSelection(selectedCheckbox) {
-  const checkboxes = document.querySelectorAll(".shop-checkbox");
-
-  checkboxes.forEach((checkbox) => {
-    if (checkbox !== selectedCheckbox) {
-      checkbox.checked = false; // Desmarcar otros checkboxes
-    }
+    categorysSelectUL.appendChild(option);
   });
-
-  // Lógica para manejar la tienda seleccionada
-  if (selectedCheckbox.checked) {
-    selectShop(selectedCheckbox.id.split("-")[1]); // Llamar al método selectShop con el ID de la tienda
-  } else {
-    selectShop(null); // Si se deselecciona, pasar null
-  }
 }
 
-// Método selectShop para manejar la tienda seleccionada
-function selectShop(shopId) {
-  shopValue = shopId;
+function selectCategoryInit(categoryId) {
+  product__category = categoryId;
   currentPage = 1;
   loadProducts(currentPage);
 }
@@ -432,20 +366,20 @@ function captureOrderingValue() {
 
 function toggleViewMode(event, element) {
   event.preventDefault();
-  const viewMode = element.getAttribute('data-view');
-  const icon = document.getElementById('view-mode-icon');
-  
+  const viewMode = element.getAttribute("data-view");
+  const icon = document.getElementById("view-mode-icon");
+
   // Cambiar el modo de vista
-  if (viewMode === 'grid') {
-    element.setAttribute('data-view', 'list');
-    icon.classList.remove('fa-th');
-    icon.classList.add('fa-list');
+  if (viewMode === "grid") {
+    element.setAttribute("data-view", "list");
+    icon.classList.remove("fa-th");
+    icon.classList.add("fa-list");
   } else {
-    element.setAttribute('data-view', 'grid');
-    icon.classList.remove('fa-list');
-    icon.classList.add('fa-th');
+    element.setAttribute("data-view", "grid");
+    icon.classList.remove("fa-list");
+    icon.classList.add("fa-th");
   }
-  
+
   // Actualizar modo de vista y volver a renderizar
   currentViewMode = viewMode;
   loadProducts(currentPage);
@@ -456,34 +390,51 @@ async function showProductDetails(productId) {
   try {
     // Realizar la petición al endpoint
     const response = await axios.get(
-      `/business-gestion/shop-products/${productId}/catalog-shop-product-detail/`
+      `/business-gestion/products/${productId}/`
     );
     const product = response.data;
-console.log("product",product);
     // Actualizar los elementos de la modal con los datos del producto
-    document.getElementById("modalProductImage").src = product.product.image;
-    document.getElementById("modalProductName").textContent =
-      product.product.name;
-    document.getElementById("modalBrandName").textContent =
-      product.product.model.brand.name;
-    document.getElementById("modalModelName").textContent =
-      product.product.model.__str__;
+    const quantityInput = document.getElementById("quantityInput");
+    quantityInput.value = 1;
+    document.getElementById("modalProductImage").src = product.image;
+    document.getElementById("modalProductName").textContent = product.name;
+    document.getElementById("modalCategoryName").textContent =
+      "Categoría: " + product.category_info.name;
+    // document.getElementById("modalModelName").textContent =
+    //   product.product.model.__str__;
     document.getElementById(
       "modalPrice"
     ).textContent = `$${product.sell_price}`;
-    document.getElementById("modalShopName").textContent = product.shop_name;
+    document.getElementById(
+      "modalWeight"
+    ).textContent = `${product.weight} Lbs`;
     document.getElementById("modalDescription").textContent =
-      product.product.description || "Sin descripción";
-
+      product.description || "Sin descripción";
+    const addToCartDetail = document.getElementById("addToCartDetail");
+    addToCartDetail.onclick = () => {
+      addToCart({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        data_price_by_weight: product.category_info.price_by_weight,
+        sell_price: product.sell_price,
+        weight: product.weight,
+        detail: true,
+      });
+    };
     // Agregar botón de WhatsApp en el modal
-    const whatsappButton = document.createElement('button');
-    whatsappButton.className = 'btn btn-success mt-3';
-    whatsappButton.innerHTML = '<i class="fa fa-whatsapp"></i> Contactar por WhatsApp';
-    whatsappButton.onclick = () => contactWhatsApp(product.product.name, product.sell_price);
-    
-    const modalFooter = document.querySelector('#productDetailModal .modal-footer');
+    const whatsappButton = document.createElement("button");
+    whatsappButton.className = "btn btn-success mt-3";
+    whatsappButton.innerHTML =
+      '<i class="fa fa-whatsapp"></i> Contactar por WhatsApp';
+    whatsappButton.onclick = () =>
+      contactWhatsApp(product.name, product.sell_price);
+
+    const modalFooter = document.querySelector(
+      "#productDetailModal .product-social-sharing"
+    );
     // Limpiar footer anterior
-    modalFooter.innerHTML = '';
+    modalFooter.innerHTML = "";
     modalFooter.appendChild(whatsappButton);
 
     // Mostrar la modal
@@ -502,22 +453,109 @@ console.log("product",product);
   }
 }
 
-// Función para contactar por WhatsApp
-function contactWhatsApp(productName, price) {
-  const STORE_PHONE = '+13058770178'; // Número fijo de la tienda
-  
-  // Formatear el mensaje
-  const message = `Hola, estoy interesado en el producto: ${productName} - Precio: $${price}`;
-  const encodedMessage = encodeURIComponent(message);
-  
-  // Detectar si es dispositivo móvil
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  
-  // Crear el enlace de WhatsApp según el dispositivo
-  const whatsappUrl = isMobile
-    ? `whatsapp://send?phone=${STORE_PHONE}&text=${encodedMessage}` // Enlace para app móvil
-    : `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`; // Enlace para web
-  
-  // Abrir WhatsApp
-  window.location.href = whatsappUrl;
+
+// Función para agregar un producto al carrito
+function addToCart(product) {
+  const quantityInput = document.getElementById("quantityInput");
+  // Obtener el carrito del localStorage o inicializarlo si no existe
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Verificar si el producto ya está en el carrito
+  const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+ 
+  if (product.detail) {
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, incrementar la cantidad
+      cart[existingProductIndex].quantity += parseInt(quantityInput.value);
+    } else {
+      // Si el producto no está en el carrito, agregarlo con cantidad 1
+      cart.push({ ...product, quantity: parseInt(quantityInput.value) });
+    }
+  } else {
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, incrementar la cantidad
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // Si el producto no está en el carrito, agregarlo con cantidad 1
+      cart.push({ ...product, quantity: 1 });
+    }
+  }
+
+  // Guardar el carrito actualizado en el localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Actualizar el minicart
+  updateMiniCart();
 }
+
+// Función para actualizar el contenido del minicart
+function updateMiniCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const minicartProductList = document.querySelector(".minicart-product-list");
+  const minicartTotal = document.querySelector(".minicart-total span");
+  const minicartTotalItems = document.querySelector(
+    ".hm-minicart-trigger .cart-item-count"
+  );
+  const minicartTotalMoneyQuantity = document.querySelector(
+    ".hm-minicart-trigger .item-text.money-quantity"
+  );
+
+  // Limpiar el contenido actual del minicart
+  minicartProductList.innerHTML = "";
+
+  // Calcular el total
+  let total = 0;
+  let totalQuantity = 0;
+
+  // Agregar cada producto al minicart
+  cart.forEach((product) => {
+    const productHTML = `
+      <li>
+        <a href="#" class="minicart-product-image">
+          <img src="${product.image}" alt="${product.name}">
+        </a>
+        <div class="minicart-product-details">
+          <h6><a href="#">${product.name}</a></h6>
+          <span>$${product.sell_price} x ${product.quantity}</span>
+        </div>
+        <button class="close" title="Remove" onclick="removeFromCart(${product.id})">
+          <i class="fa fa-close"></i>
+        </button>
+      </li>`;
+    minicartProductList.insertAdjacentHTML("beforeend", productHTML);
+    total += product.sell_price * product.quantity;
+    totalQuantity += product.quantity;
+  });
+    // Actualizar el total en el minicart
+  minicartTotalItems.textContent = totalQuantity;
+  minicartTotal.textContent = `$${total.toFixed(2)}`;
+  // Actualizar solo el texto de la cantidad de dinero
+  const moneyQuantityText = minicartTotalMoneyQuantity.firstChild;
+  moneyQuantityText.textContent = `$${total.toFixed(2)}`;
+}
+
+// Función para eliminar un producto del carrito
+function removeFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter((product) => product.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateMiniCart();
+}
+
+// Modificar el evento del botón "Add to cart"
+document.querySelectorAll(".add-cart a").forEach((button) => {
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+    const productElement = this.closest(".single-product-wrap");
+    const product = {
+      id: productElement.dataset.productId,
+      name: productElement.querySelector(".product_name").textContent,
+      image: productElement.querySelector(".product-image img").src,
+      sell_price: parseFloat(
+        productElement.querySelector(".new-price").textContent.replace("$", "")
+      ),
+    };
+   
+    // addToCart(product);
+    
+  });
+});

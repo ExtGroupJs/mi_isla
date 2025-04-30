@@ -58,6 +58,10 @@ def create_products(request):
     return render(request, "products/create_products.html")
 
 
+def shopping_cart(request):
+    return render(request, "catalogo/shopping-cart.html")
+
+
 def catalog(request):
     return render(request, "catalogo/catalogo.html")
 
@@ -100,6 +104,10 @@ def salescar(request):
 @user_passes_test(is_owner)
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
+
+@user_passes_test(is_owner)
+def category(request):
+    return render(request, "category/category.html")
 
 
 def user_redirect(request):

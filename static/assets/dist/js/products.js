@@ -127,9 +127,16 @@ $(document).ready(function () {
           }
         },
       },
-      { data: "model_name", title: "Modelo" },
+      { data: "category_info.name", title: "Categoría" },
+      { data: "sell_price", title: "Precio" },  {
+        data: "id",
+        title: "Peso",
+        render: (data, type, row) => {
+          return `${row.weight} Lbs`;
+        },
+      },
       { data: "description", title: "Descripción" },
-      {
+          {
         data: "id",
         title: "Acciones",
         render: (data, type, row) => {
@@ -215,15 +222,17 @@ $("#modal-crear-products").on("show.bs.modal", function (event) {
         const product = response.data;
         form.elements.name.value = product.name;
         form.elements.description.value = product.description;
-        form.elements.model.value = product.model;
-        $("#model").val(product.model).trigger("change");
+        form.elements.category.value = product.category_info.id;
+        form.elements.weight.value = product.weight;
+        form.elements.sell_price.value = product.sell_price;
+        $("#category").val(product.category_info.id).trigger("change");
       })
       .catch(function (error) {});
   } else {
     
     modal.find(".modal-title").text("Crear Producto");
   // Suponiendo que tienes un elemento <select> con el id "model"
-const selectElement = document.getElementById("model");
+const selectElement = document.getElementById("category");
 
 // Obtener el primer elemento (opción) del select
 const firstOption = selectElement.options[0]; // Esto te da la primera opción
@@ -233,7 +242,7 @@ const firstOptionValue = firstOption.value; // Valor del primer elemento
 const firstOptionText = firstOption.text; // Texto del primer elemento
 
 // Para establecer este valor en el select2
-$("#model").val(firstOptionValue).trigger("change");
+$("#category").val(firstOptionValue).trigger("change");
   }
 });
 
@@ -254,7 +263,13 @@ $(function () {
       description: {
         required: false,
       },
-      model: {
+      category: {
+        required: true,
+      },
+      weight: {
+        required: true,
+      },
+      sell_price: {
         required: true,
       },
     },
@@ -270,7 +285,9 @@ $(function () {
       let data = new FormData();
       data.append("name", document.getElementById("name").value);
       data.append("description", document.getElementById("description").value);
-      data.append("model", document.getElementById("model").value);
+      data.append("category", document.getElementById("category").value);
+      data.append("weight", document.getElementById("weight").value);
+      data.append("sell_price", document.getElementById("sell_price").value);
       if (document.getElementById("image").files[0] != null) {
         data.append("image", document.getElementById("image").files[0]);
       }
@@ -364,15 +381,15 @@ let form = document.getElementById("form-create-products");
 
 function poblarListas() {
   // Poblar la lista de modelos
-  var $model = document.getElementById("model");
-  var $filterModel = document.getElementById("filter-model");
-  $filterModel.add(new Option("ninguno", ""));
-  axios.get("/business-gestion/models/").then(function (response) {
+  var $category = document.getElementById("category");
+  var $filterCategory = document.getElementById("filter-category");
+  $filterCategory.add(new Option("ninguno", ""));
+  axios.get("/business-gestion/category/").then(function (response) {
     response.data.results.forEach(function (element) {
-      var option = new Option(element.__str__, element.id);
-      $model.add(option);
-      var option = new Option(element.__str__, element.id);
-      $filterModel.add(option);
+      var option = new Option(element.name, element.id);
+      $category.add(option);
+      var option = new Option(element.name, element.id);
+      $filterCategory.add(option);
     });
   });
 }

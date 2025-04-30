@@ -5,11 +5,11 @@ const csrfToken = document.cookie
   ?.split("=")[1];
 axios.defaults.headers.common["X-CSRFToken"] = csrfToken;
 // url del endpoint principal
-const url = "/business-gestion/models/";
+const url = "/business-gestion/category/";
 
 $(function () {
   bsCustomFileInput.init();
-  poblarListas();
+  // poblarListas();
 });
 
 $(document).ready(function () {
@@ -23,7 +23,7 @@ $(document).ready(function () {
           text: "Crear",
           className: " btn btn-primary btn-info",
           action: function (e, dt, node, config) {
-            $("#modal-crear-models").modal("show");
+            $("#modal-crear-category").modal("show");
           },
         },
         {
@@ -71,22 +71,7 @@ $(document).ready(function () {
       },
       columns: [
         { data: "name", title: "Nombre" },
-        { data: "brand_name", title: "Marca" },
-
-        {
-          data: "id",
-          title: "Acciones",
-          render: (data, type, row) => {
-            return `<div class="btn-group">
-                        <button type="button" title="edit" class="btn bg-olive active" data-toggle="modal" data-target="#modal-crear-models" data-id="${row.id}" data-type="edit" data-name="${row.name}" id="${row.id}"  >
-                          <i class="fas fa-edit"></i>
-                        </button>  
-                        <button type="button" title="delete" class="btn bg-olive" onclick="function_delete('${row.id}','${row.name}','${row.brand_name}')" >
-                          <i class="fas fa-trash"></i>
-                        </button>                                          
-                      </div>`;
-          },
-        },
+        { data: "price_by_weight", title: "Precio por peso" },
       ],
       //  esto es para truncar el texto de las celdas
       columnDefs: [],
@@ -95,23 +80,23 @@ $(document).ready(function () {
 
 let selected_id;
 
-$("#modal-crear-models").on("hide.bs.modal", (event) => {
+$("#modal-crear-category").on("hide.bs.modal", (event) => {
   const form = event.currentTarget.querySelector("form");
   form.reset();
-  edit_models = false;
+  edit_category = false;
   const elements = [...form.elements];
   elements.forEach((elem) => elem.classList.remove("is-invalid"));
 });
 
-let edit_models = false;
-$("#modal-crear-models").on("show.bs.modal", function (event) {
+let edit_category = false;
+$("#modal-crear-category").on("show.bs.modal", function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
 
   var modal = $(this);
   if (button.data("type") == "edit") {
     var dataName = button.data("name"); // Extract info from data-* attributes
     selected_id = button.data("id"); // Extract info from data-* attributes
-    edit_models = true;
+    edit_category = true;
 
     modal.find(".modal-title").text("Editar modelo " + dataName);
 
@@ -120,16 +105,16 @@ $("#modal-crear-models").on("show.bs.modal", function (event) {
       .get(`${url}` + selected_id + "/")
       .then(function (response) {
         // Recibir la respuesta
-        const models = response.data;
-        console.log(models.extra_info);
+        const category = response.data;
+        console.log(category.extra_info);
         console.log(form.elements);
 
-        form.elements.name.value = models.name;
-        console.log("✌️models.brands --->", models.brand);
-        form.elements.extra_info.value = models.extra_info;
-        form.elements.selectbrands.value = models.brand;
+        form.elements.name.value = category.name;
+        console.log("✌️category.brands --->", category.brand);
+        form.elements.extra_info.value = category.extra_info;
+        form.elements.selectbrands.value = category.brand;
 
-        // document.getElementById("selectbrands").select= models.brand;
+        // document.getElementById("selectbrands").select= category.brand;
       })
       .catch(function (error) {});
   } else {
@@ -146,7 +131,7 @@ $(function () {
     },
   });
 
-  $("#form-create-models").validate({
+  $("#form-create-category").validate({
     rules: {
       name: {
         required: true,
@@ -171,7 +156,7 @@ $(function () {
 
 // crear Modelo
 
-let form = document.getElementById("form-create-models");
+let form = document.getElementById("form-create-category");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   var table = $("#tabla-de-Datos").DataTable();
@@ -185,12 +170,12 @@ form.addEventListener("submit", function (event) {
   data.append("brand", document.getElementById("selectbrands").value);
   data.append("extra_info", document.getElementById("extra_info").value);
 
-  if (edit_models) {
+  if (edit_category) {
     axios
       .patch(`${url}` + selected_id + "/", data)
       .then((response) => {
         if (response.status === 200) {
-          $("#modal-crear-models").modal("hide");
+          $("#modal-crear-category").modal("hide");
           Swal.fire({
             icon: "success",
             title: "Modelo actualizado con éxito  ",
@@ -199,7 +184,7 @@ form.addEventListener("submit", function (event) {
           });
           table.ajax.reload();
 
-          edit_models = false;
+          edit_category = false;
         }
       })
       .catch((error) => {
@@ -229,7 +214,7 @@ form.addEventListener("submit", function (event) {
             timer: 1500,
           });
           table.ajax.reload();
-          $("#modal-crear-models").modal("hide");
+          $("#modal-crear-category").modal("hide");
         }
       })
       .catch((error) => {
