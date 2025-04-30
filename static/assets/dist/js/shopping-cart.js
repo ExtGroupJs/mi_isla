@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
-  loadShippingCategories();
+    loadShippingCategories();
   
 
   document.getElementById("proceed-to-checkout").addEventListener("click", (event) => {
