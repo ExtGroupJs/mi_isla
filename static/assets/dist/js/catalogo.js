@@ -61,6 +61,11 @@ function renderProducts(products) {
   });
 }
 
+// Modificar los valores numéricos para que tengan 2 lugares decimales
+function formatToTwoDecimals(value) {
+  return parseFloat(value).toFixed(2);
+}
+
 function renderGridProduct(product) {
   return `
     <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
@@ -80,7 +85,7 @@ function renderGridProduct(product) {
           <div class="product_desc_info">
             <div class="product-review">
               <h5 class="manufacturer">
-               <span class="new-price">$${product.sell_price}</span>
+               <span class="new-price">$${formatToTwoDecimals(product.sell_price)}</span>
               </h5>
               <div class="rating-box">
                   <ul class="rating">
@@ -94,21 +99,21 @@ function renderGridProduct(product) {
             </div>
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
-              <span class="new-price">${product.weight} lbs</span>
+              <span class="new-price">${formatToTwoDecimals(product.weight)} lbs</span>
                 </div>
           </div>
           <div class="add-actions">
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${product.weight}', name: '${product.name}', image: '${
+              <li class="add-cart active"><a href="#" onclick="addToCart({id: ${product.id},data_price_by_weight: ${product.category_info.price_by_weight},weight:'${formatToTwoDecimals(product.weight)}', name: '${product.name}', image: '${
     product.image
-  }', sell_price: ${product.sell_price}})">Add to cart</a></li>
+  }', sell_price: ${formatToTwoDecimals(product.sell_price)}})">Add to cart</a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
                 product.id
               })"><i class="fa fa-eye"></i></a></li>
               <li class="li-btn"><a href="#" title="contactar por WhatsApp" class="quick-view-btn" onclick="contactWhatsApp('${
                 product.name
               }', ${
-    product.sell_price
+    formatToTwoDecimals(product.sell_price)
   })"><i class="fa fa-whatsapp"></i></a></li>
             </ul>
           </div>
@@ -515,7 +520,7 @@ function updateMiniCart() {
         </a>
         <div class="minicart-product-details">
           <h6><a href="#">${product.name}</a></h6>
-          <span>$${product.sell_price} x ${product.quantity}</span>
+          <span>$${formatToTwoDecimals(product.sell_price)} x ${product.quantity}</span>
         </div>
         <button class="close" title="Remove" onclick="removeFromCart(${product.id})">
           <i class="fa fa-close"></i>
@@ -525,12 +530,13 @@ function updateMiniCart() {
     total += product.sell_price * product.quantity;
     totalQuantity += product.quantity;
   });
-    // Actualizar el total en el minicart
+
+  // Actualizar el total en el minicart
   minicartTotalItems.textContent = totalQuantity;
-  minicartTotal.textContent = `$${total.toFixed(2)}`;
+  minicartTotal.textContent = `$${formatToTwoDecimals(total)}`;
   // Actualizar solo el texto de la cantidad de dinero
   const moneyQuantityText = minicartTotalMoneyQuantity.firstChild;
-  moneyQuantityText.textContent = `$${total.toFixed(2)}`;
+  moneyQuantityText.textContent = `$${formatToTwoDecimals(total)}`;
 }
 
 // Función para eliminar un producto del carrito
