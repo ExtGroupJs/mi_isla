@@ -1,6 +1,6 @@
  //const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
  const STORE_PHONE = "13058770178"; // Sin '+' para compatibilidad
-// const STORE_PHONE = "5359997418"; // Sin '+' para compatibilidad
+//const STORE_PHONE = "5359997418"; // Sin '+' para compatibilidad
 //const STORE_PHONE = "5352112115"; // Sin '+' para compatibilidad
       
 
@@ -59,7 +59,7 @@ function contactWhatsApp(productName, price) {
         // Si falla, redirigir después de 500ms al método business
         setTimeout(() => {
         //   window.location.href = urls.business;
-          window.open(`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`, '_blank');
+          window.location.href=`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`;
         
         }, 500);
       } else {
@@ -70,8 +70,9 @@ function contactWhatsApp(productName, price) {
         setTimeout(() => {
          // window.open(urls.fallbackWeb || urls.business, '_blank');
         // window.open(`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`, '_blank');
-        window.open(`https://wamessage.me/${STORE_PHONE}?text=${encodedMessage}`);
-
+       // window.open(`https://wamessage.me/${STORE_PHONE}?text=${encodedMessage}`);
+       window.location.href=`https://api.whatsapp.com/send?phone=${STORE_PHONE}&text=${encodedMessage}`;
+        
         }, 300);
       }
   
