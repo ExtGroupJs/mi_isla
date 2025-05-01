@@ -58,6 +58,9 @@ function contactWhatsApp(productName, price) {
       alert("⚠️ Abre WhatsApp manualmente y pega este mensaje:\n\n" + message);
     }
     }
+
+
+    
   function sendWhatsAppMessage2() {
     try {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
