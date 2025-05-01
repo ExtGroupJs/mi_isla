@@ -27,6 +27,40 @@ function contactWhatsApp(productName, price) {
   function sendWhatsAppMessage() {
     try {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+      // 1. Construir mensaje (mejorado)
+      let message = "*Pedido desde la web*:\n\n";
+      cart.forEach((product) => {
+        message += `->${product.name}\n• Precio: $${product.sell_price.toFixed(2)}\n• Cantidad: ${product.quantity}\n\n`;
+      });
+  
+      // 2. Añadir totales (con verificación)
+      const subtotal = document.getElementById("cart-subtotal")?.textContent || "No calculado";
+      const total = document.getElementById("cart-total")?.textContent || "No calculado";
+      message += `\n*Totales*\nSubtotal: ${subtotal}\nTotal (con envío): ${total}`;
+  
+      const encodedMessage = encodeURIComponent(message);
+  
+      // Detectar si es dispositivo móvil
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+    // Crear el enlace de WhatsApp según el dispositivo
+    const whatsappUrl = isMobile
+      ? `whatsapp://send?phone=${STORE_PHONE}&text=${encodedMessage}` // Enlace para app móvil
+      : `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`; // Enlace para web
+  
+    // Abrir WhatsApp
+    window.location.href = whatsappUrl;
+      
+  
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("⚠️ Abre WhatsApp manualmente y pega este mensaje:\n\n" + message);
+    }
+    }
+  function sendWhatsAppMessage2() {
+    try {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   
       // 1. Construir mensaje (mejorado)
