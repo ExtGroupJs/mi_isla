@@ -1,85 +1,88 @@
 {% extends "catalogo/catalogo.html" %}
-{% load static %}
-{% load i18n %}
-{% comment %} {% block headAndCart %}
-{% endblock %} {% endcomment %}
-{% block content %}
-            <div class="breadcrumb-area">
-                <div class="container">
-                    <div class="breadcrumb-content">
-                        <ul>
-                            <li><a href="index.html">Inicio</a></li>
-                            <li style="color: #fed700;">Carrito de Compras</li>
-                        </ul>
-                    </div>
-                </div>
+{% load static %} {% load i18n %} 
+{%comment %}
+{% block headAndCart %}
+{% endblock %}
+{% endcomment %}
+ {% block content %}
+<div class="breadcrumb-area">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li style="color: #fed700">Carrito de Compras</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Shopping Cart Area Strat-->
+<div class="Shopping-cart-area pt-60 pb-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form action="#">
+          <div class="table-content table-responsive">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="li-product-remove">Eliminar</th>
+                    <th class="li-product-thumbnail">Imágenes</th>
+                    <th class="cart-product-name">Producto</th>
+                    <th class="li-product-price">Precio Unitario</th>
+                    <th class="li-product-quantity">Cantidad</th>
+                    <th class="li-product-weight">Peso Total</th>
+                    <th class="li-product-subtotal">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-items">
+                  <!-- Los productos del carrito se llenarán aquí dinámicamente -->
+                </tbody>
+              </table>
             </div>
-            <!-- Li's Breadcrumb Area End Here -->
-            <!--Shopping Cart Area Strat-->
-            <div class="Shopping-cart-area pt-60 pb-60">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <form action="#">
-                                <div class="table-content table-responsive">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="li-product-remove">Eliminar</th>
-                                                    <th class="li-product-thumbnail">Imágenes</th>
-                                                    <th class="cart-product-name">Producto</th>
-                                                    <th class="li-product-price">Precio Unitario</th>
-                                                    <th class="li-product-quantity">Cantidad</th>
-                                                    <th class="li-product-weight">Peso Total</th>
-                                                    <th class="li-product-subtotal">Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="cart-items">
-                                                <!-- Los productos del carrito se llenarán aquí dinámicamente -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                    <div class="row">
-                                    <div class="col-6">
-                                        <div class="coupon-all">
-                                            <div class="coupon">
-                                                <select id="shipping-category" class="input-text">
-                                                    <option value="">Seleccione una categoría de envío</option>
-                                                    <!-- Las opciones se llenarán dinámicamente -->
-                                                </select>
-                                            </div>
-                                         </div>
-                                         <div id="shipping-details" class="shipping-details" style="display: inline-block; padding-top: 20;" >
-                                                <!-- Los detalles de la categoría de envío seleccionada se mostrarán aquí -->
-                                            </div>
-                                    </div>
-                                  
-                                <div class="col-6">
-                                    <div class=" ml-auto">
-                                        <div class="cart-page-total">
-                                            <h2>Total del carrito</h2>
-                                            <ul>
-                                                <li>Subtotal <span id="cart-subtotal">$0.00</span></li>
-                                                <li>Total <span id="cart-total">$0.00</span></li>
-                                            </ul>
-                                            <a href="#" id="proceed-to-checkout" >Proceder a ordenar</a>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                            </form>
-                        </div>
-                        
-                    </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-12 order-md-1 order-2 ">
+              <div class="coupon-all">
+                <div class="coupon">
+                  <select id="shipping-category" class="input-text">
+                    <option value="">Seleccione una categoría de envío</option>
+                    <!-- Las opciones se llenarán dinámicamente -->
+                  </select>
                 </div>
+              </div>
+              <div
+                id="shipping-details"
+                class="shipping-details"
+                style="display: inline-block; padding-top: 20"
+              >
+                <!-- Los detalles de la categoría de envío seleccionada se mostrarán aquí -->
+              </div>
             </div>
-            {% endblock %}
-            {% block script %}
-              <script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
-             <script src="{% static 'assets/dist/js/shopping-cart.js' %}"></script>
-             <script src="{% static 'assets/dist/js/whatsapp.js' %}"></script>
 
-            {% endblock %}
-           
+            <div class="col-md-6 col-12 order-md-2 order-1">
+              <div class="ml-auto">
+                <div class="cart-page-total">
+                  <h2>Total del carrito</h2>
+                  <ul>
+                    <li>Subtotal <span id="cart-subtotal">$0.00</span></li>
+                    <li>Total <span id="cart-total">$0.00</span></li>
+                  </ul>
+                  <a href="#" id="proceed-to-checkout">Proceder a ordenar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
+<script src="{% static 'assets/dist/js/shopping-cart.js' %}"></script>
+<script src="{% static 'assets/dist/js/whatsapp.js' %}"></script>
+
+{% endblock %}
