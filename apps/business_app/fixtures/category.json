@@ -5,7 +5,8 @@
     "fields": {
       "name": "Aseo",
       "extra_info": "Personal y para el hogar",
-      "price_by_weight": 3.99
+      "price_by_weight": 3.99,
+      "in_cuba": false
     }
   },
   {
@@ -14,7 +15,8 @@
     "fields": {
       "name": "Medicamentos",
       "extra_info": "Tableta, uguentos y pomadas",
-      "price_by_weight": 3.99
+      "price_by_weight": 3.99,
+      "in_cuba": false
     }
   },
   {
@@ -23,7 +25,8 @@
     "fields": {
       "name": "Alimentos",
       "extra_info": "Productos alimenticios elaborados y en conserva",
-      "price_by_weight": 3.99
+      "price_by_weight": 3.99,
+      "in_cuba": false
     }
   },
   {
@@ -32,7 +35,8 @@
     "fields": {
       "name": "Electrónica",
       "extra_info": "Dispositivos electrónicos y gadgets",
-      "price_by_weight": 5.99
+      "price_by_weight": 5.99,
+      "in_cuba": false
     }
   },
   {
@@ -41,7 +45,8 @@
     "fields": {
       "name": "Ropa y Accesorios",
       "extra_info": "Ropa y accesorios de moda",
-      "price_by_weight": 5.99
+      "price_by_weight": 5.99,
+      "in_cuba": false
     }
   },
   {
@@ -50,7 +55,8 @@
     "fields": {
       "name": "Hogar",
       "extra_info": "Artículos para el hogar y decoración",
-      "price_by_weight": 5.99
+      "price_by_weight": 5.99,
+      "in_cuba": false
     }
   },
   {
@@ -59,7 +65,8 @@
     "fields": {
       "name": "Juguetes",
       "extra_info": "Juguetes y juegos para niños",
-      "price_by_weight": 5.99
+      "price_by_weight": 5.99,
+      "in_cuba": false
     }
   },
   {
@@ -68,7 +75,88 @@
     "fields": {
       "name": "Libros",
       "extra_info": "Libros y material de lectura",
-      "price_by_weight": 5.99
+      "price_by_weight": 5.99,
+      "in_cuba": false
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 9,
+    "fields": {
+      "name": "Aseo en Cuba",
+      "extra_info": "Personal y para el hogar",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 10,
+    "fields": {
+      "name": "Medicamentos en Cuba",
+      "extra_info": "Tableta, uguentos y pomadas",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 11,
+    "fields": {
+      "name": "Alimentos en Cuba",
+      "extra_info": "Productos alimenticios elaborados y en conserva",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 12,
+    "fields": {
+      "name": "Electrónica en Cuba",
+      "extra_info": "Dispositivos electrónicos y gadgets",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 13,
+    "fields": {
+      "name": "Ropa y Accesorios en Cuba",
+      "extra_info": "Ropa y accesorios de moda",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 14,
+    "fields": {
+      "name": "Hogar en Cuba",
+      "extra_info": "Artículos para el hogar y decoración",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 15,
+    "fields": {
+      "name": "Juguetes en Cuba",
+      "extra_info": "Juguetes y juegos para niños",
+      "price_by_weight": 0,
+      "in_cuba": true
+    }
+  },
+  {
+    "model": "business_app.category",
+    "pk": 16,
+    "fields": {
+      "name": "Libros en Cuba",
+      "extra_info": "Libros y material de lectura",
+      "price_by_weight": 0,
+      "in_cuba": true
     }
   }
 ]
