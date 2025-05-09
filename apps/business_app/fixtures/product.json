@@ -1,8 +1,8 @@
 [
   {
     "model": "business_app.product",
+    "pk": 1,
     "fields": {
-      "pk": 1,
       "name": "Refresco Zuko (Mango/Piña/Melón)",
       "category": 3,
       "description": "Refresco en polvo con sabores variados",
@@ -16,8 +16,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 2,
     "fields": {
-      "pk": 2,
       "name": "Leche Bambina (1 lb)",
       "category": 3,
       "description": "Leche en polvo para bebés",
@@ -31,8 +31,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 3,
     "fields": {
-      "pk": 3,
       "name": "Leche Bambina (2.2 lbs)",
       "category": 3,
       "description": "Leche en polvo para bebés, presentación grande",
@@ -46,8 +46,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 4,
     "fields": {
-      "pk": 4,
       "name": "Leche Condensada",
       "category": 3,
       "description": "Leche condensada azucarada",
@@ -61,8 +61,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 5,
     "fields": {
-      "pk": 5,
       "name": "Jamón Iberia (Lata)",
       "category": 3,
       "description": "Jamón cocido enlatado",
@@ -76,8 +76,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 6,
     "fields": {
-      "pk": 6,
       "name": "Jamón Goya (Lata)",
       "category": 3,
       "description": "Jamón cocido premium enlatado",
@@ -91,8 +91,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 7,
     "fields": {
-      "pk": 7,
       "name": "Jamón Goya (Lata pequeña)",
       "category": 3,
       "description": "Jamón cocido enlatado, presentación pequeña",
@@ -106,8 +106,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 8,
     "fields": {
-      "pk": 8,
       "name": "Chorizo (Paquete grande)",
       "category": 3,
       "description": "Chorizo español, paquete familiar",
@@ -121,8 +121,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 9,
     "fields": {
-      "pk": 9,
       "name": "Chorizo (Paquete mediano)",
       "category": 3,
       "description": "Chorizo español, paquete individual",
@@ -136,8 +136,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 10,
     "fields": {
-      "pk": 10,
       "name": "Chorizo (Paquete pequeño)",
       "category": 3,
       "description": "Chorizo español, muestra gratuita",
@@ -151,8 +151,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 11,
     "fields": {
-      "pk": 11,
       "name": "Frijol Negro Goya",
       "category": 3,
       "description": "Frijoles negros cocidos",
@@ -166,8 +166,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 12,
     "fields": {
-      "pk": 12,
       "name": "Frijoles Colorados El Ricote",
       "category": 3,
       "description": "Frijoles colorados cocidos",
@@ -181,8 +181,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 13,
     "fields": {
-      "pk": 13,
       "name": "Fideos Iberia",
       "category": 3,
       "description": "Pasta tipo fideo delgada",
@@ -196,8 +196,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 14,
     "fields": {
-      "pk": 14,
       "name": "Coditos Iberia",
       "category": 3,
       "description": "Pasta tipo codito pequeño",
@@ -211,8 +211,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 15,
     "fields": {
-      "pk": 15,
       "name": "Spaghetti Iberia",
       "category": 3,
       "description": "Pasta tipo spaghetti tradicional",
@@ -226,8 +226,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 16,
     "fields": {
-      "pk": 16,
       "name": "Sazón Goya",
       "category": 3,
       "description": "Mezcla de especias para sazonar",
@@ -241,8 +241,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 17,
     "fields": {
-      "pk": 17,
       "name": "Sazón Iberia",
       "category": 3,
       "description": "Mezcla de especias para sazonar",
@@ -256,8 +256,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 18,
     "fields": {
-      "pk": 18,
       "name": "Sazón Tropical",
       "category": 3,
       "description": "Mezcla de especias con azafrán",
@@ -271,8 +271,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 19,
     "fields": {
-      "pk": 19,
       "name": "Cebolla en Polvo",
       "category": 3,
       "description": "Cebolla deshidratada molida",
@@ -286,8 +286,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 20,
     "fields": {
-      "pk": 20,
       "name": "Ajo en Polvo",
       "category": 3,
       "description": "Ajo deshidratado molido",
@@ -301,8 +301,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 21,
     "fields": {
-      "pk": 21,
       "name": "Comino Molido",
       "category": 3,
       "description": "Semillas de comino molidas",
@@ -316,8 +316,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 22,
     "fields": {
-      "pk": 22,
       "name": "Chupa Chupa",
       "category": 3,
       "description": "Caramelo de leche con chocolate",
@@ -331,8 +331,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 23,
     "fields": {
-      "pk": 23,
       "name": "Galletas Brinky (Dulces)",
       "category": 3,
       "description": "Galletas rellenas de crema",
@@ -346,8 +346,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 24,
     "fields": {
-      "pk": 24,
       "name": "Galletas Chiky (Limón)",
       "category": 3,
       "description": "Galletas sabor limón",
@@ -361,8 +361,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 25,
     "fields": {
-      "pk": 25,
       "name": "Galletas Dux (Soda)",
       "category": 3,
       "description": "Galletas tipo soda",
@@ -376,8 +376,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 26,
     "fields": {
-      "pk": 26,
       "name": "Choco Listo (Fresa/Chocolate)",
       "category": 3,
       "description": "Bebida instantánea de chocolate",
@@ -391,8 +391,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 27,
     "fields": {
-      "pk": 27,
       "name": "Gelatina (Piña/Limón)",
       "category": 3,
       "description": "Gelatina en polvo con sabores",
@@ -406,8 +406,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 28,
     "fields": {
-      "pk": 28,
       "name": "Café El Ricote",
       "category": 3,
       "description": "Café molido tradicional",
@@ -421,8 +421,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 29,
     "fields": {
-      "pk": 29,
       "name": "Té de Manzanilla",
       "category": 3,
       "description": "Infusión de manzanilla",
@@ -436,8 +436,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 30,
     "fields": {
-      "pk": 30,
       "name": "Detergente Tide",
       "category": 1,
       "description": "Detergente líquido para ropa",
@@ -451,8 +451,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 31,
     "fields": {
-      "pk": 31,
       "name": "Jabón Zote",
       "category": 1,
       "description": "Jabón en barra para lavar ropa",
@@ -466,8 +466,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 32,
     "fields": {
-      "pk": 32,
       "name": "Jabón Nara (Baño)",
       "category": 1,
       "description": "Jabón de tocador",
@@ -481,8 +481,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 33,
     "fields": {
-      "pk": 33,
       "name": "Pasta Dental Colgate",
       "category": 1,
       "description": "Pasta dental con flúor",
@@ -496,8 +496,8 @@
   },
   {
     "model": "business_app.product",
+    "pk": 34,
     "fields": {
-      "pk": 34,
       "name": "Pasta Dental Colgate Verde",
       "category": 1,
       "description": "Pasta dental con flúor",
