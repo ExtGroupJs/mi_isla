@@ -2393,6 +2393,20 @@ textarea:focus {
   text-transform: uppercase;
   font-size: 11px;
 }
+.product-image > span.inCuba {
+  border-radius: 100%;
+  color: #fff;
+  right: 10px;
+  position: absolute;
+  top: 3px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
 .product-review {
   border-bottom: 1px solid #ebebeb;
 }
@@ -2597,6 +2611,12 @@ textarea:focus {
   transition: all 300ms ease-in-out;
 }
 .single-product-wrap:hover .add-actions {
+  bottom: 0;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.single-product-wrap-list{
   bottom: 0;
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
