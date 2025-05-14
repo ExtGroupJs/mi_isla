@@ -47,7 +47,7 @@
     "fields": {
       "created_timestamp": "2025-04-22T16:12:14.495",
       "updated_timestamp": "2025-04-22T16:13:06.512",
-      "name": "Distribución Nacional",
+      "name": "Producto en Cuba",
       "description": "Este tipo de envío se realiza a clientes desde Camagüey hasta La Habana.",
       "image": "",
       "min_weight_allowed": 0,

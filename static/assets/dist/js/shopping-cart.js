@@ -153,6 +153,11 @@ function loadShippingCategories() {
           if (category.id == 1) {
             selectElement.value = category.id;
             displayShippingDetails(category.id);
+          }else{
+            if (category.id == 4) {
+            selectElement.options[4].disabled = true;
+            
+          }
           }
         }
       });
