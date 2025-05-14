@@ -43,6 +43,7 @@
 <link rel="stylesheet" href="{% static 'assets/catalogo/css/responsive.css'%}" />
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{% static 'assets/catalogo/css/custom.css'%}" />
+ <link rel="stylesheet" href="{% static 'assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
 <!-- Modernizr js -->
 <script src="{% static 'assets/catalogo/js/vendor/modernizr-2.8.3.min.js'%}"></script>
 
@@ -484,6 +485,11 @@
                             <option value="3" title="L">80x120cm</option>
                           </select> {% endcomment %}
                         </div>
+                        <div class="produt-variants-size">
+                        <label></label>
+         <span id="modalinCuba" style="COLOR: cornflowerblue"></span>
+                      
+                        </div>
                       </div>
                       <div class="single-add-to-cart">
                         <form action="#" class="cart-quantity">
@@ -495,7 +501,7 @@
                               <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                             </div>
                           </div>
-                          <button class="add-to-cart" id="addToCartDetail">Add to cart</button>
+                          <button class="add-to-cart" id="addToCartDetail">Al Carrito</button>
                         </form>
                       </div>
                       <div class="product-additional-info pt-1">
@@ -564,6 +570,9 @@
       <script src="{% static 'assets/catalogo/js/jquery.nice-select.min.js' %}"></script>
       <!-- ScrollUp js -->
       <script src="{% static 'assets/catalogo/js/scrollUp.min.js' %}"></script>
+{% comment %} alert {% endcomment %}
+  <script src="{% static 'assets/plugins/sweetalert2/sweetalert2.min.js' %}"></script>
+  <script src="{% static 'assets/plugins/toastr/toastr.min.js' %}"></script>  
       <!-- Main/Activator js -->
       <script src="{% static 'assets/catalogo/js/main.js' %}"></script>
       <script src="{% static 'assets/dist/js/axios.min.js' %}"></script>
@@ -583,3 +592,4 @@
       {% endcomment %} {% endblock %}
     </div>
 </body>
+</html>

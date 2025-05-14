@@ -11,6 +11,7 @@ class Category(models.Model):
         verbose_name="Precio por libra",
         validators=[validators.MinValueValidator(limit_value=0)],
     )
+    in_cuba = models.BooleanField(verbose_name="En Cuba", default=False)
 
     class Meta:
         verbose_name = "Categoría"

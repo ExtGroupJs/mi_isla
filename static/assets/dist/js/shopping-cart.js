@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    loadShippingCategories();
-  
+  loadShippingCategories();
+  document
+    .getElementById("proceed-to-checkout")
+    .addEventListener("click", (event) => {
+      event.preventDefault();
+      sendWhatsAppMessage();
+    });
 
-  document.getElementById("proceed-to-checkout").addEventListener("click", (event) => {
-    event.preventDefault();
-    sendWhatsAppMessage();
-  });
 
-  document.getElementById("shipping-category").addEventListener("change", (event) => {
-    const selectedCategoryId = event.target.value;
-    displayShippingDetails(selectedCategoryId);    
-   
-  });
-
-   
+  document
+    .getElementById("shipping-category")
+    .addEventListener("change", (event) => {
+      const selectedCategoryId = event.target.value;
+      displayShippingDetails(selectedCategoryId);
+    });
 });
 
 function loadCartItems() {
@@ -25,9 +25,12 @@ function loadCartItems() {
   let totalWeight = 0;
   let shippingCost = 0;
 
-  const selectedShippingCategory = document.getElementById("shipping-category").value;
-  const shippingDetails = JSON.parse(localStorage.getItem("shippingDetails")) || {};
+  const selectedShippingCategory =
+    document.getElementById("shipping-category").value;
+  const shippingDetails =
+    JSON.parse(localStorage.getItem("shippingDetails")) || {};
   let categorylocal = JSON.parse(localStorage.getItem("category")) || {};
+  console.log("✌️categorylocal --->", categorylocal);
 
   cart.forEach((product) => {
     const productTotal = product.sell_price * product.quantity;
@@ -37,20 +40,36 @@ function loadCartItems() {
 
     const productHTML = `
       <tr>
-        <td class="li-product-remove"><a href="#" onclick="removeFromCart(${product.id})"><i class="fa fa-times"></i></a></td>
-        <td class="li-product-thumbnail"><a href="#"><img src="${product.image}" alt="${product.name}" style="max-width: 100px;"></a></td>
+        <td class="li-product-remove"><a href="#" onclick="removeFromCart(${
+          product.id
+        })"><i class="fa fa-times"></i></a></td>
+        <td class="li-product-thumbnail"><a href="#"><img src="${
+          product.image
+        }" alt="${product.name}" style="max-width: 100px;"></a></td>
         <td class="li-product-name"><a href="#">${product.name}</a></td>
-        <td class="li-product-price"><span class="amount">$${product.sell_price.toFixed(2)}</span></td>
+        <td class="li-product-price"><span class="amount">$${product.sell_price.toFixed(
+          2
+        )}</span></td>
         <td class="quantity">
           <label>Cantidad</label>
           <div class="cart-plus-minus">
-            <input class="cart-plus-minus-box" value="${product.quantity}" type="number" min="1" readonly>
-            <div class="dec qtybutton" onclick="changeQuantity(${product.id}, -1)"><i class="fa fa-angle-down"></i></div>
-            <div class="inc qtybutton" onclick="changeQuantity(${product.id}, 1)"><i class="fa fa-angle-up"></i></div>
+            <input class="cart-plus-minus-box" value="${
+              product.quantity
+            }" type="number" min="1" readonly>
+            <div class="dec qtybutton" onclick="changeQuantity(${
+              product.id
+            }, -1)"><i class="fa fa-angle-down"></i></div>
+            <div class="inc qtybutton" onclick="changeQuantity(${
+              product.id
+            }, 1)"><i class="fa fa-angle-up"></i></div>
           </div>
         </td>
-        <td class="product-weight"><span class="amount">${productWeightTotal.toFixed(2)} lbs</span></td>
-        <td class="product-subtotal"><span class="amount">$${productTotal.toFixed(2)}</span></td>
+        <td class="product-weight"><span class="amount">${productWeightTotal.toFixed(
+          2
+        )} lbs</span></td>
+        <td class="product-subtotal"><span class="amount">$${productTotal.toFixed(
+          2
+        )}</span></td>
       </tr>`;
 
     cartItemsContainer.insertAdjacentHTML("beforeend", productHTML);
@@ -58,7 +77,9 @@ function loadCartItems() {
 
   if (selectedShippingCategory == 1) {
     shippingCost = cart.reduce((acc, product) => {
-      return acc + ((product.weight * product.data_price_by_weight) * product.quantity);
+      return (
+        acc + product.weight * product.data_price_by_weight * product.quantity
+      );
     }, 0);
   } else {
     categorylocal = JSON.parse(localStorage.getItem("category")) || {};
@@ -66,7 +87,9 @@ function loadCartItems() {
   }
 
   const total = subtotal + shippingCost;
-  document.getElementById("cart-subtotal").textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById("cart-subtotal").textContent = `$${subtotal.toFixed(
+    2
+  )}`;
   document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
 
   // Actualizar o añadir fila para el peso total
@@ -86,7 +109,10 @@ function changeQuantity(productId, change) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const productIndex = cart.findIndex((product) => product.id === productId);
   if (productIndex !== -1) {
-    cart[productIndex].quantity = Math.max(1, cart[productIndex].quantity + change);
+    cart[productIndex].quantity = Math.max(
+      1,
+      cart[productIndex].quantity + change
+    );
     localStorage.setItem("cart", JSON.stringify(cart));
     loadCartItems();
   }
@@ -100,7 +126,8 @@ function removeFromCart(productId) {
 }
 
 function loadShippingCategories() {
-  axios.get("/business-gestion/shipping-type/")
+  axios
+    .get("/business-gestion/shipping-type/")
     .then((response) => {
       const categories = response.data.results;
       const selectElement = document.getElementById("shipping-category");
@@ -111,9 +138,27 @@ function loadShippingCategories() {
         option.textContent = category.name;
         selectElement.appendChild(option);
 
-        if (category.id==1) {
-          selectElement.value = category.id;
-          displayShippingDetails(category.id);
+        const cartProductState = JSON.parse(
+          localStorage.getItem("cartProductState")
+        );
+       
+
+        if (cartProductState) {
+          if (category.id == 4) {
+            selectElement.value = category.id;
+            selectElement.disabled = true;
+            displayShippingDetails(category.id);
+          }
+        } else {
+          if (category.id == 1) {
+            selectElement.value = category.id;
+            displayShippingDetails(category.id);
+          }else{
+            if (category.id == 4) {
+            selectElement.options[4].disabled = true;
+            
+          }
+          }
         }
       });
       loadCartItems();
@@ -129,7 +174,8 @@ function displayShippingDetails(categoryId) {
     return;
   }
 
-  axios.get(`/business-gestion/shipping-type/${categoryId}/`)
+  axios
+    .get(`/business-gestion/shipping-type/${categoryId}/`)
     .then((response) => {
       const category = response.data;
       localStorage.setItem("category", JSON.stringify(category));
@@ -165,24 +211,35 @@ function displayShippingDetails(categoryId) {
       toggleCheckoutButton(); // Llamar aquí
     })
     .catch((error) => {
-      console.error("Error al cargar los detalles de la categoría de envío:", error);
+      console.error(
+        "Error al cargar los detalles de la categoría de envío:",
+        error
+      );
     });
 }
 
 function toggleCheckoutButton() {
   const weightRow = document.querySelector(".cart-page-total ul .weight-row");
+  console.log("✌️weightRow --->", weightRow);
   const proceedButton = document.getElementById("proceed-to-checkout");
   const category = JSON.parse(localStorage.getItem("category")) || {};
+  console.log(
+    "✌️category.min_weight_allowed --->",
+    category.min_weight_allowed + "<" + category.min_weight_allowed
+  );
 
-  if (weightRow && category.min_weight_allowed) {
-    const totalWeight = parseFloat(weightRow.textContent.match(/\d+(\.\d+)?/)[0]);
-    if (totalWeight < category.min_weight_allowed) {
+  if (weightRow && category.min_weight_allowed != null) {
+    const totalWeight = parseFloat(
+      weightRow.textContent.match(/\d+(\.\d+)?/)[0]
+    );
+    if (parseInt(totalWeight) < parseInt(category.min_weight_allowed)) {
+      console.log("✌️totalWeight iff --->", totalWeight);
       proceedButton.classList.add("enlace-deshabilitado");
       proceedButton.textContent = `El peso total debe ser al menos ${category.min_weight_allowed} lbs para ordenar.`;
     } else {
-      proceedButton.classList.remove("enlace-deshabilitado");      
+      console.log("✌️totalWeight else --->", totalWeight);
+      proceedButton.classList.remove("enlace-deshabilitado");
       proceedButton.textContent = "Crear Orden de Compra";
     }
   }
 }
-

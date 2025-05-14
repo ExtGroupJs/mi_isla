@@ -1,6 +1,7 @@
 [
   {
     "model": "business_app.product",
+    "pk": 1,
     "fields": {
       "name": "Refresco Zuko (Mango/Piña/Melón)",
       "category": 3,
@@ -15,6 +16,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 2,
     "fields": {
       "name": "Leche Bambina (1 lb)",
       "category": 3,
@@ -29,6 +31,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 3,
     "fields": {
       "name": "Leche Bambina (2.2 lbs)",
       "category": 3,
@@ -43,6 +46,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 4,
     "fields": {
       "name": "Leche Condensada",
       "category": 3,
@@ -57,6 +61,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 5,
     "fields": {
       "name": "Jamón Iberia (Lata)",
       "category": 3,
@@ -71,6 +76,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 6,
     "fields": {
       "name": "Jamón Goya (Lata)",
       "category": 3,
@@ -85,6 +91,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 7,
     "fields": {
       "name": "Jamón Goya (Lata pequeña)",
       "category": 3,
@@ -99,6 +106,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 8,
     "fields": {
       "name": "Chorizo (Paquete grande)",
       "category": 3,
@@ -113,6 +121,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 9,
     "fields": {
       "name": "Chorizo (Paquete mediano)",
       "category": 3,
@@ -127,6 +136,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 10,
     "fields": {
       "name": "Chorizo (Paquete pequeño)",
       "category": 3,
@@ -141,6 +151,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 11,
     "fields": {
       "name": "Frijol Negro Goya",
       "category": 3,
@@ -155,6 +166,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 12,
     "fields": {
       "name": "Frijoles Colorados El Ricote",
       "category": 3,
@@ -169,6 +181,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 13,
     "fields": {
       "name": "Fideos Iberia",
       "category": 3,
@@ -183,6 +196,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 14,
     "fields": {
       "name": "Coditos Iberia",
       "category": 3,
@@ -197,6 +211,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 15,
     "fields": {
       "name": "Spaghetti Iberia",
       "category": 3,
@@ -211,6 +226,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 16,
     "fields": {
       "name": "Sazón Goya",
       "category": 3,
@@ -225,6 +241,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 17,
     "fields": {
       "name": "Sazón Iberia",
       "category": 3,
@@ -239,6 +256,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 18,
     "fields": {
       "name": "Sazón Tropical",
       "category": 3,
@@ -253,6 +271,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 19,
     "fields": {
       "name": "Cebolla en Polvo",
       "category": 3,
@@ -267,6 +286,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 20,
     "fields": {
       "name": "Ajo en Polvo",
       "category": 3,
@@ -281,6 +301,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 21,
     "fields": {
       "name": "Comino Molido",
       "category": 3,
@@ -295,6 +316,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 22,
     "fields": {
       "name": "Chupa Chupa",
       "category": 3,
@@ -309,6 +331,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 23,
     "fields": {
       "name": "Galletas Brinky (Dulces)",
       "category": 3,
@@ -323,6 +346,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 24,
     "fields": {
       "name": "Galletas Chiky (Limón)",
       "category": 3,
@@ -337,6 +361,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 25,
     "fields": {
       "name": "Galletas Dux (Soda)",
       "category": 3,
@@ -351,6 +376,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 26,
     "fields": {
       "name": "Choco Listo (Fresa/Chocolate)",
       "category": 3,
@@ -365,6 +391,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 27,
     "fields": {
       "name": "Gelatina (Piña/Limón)",
       "category": 3,
@@ -379,6 +406,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 28,
     "fields": {
       "name": "Café El Ricote",
       "category": 3,
@@ -393,6 +421,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 29,
     "fields": {
       "name": "Té de Manzanilla",
       "category": 3,
@@ -407,6 +436,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 30,
     "fields": {
       "name": "Detergente Tide",
       "category": 1,
@@ -421,6 +451,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 31,
     "fields": {
       "name": "Jabón Zote",
       "category": 1,
@@ -435,6 +466,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 32,
     "fields": {
       "name": "Jabón Nara (Baño)",
       "category": 1,
@@ -449,6 +481,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 33,
     "fields": {
       "name": "Pasta Dental Colgate",
       "category": 1,
@@ -463,6 +496,7 @@
   },
   {
     "model": "business_app.product",
+    "pk": 34,
     "fields": {
       "name": "Pasta Dental Colgate Verde",
       "category": 1,

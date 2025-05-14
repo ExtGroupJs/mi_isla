@@ -20,7 +20,7 @@
       "created_timestamp": "2025-04-22T16:10:56.047",
       "updated_timestamp": "2025-04-22T16:13:14.799",
       "name": "Avión de carga",
-      "description": "Este tipo de envío se realiza a clientes de toda Cuba",
+      "description": "Este tipo de envío se realiza a clientes de toda Cuba.",
       "image": "",
       "min_weight_allowed": 10,
       "price_by_weight_unit": 3.50,
@@ -34,11 +34,25 @@
       "created_timestamp": "2025-04-22T16:12:14.495",
       "updated_timestamp": "2025-04-22T16:13:06.512",
       "name": "Barco",
-      "description": "Este tipo de envío se realiza a clientes de toda Cuba",
+      "description": "Este tipo de envío se realiza a clientes de toda Cuba.",
       "image": "",
       "min_weight_allowed": 20,
       "price_by_weight_unit": 1.80,
       "time_to_delivery": "35 a 45 días"
+    }
+  },
+  {
+    "model": "business_app.shippingtype",
+    "pk": 4,
+    "fields": {
+      "created_timestamp": "2025-04-22T16:12:14.495",
+      "updated_timestamp": "2025-04-22T16:13:06.512",
+      "name": "Producto en Cuba",
+      "description": "Este tipo de envío se realiza a clientes desde Camagüey hasta La Habana.",
+      "image": "",
+      "min_weight_allowed": 0,
+      "price_by_weight_unit": 0,
+      "time_to_delivery": "3 a 5 días"
     }
   }
 ]
