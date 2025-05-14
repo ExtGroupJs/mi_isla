@@ -1,3 +1,4 @@
+from click import Group
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from termcolor import colored
@@ -28,10 +29,10 @@ class Command(BaseCommand):
         )
 
         admin_user = User.objects.get(username="admin")
-        admin_user.groups.add(Groups.SUPER_ADMIN)
+        admin_user.groups.add(Groups.SUPER_ADMIN, Groups.SHOP_OWNER)
         print(
             colored(
-                "Promoted default admin user as SUPER_ADMIN",
+                "Promoted default admin user as SUPER_ADMIN and SHOP_OWNER",
                 "blue",
                 attrs=["blink"],
             )
