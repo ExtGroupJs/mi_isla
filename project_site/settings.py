@@ -46,7 +46,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 
 sentry_sdk.init(
-    dsn=env("SENTRY_DSN", default=None) if not DEBUG else None,
+    dsn=env("SENTRY_DSN", default=None) if not DEBUG else "",
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for tracing.
     traces_sample_rate=env.float("SENTRY_SAMPLE_RATE", default=0),
