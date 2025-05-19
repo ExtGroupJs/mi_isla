@@ -26,7 +26,7 @@ function renderCartItemsListMobile(cart) {
       <div class="row product-layout-list mb-3" style="border:1px solid #eee; border-radius:8px; padding:10px; align-items:center;">
         <div class="col-4">
           <div class="product-image">
-            <a href="#">
+            <a href="#" onclick="showCartProductPreview(${product.id})">
               <img src="${product.image}" alt="${product.name}" style="max-width:100%; border-radius:6px;">
             </a>
             ${product.is_new ? '<span class="sticker">New</span>' : ""}
@@ -87,28 +87,16 @@ function loadCartItems() {
 
     const productHTML = `
       <tr>
-        <td class="li-product-remove"><a href="#" onclick="removeFromCart(${
-          product.id
-        })"><i class="fa fa-times"></i></a></td>
-        <td class="li-product-thumbnail"><a href="#"><img src="${
-          product.image
-        }" alt="${product.name}" style="max-width: 100px;"></a></td>
+        <td class="li-product-remove"><a href="#" onclick="removeFromCart(${product.id})"><i class="fa fa-times"></i></a></td>
+        <td class="li-product-thumbnail"><a href="#" onclick="showCartProductPreview(${product.id})"><img src="${product.image}" alt="${product.name}" style="max-width: 100px;"></a></td>
         <td class="li-product-name"><a href="#">${product.name}</a></td>
-        <td class="li-product-price"><span class="amount">$${product.sell_price.toFixed(
-          2
-        )}</span></td>
+        <td class="li-product-price"><span class="amount">$${product.sell_price.toFixed(2)}</span></td>
         <td class="quantity">
           <label>Cantidad</label>
           <div class="cart-plus-minus">
-            <input class="cart-plus-minus-box" value="${
-              product.quantity
-            }" type="number" min="1" readonly>
-            <div class="dec qtybutton" onclick="changeQuantity(${
-              product.id
-            }, -1)"><i class="fa fa-angle-down"></i></div>
-            <div class="inc qtybutton" onclick="changeQuantity(${
-              product.id
-            }, 1)"><i class="fa fa-angle-up"></i></div>
+            <input class="cart-plus-minus-box" value="${product.quantity}" type="number" min="1" readonly>
+            <div class="dec qtybutton" onclick="changeQuantity(${product.id}, -1)"><i class="fa fa-angle-down"></i></div>
+            <div class="inc qtybutton" onclick="changeQuantity(${product.id}, 1)"><i class="fa fa-angle-up"></i></div>
           </div>
         </td>
         <td class="product-weight"><span class="amount">${productWeightTotal.toFixed(
@@ -301,4 +289,24 @@ function toggleCheckoutButton() {
       proceedButton.textContent = "Crear Orden de Compra";
     }
   }
+}
+
+function showCartProductPreview(productId) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const product = cart.find((p) => p.id === productId);
+  if (!product) return;
+  Swal.fire({
+    title: product.name,
+    html: `
+      <img src="${product.image}" alt="${product.name}" style="max-width:200px;max-height:200px;border-radius:8px;display:block;margin:0 auto 10px auto;">
+      <div><strong>Precio:</strong> $${parseFloat(product.sell_price).toFixed(2)}</div>
+      <div><strong>Cantidad:</strong> ${product.quantity}</div>
+      <div><strong>Peso total:</strong> ${(product.weight * product.quantity).toFixed(2)} lbs</div>
+      <div><strong>Total:</strong> $${(product.sell_price * product.quantity).toFixed(2)}</div>
+      <div style="margin-top:10px;">${product.description ? product.description : ''}</div>
+    `,
+   // showCloseButton: true,
+    showConfirmButton: true,
+    width: 350
+  });
 }
