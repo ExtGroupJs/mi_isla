@@ -43,7 +43,9 @@
 <link rel="stylesheet" href="{% static 'assets/catalogo/css/responsive.css'%}" />
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{% static 'assets/catalogo/css/custom.css'%}" />
- <link rel="stylesheet" href="{% static 'assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/toastr/toastr.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/dist/css/load.css' %}">
 <!-- Modernizr js -->
 <script src="{% static 'assets/catalogo/js/vendor/modernizr-2.8.3.min.js'%}"></script>
 
@@ -170,6 +172,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-9 order-lg-2 order-2">
+           
             <!-- Begin Li's Banner Area -->
 
             <!-- Li's Banner Area End Here -->
@@ -216,12 +219,33 @@
               <!-- product-select-box end -->
             </div>
             <!-- shop-top-bar end -->
+
+<!-- From Uiverse.io by SouravBandyopadhyay --> 
+<!-- From Uiverse.io by Nawsome --> 
+
+<div class="loader overlay" id="loading-overlay" hidden>
+       
+<svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="pl-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="hsl(193,90%,55%)"></stop>
+            <stop offset="100%" stop-color="hsl(223,90%,55%)"></stop>
+        </linearGradient>
+    </defs>
+    <circle class="pl__ring" r="56" cx="64" cy="64" fill="none" stroke="hsla(0,10%,10%,0.1)" stroke-width="16" stroke-linecap="round"></circle>
+    <path class="pl__worm" d="M92,15.492S78.194,4.967,66.743,16.887c-17.231,17.938-28.26,96.974-28.26,96.974L119.85,59.892l-99-31.588,57.528,89.832L97.8,19.349,13.636,88.51l89.012,16.015S81.908,38.332,66.1,22.337C50.114,6.156,36,15.492,36,15.492a56,56,0,1,0,56,0Z" fill="none" stroke="url(#pl-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="44 1111" stroke-dashoffset="10"></path>
+</svg>
+</div>
+
+
+
+
             <!-- shop-products-wrapper start -->
-            <div class="shop-products-wrapper">
-              <div class="tab-content">
+ <div class="shop-products-wrapper">
+                          <div class="tab-content">
                 <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                   <div class="product-area shop-product-area">
-                    <div class="row"></div>
+                    <div class="row"> </div>
                   </div>
                 </div>
 
@@ -580,6 +604,13 @@
       <script src="{% static 'assets/dist/js/whatsapp.js' %}"></script>
 
       <script>
+   var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000
+    });
+
         document.addEventListener("DOMContentLoaded", function () {
           loadProducts(1); // Cargar productos inicialmente
         });

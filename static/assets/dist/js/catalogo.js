@@ -10,6 +10,7 @@ let currentViewMode = "grid";
 
 // Función para cargar productos
 function loadProducts(page) {
+   document.getElementById("loading-overlay").removeAttribute("hidden");
   currentPage = page;
   const url = "/business-gestion/products/"; // Asegúrate de que esta URL sea correcta
   const params = {
@@ -40,8 +41,10 @@ function loadProducts(page) {
       document.getElementById(
         "product-count"
       ).innerText = `mostrando ${start}-${end} de ${count} productos`;
+       document.getElementById("loading-overlay").setAttribute("hidden", true);
     })
     .catch((error) => {
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
       alert("Error al cargar los productos: " + error.message);
     });
 }
@@ -96,7 +99,7 @@ function renderGridProduct(product) {
                      <li><i class="fa fa-star-o"></i></li>
                      <li><i class="fa fa-star-o"></i></li>
                      <li><i class="fa fa-star-o"></i></li>
-                     <li class="no-star"><i class="fa fa-star-o"></i></li>
+                     <li><i class="fa fa-star-o"></i></li>
                      <li class="no-star"><i class="fa fa-star-o"></i></li>
                  </ul>
               </div>
@@ -110,7 +113,7 @@ function renderGridProduct(product) {
           </div>
           <div class="add-actions">
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
-              <li class="li-btn " title="Agregar al carrito"><a href="#" onclick="addToCart({id: ${
+              <li class="li-btn " title="Agregar al carrito"><a  onclick="addToCart({id: ${
                 product.id
               },data_price_by_weight: ${
     product.category_info.price_by_weight
@@ -417,6 +420,7 @@ function toggleViewMode(event, element) {
 
 // Función para mostrar los detalles del producto
 async function showProductDetails(productId) {
+   document.getElementById("loading-overlay").removeAttribute("hidden");
   try {
     // Realizar la petición al endpoint
     const response = await axios.get(
@@ -475,7 +479,9 @@ async function showProductDetails(productId) {
       document.getElementById("productDetailModal")
     );
     productModal.show();
+    document.getElementById("loading-overlay").setAttribute("hidden", true);
   } catch (error) {
+    document.getElementById("loading-overlay").setAttribute("hidden", true);
     Swal.fire({
       icon: "error",
       title: "Error al cargar los detalles del producto",
@@ -569,7 +575,7 @@ function addToCart(product) {
 Swal.fire({
   title: "Acción no permitida",
   icon: "info",
-  html: `Lo sentimos pero no puedes mezclar productos en Cuba con productos fuera de Cuba en la misma compra.`,
+  html: `Lo sentimos pero no se puede mezclar productos en Cuba con productos fuera de Cuba en la misma compra.`,
 
     focusConfirm: true,
   confirmButtonText: `
@@ -592,6 +598,10 @@ Swal.fire({
 
   // Actualizar el minicart
   updateMiniCart();
+   Toast.fire({
+        icon: 'success',
+        title: 'Producto agregado al carrito'
+      })
 }
 
 // Función para eliminar un producto del carrito
@@ -600,6 +610,10 @@ function removeFromCart(productId) {
   cart = cart.filter((product) => product.id !== productId);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateMiniCart();
+  Toast.fire({
+        icon: 'error',
+        title: 'Producto eliminado del carrito'
+      })
 }
 
 // Modificar el evento del botón "Add to cart"

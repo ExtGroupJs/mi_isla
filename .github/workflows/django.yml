@@ -20,10 +20,10 @@ jobs:
 
       - name: Deploy to Contabo
         run: |
-          ssh -o StrictHostKeyChecking=no -t root@217.76.49.67 "cd /home/projects/supermario_shop && git pull && exit"
+          ssh -o StrictHostKeyChecking=no -t root@217.76.49.67 "cd /home/projects/mi_isla && git pull && exit"
           
       - name: Deploy to Contabo2
         run: |
-          ssh -t root@217.76.49.67 "cd /home/projects/supermario_shop; source venv/bin/activate; pip install -r requirements.txt; python manage.py migrate; python manage.py collectstatic --noinput; sudo systemctl restart gunicorn_supermario_shop.service; exec \$SHELL --login"
+          ssh -t root@217.76.49.67 "cd /home/projects/mi_isla; source venv/bin/activate; pip install -r requirements.txt; python manage.py migrate; python manage.py collectstatic --noinput; sudo systemctl restart gunicorn_mi_isla.service; exec \$SHELL --login"
 
 
