@@ -3805,6 +3805,17 @@ li.right-menu .cat-mega-menu-2 > li {
     font-size: 10px;
     padding: 7px 7px;
   }
+  .product-layout-list {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .shop-add-action a {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
 }
 .table-content table td.li-product-add-cart a:hover {
   background: #fed700 none repeat scroll 0 0;

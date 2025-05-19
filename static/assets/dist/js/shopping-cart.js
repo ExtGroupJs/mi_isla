@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
       sendWhatsAppMessage();
     });
 
-
   document
     .getElementById("shipping-category")
     .addEventListener("change", (event) => {
@@ -16,7 +15,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+function renderCartItemsListMobile(cart) {
+ 
+  const cartItemsList = document.getElementById("cart-items-list");
+  cartItemsList.innerHTML = "";
+  cart.forEach((product) => {
+    const productWeightTotal = (product.weight * product.quantity).toFixed(2);
+    const productTotal = (product.sell_price * product.quantity).toFixed(2);
+    const productHTML = `
+      <div class="row product-layout-list mb-3" style="border:1px solid #eee; border-radius:8px; padding:10px; align-items:center;">
+        <div class="col-4">
+          <div class="product-image">
+            <a href="#">
+              <img src="${product.image}" alt="${product.name}" style="max-width:100%; border-radius:6px;">
+            </a>
+            ${product.is_new ? '<span class="sticker">New</span>' : ""}
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="product_desc">
+            <div class="product_desc_info">
+              <h4><a class="product_name" href="#">${product.name}</a></h4>
+              <div class="price-box mb-1">
+                <span class="new-price">$${parseFloat(product.sell_price).toFixed(2)}</span>
+              </div>
+              <div class="mb-1">
+                <label style="margin-top: 8px; margin-bottom: 12px;">Cantidad</label>  
+                <div class="cart-plus-minus" style="display:inline-flex;align-items:center;gap:5px;">
+                  <button class="dec qtybutton btn btn-light btn-sm" onclick="changeQuantity(${product.id}, -1)"><i class="fa fa-angle-down"></i></button>
+                  <input class="cart-plus-minus-box" value="${product.quantity}" type="number" min="1" readonly style="width:40px;text-align:center;">
+                  <button class="inc qtybutton btn btn-light btn-sm" onclick="changeQuantity(${product.id}, 1)"><i class="fa fa-angle-up"></i></button>
+                </div>
+              </div>
+              
+              <div class="mb-1"><strong>Peso total:</strong> ${productWeightTotal} lbs</div>
+              <div class="mb-1"><strong>Total:</strong> $${productTotal}</div>
+              <div class="mb-1"><button class="btn btn-danger btn-sm" onclick="removeFromCart(${product.id})"><i class="fa fa-trash"></i> Eliminar</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    cartItemsList.insertAdjacentHTML("beforeend", productHTML);
+  });
+  
+}
+
+// Modifica loadCartItems para renderizar la lista en móvil
 function loadCartItems() {
+   document.getElementById("loading-overlay").removeAttribute("hidden");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartItemsContainer = document.getElementById("cart-items");
   cartItemsContainer.innerHTML = "";
@@ -75,6 +122,9 @@ function loadCartItems() {
     cartItemsContainer.insertAdjacentHTML("beforeend", productHTML);
   });
 
+  // Renderizar lista móvil
+  renderCartItemsListMobile(cart);
+
   if (selectedShippingCategory == 1) {
     shippingCost = cart.reduce((acc, product) => {
       return (
@@ -103,6 +153,7 @@ function loadCartItems() {
   weightRow.innerHTML = `Peso Total <span>${totalWeight.toFixed(2)} lbs</span>`;
 
   toggleCheckoutButton(); // Llamar aquí
+  document.getElementById("loading-overlay").setAttribute("hidden", true);
 }
 
 function changeQuantity(productId, change) {
@@ -123,9 +174,14 @@ function removeFromCart(productId) {
   cart = cart.filter((product) => product.id !== productId);
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCartItems();
+  Toast.fire({
+        icon: 'error',
+        title: 'Producto eliminado del carrito'
+      })
 }
 
 function loadShippingCategories() {
+   document.getElementById("loading-overlay").removeAttribute("hidden");
   axios
     .get("/business-gestion/shipping-type/")
     .then((response) => {
@@ -141,7 +197,6 @@ function loadShippingCategories() {
         const cartProductState = JSON.parse(
           localStorage.getItem("cartProductState")
         );
-       
 
         if (cartProductState) {
           if (category.id == 4) {
@@ -153,22 +208,24 @@ function loadShippingCategories() {
           if (category.id == 1) {
             selectElement.value = category.id;
             displayShippingDetails(category.id);
-          }else{
+          } else {
             if (category.id == 4) {
-            selectElement.options[4].disabled = true;
-            
-          }
+              selectElement.options[4].disabled = true;
+            }
           }
         }
       });
       loadCartItems();
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
     })
     .catch((error) => {
       console.error("Error al cargar las categorías de envío:", error);
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
     });
 }
 
 function displayShippingDetails(categoryId) {
+   document.getElementById("loading-overlay").removeAttribute("hidden");
   if (!categoryId) {
     document.getElementById("shipping-details").innerHTML = "";
     return;
@@ -209,8 +266,10 @@ function displayShippingDetails(categoryId) {
       document.getElementById("shipping-details").innerHTML = detailsHTML;
       loadCartItems();
       toggleCheckoutButton(); // Llamar aquí
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
     })
     .catch((error) => {
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
       console.error(
         "Error al cargar los detalles de la categoría de envío:",
         error
