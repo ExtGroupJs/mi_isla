@@ -3,6 +3,7 @@ from django.contrib import admin
 from apps.business_app.models.category import Category
 from apps.business_app.models.product import Product
 from apps.business_app.models.product_gallery import ProductGallery
+from apps.business_app.models.sell_order import SellOrder
 from apps.business_app.models.shipping_type import ShippingType
 # from apps.business_app.models.sell import Sell
 # from apps.business_app.models.sell_group import SellGroup
@@ -89,30 +90,25 @@ class CategoryAdmin(admin.ModelAdmin):
     ]
 
 
-# @admin.register(Sell)
-# class SellAdmin(admin.ModelAdmin):
-#     empty_value_display = "-empty-"
-#     list_display = [
-#         "id",
-#         "shop_product",
-#         "sell_group",
-#         "seller",
-#         "extra_info",
-#         "quantity",
-#         "updated_timestamp",
-#     ]
-#     fields = [
-#         "shop_product",
-#         "seller",
-#         "extra_info",
-#         "sell_group",
-#         "quantity",
-#     ]
-#     search_fields = [
-#         "shop_product__product__name",
-#         "shop_product__product__model__name",
-#         "shop_product__product__model__brand__name",
-#     ]
+@admin.register(SellOrder)
+class SellOrderAdmin(admin.ModelAdmin):
+    empty_value_display = "-empty-"
+    list_display = [
+        "id",
+        "shipping_type",
+        "weight",
+        "subtotal_without_shipping",
+        "total_with_shipping",
+        "generated_whatsapp_message",
+        "updated_timestamp",
+    ]
+    fields = [
+        "shipping_type",
+        "weight",
+        "subtotal_without_shipping",
+        "total_with_shipping",
+        "generated_whatsapp_message",
+    ]
 
 
 # @admin.register(SellGroup)
