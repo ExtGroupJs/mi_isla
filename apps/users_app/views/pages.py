@@ -105,6 +105,7 @@ def salescar(request):
 def dashboard(request):
     return render(request, "dashboard/dashboard.html")
 
+
 @user_passes_test(is_owner)
 def category(request):
     return render(request, "category/category.html")

@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('business_app', '0002_shippingtype'),
+        ("business_app", "0002_shippingtype"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='category',
-            name='in_cuba',
-            field=models.BooleanField(default=False, verbose_name='En Cuba'),
+            model_name="category",
+            name="in_cuba",
+            field=models.BooleanField(default=False, verbose_name="En Cuba"),
         ),
     ]
