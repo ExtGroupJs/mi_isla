@@ -10,7 +10,7 @@ let currentViewMode = "grid";
 
 // Función para cargar productos
 function loadProducts(page) {
-   document.getElementById("loading-overlay").removeAttribute("hidden");
+  document.getElementById("loading-overlay").removeAttribute("hidden");
   currentPage = page;
   const url = "/business-gestion/products/"; // Asegúrate de que esta URL sea correcta
   const params = {
@@ -41,7 +41,7 @@ function loadProducts(page) {
       document.getElementById(
         "product-count"
       ).innerText = `mostrando ${start}-${end} de ${count} productos`;
-       document.getElementById("loading-overlay").setAttribute("hidden", true);
+      document.getElementById("loading-overlay").setAttribute("hidden", true);
     })
     .catch((error) => {
       document.getElementById("loading-overlay").setAttribute("hidden", true);
@@ -83,7 +83,11 @@ function renderGridProduct(product) {
                  onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
           </a>
           ${product.is_new ? '<span class="sticker">New</span>' : ""}
-          ${product.category_info.in_cuba ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>' : ""}
+          ${
+            product.category_info.in_cuba
+              ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>'
+              : ""
+          }
           
         </div>
         <div class="product_desc">
@@ -106,10 +110,14 @@ function renderGridProduct(product) {
             </div>
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
-              <span class="new-price">${formatToTwoDecimals(
-                product.weight
-              )} lbs</span>
-                </div>
+              ${
+                parseFloat(product.weight) === 0
+                  ? '<span class="new-price">Producto en Cuba</span>'
+                  : `<span class="new-price">${formatToTwoDecimals(
+                      product.weight
+                    )} lbs</span>`
+              }
+            </div>
           </div>
           <div class="add-actions">
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
@@ -117,11 +125,11 @@ function renderGridProduct(product) {
                 product.id
               },data_price_by_weight: ${
     product.category_info.price_by_weight
-  },in_cuba: ${
-    product.category_info.in_cuba
-  },weight:'${formatToTwoDecimals(product.weight)}', name: '${
-    product.name
-  }', image: '${product.image}', sell_price: ${formatToTwoDecimals(
+  },in_cuba: ${product.category_info.in_cuba},weight:'${formatToTwoDecimals(
+    product.weight
+  )}', name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${formatToTwoDecimals(
     product.sell_price
   )}})"><i class="fa fa-cart-plus"></i></a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -153,7 +161,11 @@ function renderListProduct(product) {
                  onerror="this.src='/static_output/assets/dist/img/producto-sin-imagen.jpg'">
           </a>
            ${product.is_new ? '<span class="incuba">New</span>' : ""}
-          ${product.category_info.in_cuba ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>' : ""}
+          ${
+            product.category_info.in_cuba
+              ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>'
+              : ""
+          }
            <div> </div>
           
         </div>
@@ -188,11 +200,11 @@ function renderListProduct(product) {
                 product.id
               },data_price_by_weight: ${
     product.category_info.price_by_weight
-  },in_cuba: ${
-    product.category_info.in_cuba
-  },weight:'${product.weight}', name: '${product.name}', image: '${
-    product.image
-  }', sell_price: ${product.sell_price}})"><i class="fa fa-cart-plus"></i></a></li>
+  },in_cuba: ${product.category_info.in_cuba},weight:'${
+    product.weight
+  }', name: '${product.name}', image: '${product.image}', sell_price: ${
+    product.sell_price
+  }})"><i class="fa fa-cart-plus"></i></a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
                 product.id
               })"><i class="fa fa-eye"></i></a></li>
@@ -420,7 +432,7 @@ function toggleViewMode(event, element) {
 
 // Función para mostrar los detalles del producto
 async function showProductDetails(productId) {
-   document.getElementById("loading-overlay").removeAttribute("hidden");
+  document.getElementById("loading-overlay").removeAttribute("hidden");
   try {
     // Realizar la petición al endpoint
     const response = await axios.get(
@@ -442,9 +454,9 @@ async function showProductDetails(productId) {
     document.getElementById(
       "modalWeight"
     ).textContent = `${product.weight} Lbs`;
-    document.getElementById(
-      "modalinCuba"
-    ).textContent = `${product.category_info.in_cuba ? " Producto en Cuba" : ""}`;
+    document.getElementById("modalinCuba").textContent = `${
+      product.category_info.in_cuba ? " Producto en Cuba" : ""
+    }`;
     document.getElementById("modalDescription").textContent =
       product.description || "Sin descripción";
     const addToCartDetail = document.getElementById("addToCartDetail");
@@ -492,27 +504,25 @@ async function showProductDetails(productId) {
   }
 }
 
-
-
- //Función para actualizar el contenido del minicart
- function updateMiniCart() {
-   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-   const minicartProductList = document.querySelector(".minicart-product-list");
-   const minicartTotal = document.querySelector(".minicart-total span");
-   const minicartTotalItems = document.querySelector(
-     ".hm-minicart-trigger .cart-item-count"
-   );
-   const minicartTotalMoneyQuantity = document.querySelector(
-     ".hm-minicart-trigger .item-text.money-quantity"
-   )
-   // Limpiar el contenido actual del minicart
-   minicartProductList.innerHTML = ""
-   // Calcular el total
-   let total = 0;
-   let totalQuantity = 0
-   // Agregar cada producto al minicart
-   cart.forEach((product) => {
-     const productHTML = `
+//Función para actualizar el contenido del minicart
+function updateMiniCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const minicartProductList = document.querySelector(".minicart-product-list");
+  const minicartTotal = document.querySelector(".minicart-total span");
+  const minicartTotalItems = document.querySelector(
+    ".hm-minicart-trigger .cart-item-count"
+  );
+  const minicartTotalMoneyQuantity = document.querySelector(
+    ".hm-minicart-trigger .item-text.money-quantity"
+  );
+  // Limpiar el contenido actual del minicart
+  minicartProductList.innerHTML = "";
+  // Calcular el total
+  let total = 0;
+  let totalQuantity = 0;
+  // Agregar cada producto al minicart
+  cart.forEach((product) => {
+    const productHTML = `
        <li>
          <a href="#" class="minicart-product-image">
            <img src="${product.image}" alt="${product.name}">
@@ -520,8 +530,8 @@ async function showProductDetails(productId) {
          <div class="minicart-product-details">
            <h6><a href="#">${product.name}</a></h6>
            <span>$${formatToTwoDecimals(product.sell_price)} x ${
-       product.quantity
-     }</span>
+      product.quantity
+    }</span>
          </div>
          <button class="close" title="Remove" onclick="removeFromCart(${
            product.id
@@ -529,17 +539,17 @@ async function showProductDetails(productId) {
            <i class="fa fa-close"></i>
          </button>
        </li>`;
-     minicartProductList.insertAdjacentHTML("beforeend", productHTML);
-     total += product.sell_price * product.quantity;
-     totalQuantity += product.quantity;
-   })
-   // Actualizar el total en el minicart
-   minicartTotalItems.textContent = totalQuantity;
-   minicartTotal.textContent = `$${formatToTwoDecimals(total)}`;
-   // Actualizar solo el texto de la cantidad de dinero
-   const moneyQuantityText = minicartTotalMoneyQuantity.firstChild;
-   moneyQuantityText.textContent = `$${formatToTwoDecimals(total)}`;
- }
+    minicartProductList.insertAdjacentHTML("beforeend", productHTML);
+    total += product.sell_price * product.quantity;
+    totalQuantity += product.quantity;
+  });
+  // Actualizar el total en el minicart
+  minicartTotalItems.textContent = totalQuantity;
+  minicartTotal.textContent = `$${formatToTwoDecimals(total)}`;
+  // Actualizar solo el texto de la cantidad de dinero
+  const moneyQuantityText = minicartTotalMoneyQuantity.firstChild;
+  moneyQuantityText.textContent = `$${formatToTwoDecimals(total)}`;
+}
 
 function addToCart(product) {
   const quantityInput = document.getElementById("quantityInput");
@@ -568,22 +578,18 @@ function addToCart(product) {
   // Verificar si el estado del nuevo producto es compatible con los productos existentes en el carrito
   const newProductState = product.in_cuba;
 
-
   for (const item of cart) {
     if (item.id !== product.id && item.in_cuba !== newProductState) {
+      Swal.fire({
+        title: "Acción no permitida",
+        icon: "info",
+        html: `Lo sentimos pero no se puede mezclar productos en Cuba con productos fuera de Cuba en la misma compra.`,
 
-Swal.fire({
-  title: "Acción no permitida",
-  icon: "info",
-  html: `Lo sentimos pero no se puede mezclar productos en Cuba con productos fuera de Cuba en la misma compra.`,
-
-    focusConfirm: true,
-  confirmButtonText: `
+        focusConfirm: true,
+        confirmButtonText: `
     <i class="fa fa-thumbs-up"></i> Aceptar!
   `,
-});
-
-
+      });
 
       return; // No agregar el producto al carrito
     }
@@ -598,10 +604,10 @@ Swal.fire({
 
   // Actualizar el minicart
   updateMiniCart();
-   Toast.fire({
-        icon: 'success',
-        title: 'Producto agregado al carrito'
-      })
+  Toast.fire({
+    icon: "success",
+    title: "Producto agregado al carrito",
+  });
 }
 
 // Función para eliminar un producto del carrito
@@ -611,9 +617,9 @@ function removeFromCart(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateMiniCart();
   Toast.fire({
-        icon: 'error',
-        title: 'Producto eliminado del carrito'
-      })
+    icon: "error",
+    title: "Producto eliminado del carrito",
+  });
 }
 
 // Modificar el evento del botón "Add to cart"
