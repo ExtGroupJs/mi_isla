@@ -140,7 +140,7 @@ form.addEventListener('submit', function (event) {
                     timer: 3000
                 });
                 localStorage.setItem('avatar', response.data.photo)
-                var avatarurl = localStorage.getItem("avatar");
+                var avatarurl = localStorage.getItem("miIslaAvatar");
                 if (avatarurl != "null") {
                     var imagen = document.getElementById("avatar");
                     var imagen1 = document.getElementById("profileavatar");

@@ -1,7 +1,5 @@
 window.onload = function () {
-  console.log("✌️internal_status --->", localStorage.getItem("groups"));
-  
-    // esta función llama a un endpoint para desloguear al usuario o a cualquier otro antes de un nuevo login
+     // esta función llama a un endpoint para desloguear al usuario o a cualquier otro antes de un nuevo login
     axios
       .get("../user-gestion/users/logout/")
       .then(function (res) {
