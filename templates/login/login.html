@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MMotors | Log in</title>
+  <title> Mi Isla Service Corp | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
@@ -41,12 +41,12 @@
     <div class="login-logo">
       <a href="{% url 'index' %}"><img width="10%" src="{% static 'assets/dist/img/AdminLTELogo.png' %}" alt=""
           title=""><b>
-          MM Auto </b>Part</a>
+         Mi Isla </b>Service Corp</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
-        <p class="login-box-msg">{% blocktranslate %}Sign in to start your session{% endblocktranslate %}</p>
+        <p class="login-box-msg">{% blocktranslate %}Inicia sesión para comenzar {% endblocktranslate %}</p>
 
         <form id="login-form">
           <div class="input-group mb-3">
@@ -73,7 +73,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" id="bt-login" class="btn btn-primary btn-block">{% blocktranslate %}Sign in{%endblocktranslate %}</button>
+              <button type="submit" id="bt-login" class="btn btn-primary btn-block">{% blocktranslate %}Aceptar{%endblocktranslate %}</button>
             </div>
             <!-- /.col -->
 
@@ -145,11 +145,11 @@
       axios.post('../user-gestion/users/login/', data)
         .then(function (res) {
           if (res.status == 202) {
-            localStorage.setItem("user", res.data.username);
-            localStorage.setItem("avatar", res.data.photo);
+            localStorage.setItem("miIslaUser", res.data.username);
+            localStorage.setItem("miIslaAvatar", res.data.photo);
             localStorage.setItem("id", res.data.id);
-            {% comment %} localStorage.setItem("groups", res.data.groups); {% endcomment %}
-            localStorage.setItem('groups', JSON.stringify(res.data.groups));
+            {% comment %} localStorage.setItem("miIslaGroups", res.data.groups); {% endcomment %}
+            localStorage.setItem('miIslaGroups', JSON.stringify(res.data.groups));
              window.location = "{% url 'redireccionar' %}";
           
             load.hidden = true;

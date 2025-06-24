@@ -113,6 +113,6 @@ def category(request):
 
 def user_redirect(request):
     if request.user.groups.filter(id=Groups.SHOP_OWNER.value).exists():
-        return redirect("dashboard")
+        return redirect("products")
     else:
-        return redirect("sales_tienda")
+        return redirect("products")
