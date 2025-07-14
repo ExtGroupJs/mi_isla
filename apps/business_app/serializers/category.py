@@ -12,4 +12,5 @@ class CategorySerializer(serializers.ModelSerializer):
             "extra_info",
             "price_by_weight",
             "in_cuba",
+            "priced_per_unit",
         )
