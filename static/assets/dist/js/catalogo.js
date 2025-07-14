@@ -110,13 +110,17 @@ function renderGridProduct(product) {
             </div>
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
-              ${
-                parseFloat(product.weight) === 0
-                  ? '<span class="new-price">Producto en Cuba</span>'
-                  : `<span class="new-price">${formatToTwoDecimals(
-                      product.weight
-                    )} lbs</span>`
-              }
+             ${
+               product.category_info.priced_per_unit
+                 ? `<span class="new-price">$${formatToTwoDecimals(
+                     product.category_info.price_by_weight
+                   )} por unidad</span>`
+                 : parseFloat(product.weight) === 0
+                 ? '<span class="new-price">Producto en Cuba</span>'
+                 : `<span class="new-price">${formatToTwoDecimals(
+                     product.weight
+                   )} lbs</span>`
+             }
             </div>
           </div>
           <div class="add-actions">
@@ -187,7 +191,19 @@ function renderListProduct(product) {
                 </>
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
-               <span class="new-price">${product.weight} lbs</span>
+               
+                ${
+                  product.category_info.priced_per_unit
+                    ? `<span class="new-price">$${formatToTwoDecimals(
+                        product.category_info.price_by_weight
+                      )} por unidad</span>`
+                    : parseFloat(product.weight) === 0
+                    ? '<span class="new-price">Producto en Cuba</span>'
+                    : `<span class="new-price">${formatToTwoDecimals(
+                        product.weight
+                      )} lbs</span>`
+                }
+                
             </div>
              <div class="product-description">
             <p>${product.description || "Sin descripción"}</p>
@@ -451,9 +467,32 @@ async function showProductDetails(productId) {
     document.getElementById(
       "modalPrice"
     ).textContent = `$${product.sell_price}`;
-    document.getElementById(
-      "modalWeight"
-    ).textContent = `${product.weight} Lbs`;
+
+    `${
+      product.category_info.priced_per_unit
+        ? `<span class="new-price">${formatToTwoDecimals(
+            product.category_info.price_by_weight
+          )} por unidad</span>`
+        : parseFloat(product.weight) === 0
+        ? '<span class="new-price">Producto en Cuba</span>'
+        : `<span class="new-price">${formatToTwoDecimals(
+            product.weight
+          )} lbs</span>`
+    }`;
+
+    document.getElementById("modalWeight").textContent = product.category_info
+      .priced_per_unit
+      ? `$${formatToTwoDecimals(
+          product.category_info.price_by_weight
+        )} por unidad`
+      : `${product.weight} Lbs`;
+
+    if (parseFloat(product.weight) === 0) {
+      document.getElementById("modalWeightDiv").hidden = true; // Asegurarse de que el div de peso esté oculto
+    } else {
+      document.getElementById("modalWeightDiv").hidden = false; // Asegurarse de que el div de peso esté visible
+    }
+
     document.getElementById("modalinCuba").textContent = `${
       product.category_info.in_cuba ? " Producto en Cuba" : ""
     }`;
