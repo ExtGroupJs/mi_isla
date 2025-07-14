@@ -81,12 +81,14 @@ class CategoryAdmin(admin.ModelAdmin):
         "extra_info",
         "price_by_weight",
         "in_cuba",
+        "priced_per_unit",
     )
     fields = [
         "name",
         "extra_info",
         "price_by_weight",
         "in_cuba",
+        "priced_per_unit",
     ]
 
 
