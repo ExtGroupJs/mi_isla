@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
             model_name="category",
             name="priced_per_unit",
             field=models.BooleanField(
-                default=False, verbose_name="El precio es por unidad"
+                default=False, verbose_name="Precio fijo por unidad"
             ),
         ),
     ]
