@@ -29,10 +29,10 @@ class SubCategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIVi
         "name",
         "extra_info",
     ]
-    ordering = ["name", "category"]
+    ordering = ["name", "super_category__name"]
     ordering_fields = [
         "name",
     ]
     filterset_fields = [
-        "category",
+        "super_category",
     ]

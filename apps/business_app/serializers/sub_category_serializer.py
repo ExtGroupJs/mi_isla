@@ -12,5 +12,5 @@ class SubCategorySerializer(serializers.ModelSerializer):
             "name",
             "extra_info",
             "price_by_weight",
-            "category",
+            "super_category",
         )
