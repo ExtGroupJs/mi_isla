@@ -15,6 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "category",
+            "sub_category",
             "category_info",
             "description",
             "image",
