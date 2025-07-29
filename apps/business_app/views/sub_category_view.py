@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class SubCategoryViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = SubCategory.objects.all()
+    queryset = SubCategory.objects.all().select_related("super_category")
     serializer_class = SubCategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [

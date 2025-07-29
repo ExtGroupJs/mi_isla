@@ -11,40 +11,85 @@ def create_default_subcategory(apps, schema_editor):
     Product = apps.get_model("business_app", "Product")
     all_categories = Category.objects.all()
     for category in all_categories:
-        general_subcategory = SubCategory.objects.create(name="General", super_category=category)
-        Product.objects.filter(category=category).update(sub_category=general_subcategory)
+        general_subcategory = SubCategory.objects.create(
+            name="General", super_category=category
+        )
+        Product.objects.filter(category=category).update(
+            sub_category=general_subcategory
+        )
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('business_app', '0005_category_priced_per_unit'),
+        ("business_app", "0005_category_priced_per_unit"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='productos', to='business_app.category', verbose_name='Categoría'),
+            model_name="product",
+            name="category",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="productos",
+                to="business_app.category",
+                verbose_name="Categoría",
+            ),
         ),
         migrations.CreateModel(
-            name='SubCategory',
+            name="SubCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250, verbose_name='Nombre')),
-                ('extra_info', models.TextField(blank=True, null=True, verbose_name='Información Extra')),
-                ('price_by_weight', models.FloatField(null=True, validators=[django.core.validators.MinValueValidator(limit_value=0)], verbose_name='Precio por libra')),
-                ('super_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='business_app.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=250, verbose_name="Nombre")),
+                (
+                    "extra_info",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="Información Extra"
+                    ),
+                ),
+                (
+                    "price_by_weight",
+                    models.FloatField(
+                        null=True,
+                        validators=[
+                            django.core.validators.MinValueValidator(limit_value=0)
+                        ],
+                        verbose_name="Precio por libra",
+                    ),
+                ),
+                (
+                    "super_category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="business_app.category",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Subcategoría',
-                'verbose_name_plural': 'Subcategorías',
+                "verbose_name": "Subcategoría",
+                "verbose_name_plural": "Subcategorías",
             },
         ),
         migrations.AddField(
-            model_name='product',
-            name='sub_category',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='productos', to='business_app.subcategory', verbose_name='Subcategoría'),
+            model_name="product",
+            name="sub_category",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="productos",
+                to="business_app.subcategory",
+                verbose_name="Subcategoría",
+            ),
         ),
         migrations.RunPython(create_default_subcategory, migrations.RunPython.noop),
     ]
