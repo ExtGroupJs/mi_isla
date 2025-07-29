@@ -5,10 +5,12 @@ from apps.business_app.models.product import Product
 from apps.business_app.serializers.category import (
     CategorySerializer,
 )
+from apps.business_app.serializers.sub_category_serializer import SubCategorySerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
     category_info = CategorySerializer(source="category", read_only=True)
+    sub_category_info = SubCategorySerializer(source="sub_category", read_only=True)
 
     class Meta:
         model = Product
@@ -18,6 +20,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "category",
             "sub_category",
             "category_info",
+            "sub_category_info",
             "description",
             "image",
             "quantity",
