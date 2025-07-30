@@ -31,6 +31,7 @@ class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
         "description",
     ]
     ordering = ["name", "sub_category__name"]
+
     ordering_fields = [
         "name",
         "category__name",
@@ -38,3 +39,4 @@ class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
         "description",
         "sub_category",
     ]
+
