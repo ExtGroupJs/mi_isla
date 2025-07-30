@@ -5,7 +5,7 @@ let totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos p
 let totalPages = 0; // Variable global para almacenar la cantidad de páginas
 let product__category = "";
 let searchValue = "";
-let orderingValue = "";
+let orderingValue = "sub_category__name";
 let currentViewMode = "grid";
 
 // Función para cargar productos
