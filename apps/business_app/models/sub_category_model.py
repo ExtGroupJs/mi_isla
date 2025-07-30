@@ -13,7 +13,7 @@ class SubCategory(models.Model):
         verbose_name="Precio por libra",
         validators=[validators.MinValueValidator(limit_value=0)],
         null=True,
-        blank=True
+        blank=True,
     )
     super_category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
