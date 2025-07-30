@@ -94,7 +94,7 @@
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-info">
         <h4 class="modal-title">Adicionar Producto</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -103,12 +103,12 @@
 
       <form id="form-create-products">
         <div class="card-body">
-
-          <div class="form-group">
+<div class="row">
+          <div class="form-group col-sm-6">
             <label for="name">Nombre</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Entre el nombre" required>
           </div>
-          <div class="row">
+          
             <div class="form-group col-sm-6">
               <label for="exampleInputFile">Imagen</label>
               <div class="input-group">
@@ -119,12 +119,14 @@
                 </div>
               </div>
             </div>
+            </div>
 
-
+<div class="row">
             <div class="form-group col-sm-6">
               <label for="model">Categoría</label>
               <select class="form-control select2 selectModel" id="category" name="category" tabindex="-1"></select>
-              <br/>
+              </div>
+              <div class="form-group col-sm-6">
               <label for="model">Subcategoría</label>
               <select class="form-control select2 selectModel" id="subcategory" name="subcategory" tabindex="-1"></select>
             </div>
