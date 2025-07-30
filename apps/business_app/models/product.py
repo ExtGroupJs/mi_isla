@@ -2,6 +2,7 @@ from django.db import models
 from django.core import validators
 
 from apps.business_app.models.category import Category
+from apps.business_app.models.sub_category_model import SubCategory
 from apps.common.models import BaseModel
 from PIL import Image, ImageOps
 
@@ -14,6 +15,15 @@ class Product(BaseModel):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
+        related_name="productos",
+    )
+    sub_category = models.ForeignKey(
+        to=SubCategory,
+        verbose_name="Subcategoría",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="productos",
     )
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(verbose_name="Imagen", null=True, blank=True)

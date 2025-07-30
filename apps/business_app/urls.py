@@ -5,6 +5,7 @@ from apps.business_app.views.category import CategoryViewSet
 from apps.business_app.views.product import ProductViewSet
 from apps.business_app.views.sell_order import SellOrderViewSet
 from apps.business_app.views.shipping_type import ShippingTypeViewSet
+from apps.business_app.views.sub_category_view import SubCategoryViewSet
 
 router = ExtendedSimpleRouter()
 
@@ -12,6 +13,11 @@ router.register(
     "category",
     CategoryViewSet,
     basename="category",
+)
+router.register(
+    "sub-category",
+    SubCategoryViewSet,
+    basename="sub-category",
 )
 router.register(
     "products",

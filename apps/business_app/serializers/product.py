@@ -1,13 +1,16 @@
+from jsonschema import ValidationError
 from rest_framework import serializers
 
 from apps.business_app.models.product import Product
 from apps.business_app.serializers.category import (
     CategorySerializer,
 )
+from apps.business_app.serializers.sub_category_serializer import SubCategorySerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
     category_info = CategorySerializer(source="category", read_only=True)
+    sub_category_info = SubCategorySerializer(source="sub_category", read_only=True)
 
     class Meta:
         model = Product
@@ -15,7 +18,9 @@ class ProductSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "category",
+            "sub_category",
             "category_info",
+            "sub_category_info",
             "description",
             "image",
             "quantity",
@@ -25,6 +30,15 @@ class ProductSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "category": {"write_only": True},
         }
+
+    def validate(self, attr):
+        category = attr.get("category")
+        sub_category = attr.get("sub_category")
+        if sub_category.super_category_id  != category.id:
+            raise ValidationError(
+                "La subcategoría no pertenece a la categoría escogida"
+            )
+        return attr
 
 
 # class CatalogProductSerializer(ProductSerializer):

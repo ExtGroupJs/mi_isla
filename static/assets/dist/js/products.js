@@ -9,7 +9,6 @@ const url = "/business-gestion/products/";
 let load = document.getElementById("load");
 
 $(function () {
- 
   bsCustomFileInput.init();
   $("#filter-form")[0].reset();
   poblarListas();
@@ -44,7 +43,6 @@ $(document).ready(function () {
           stripHtml: false, // No eliminar imágenes
         },
       },
-
 
       {
         extend: "print",
@@ -128,7 +126,9 @@ $(document).ready(function () {
         },
       },
       { data: "category_info.name", title: "Categoría" },
-      { data: "sell_price", title: "Precio" },  {
+      { data: "sub_category_info.name", title: "Subcategoría" },
+      { data: "sell_price", title: "Precio" },
+      {
         data: "id",
         title: "Peso",
         render: (data, type, row) => {
@@ -136,7 +136,7 @@ $(document).ready(function () {
         },
       },
       { data: "description", title: "Descripción" },
-          {
+      {
         data: "id",
         title: "Acciones",
         render: (data, type, row) => {
@@ -198,10 +198,13 @@ $("#modal-crear-products").on("hide.bs.modal", (event) => {
   edit_products = false;
   const elements = [...form.elements];
   elements.forEach((elem) => elem.classList.remove("is-invalid"));
-
- 
 });
-
+let current_subcat = 0;
+$("#category").on("change", function () {
+  // Acciones cuando cambia el valor
+  let selectedCategory = $(this).val();
+  poblarSubcategorias(selectedCategory, current_subcat);
+});
 let edit_products = false;
 $("#modal-crear-products").on("show.bs.modal", function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
@@ -223,26 +226,32 @@ $("#modal-crear-products").on("show.bs.modal", function (event) {
         form.elements.name.value = product.name;
         form.elements.description.value = product.description;
         form.elements.category.value = product.category_info.id;
+        form.elements.subcategory.value = product.sub_category_info.id;
+        current_subcat = product.sub_category_info.id;
         form.elements.weight.value = product.weight;
         form.elements.sell_price.value = product.sell_price;
         $("#category").val(product.category_info.id).trigger("change");
+        // $("#subcategory").val(product.sub_category_info.id).trigger("change");
       })
       .catch(function (error) {});
   } else {
-    
     modal.find(".modal-title").text("Crear Producto");
-  // Suponiendo que tienes un elemento <select> con el id "model"
-const selectElement = document.getElementById("category");
+    // Suponiendo que tienes un elemento <select> con el id "model"
+    const selectElement = document.getElementById("category");
+    // const selectElementSubcategory = document.getElementById("subcategory");
 
-// Obtener el primer elemento (opción) del select
-const firstOption = selectElement.options[0]; // Esto te da la primera opción
+    // Obtener el primer elemento (opción) del select
+    const firstOption = selectElement.options[0]; // Esto te da la primera opción
+    // const firstSubCategoryOption = selectElementSubcategory.options[0]; // Esto te da la primera opción
 
-// Si necesitas el valor o el texto de la primera opción
-const firstOptionValue = firstOption.value; // Valor del primer elemento
-const firstOptionText = firstOption.text; // Texto del primer elemento
+    // Si necesitas el valor o el texto de la primera opción
+    const firstOptionValue = firstOption.value; // Valor del primer elemento
+    const firstOptionText = firstOption.text; // Texto del primer elemento
 
-// Para establecer este valor en el select2
-$("#category").val(firstOptionValue).trigger("change");
+    // Para establecer este valor en el select2
+    current_subcat = 0;
+    $("#category").val(firstOptionValue).trigger("change");
+    // $("#subcategory").val(firstSubCategoryValue).trigger("change");
   }
 });
 
@@ -266,6 +275,9 @@ $(function () {
       category: {
         required: true,
       },
+      subcategory: {
+        required: true,
+      },
       weight: {
         required: true,
       },
@@ -286,6 +298,7 @@ $(function () {
       data.append("name", document.getElementById("name").value);
       data.append("description", document.getElementById("description").value);
       data.append("category", document.getElementById("category").value);
+      data.append("sub_category", document.getElementById("subcategory").value);
       data.append("weight", document.getElementById("weight").value);
       data.append("sell_price", document.getElementById("sell_price").value);
       if (document.getElementById("image").files[0] != null) {
@@ -392,6 +405,30 @@ function poblarListas() {
       $filterCategory.add(option);
     });
   });
+}
+function poblarSubcategorias(selectedCategory, current_subcat) {
+  // Poblar la lista de modelos
+  var $sub_category = document.getElementById("subcategory");
+  var $filterSubCategory = document.getElementById("filter-sub-category");
+  $sub_category.innerHTML = "";
+  $filterSubCategory.innerHTML = "";
+
+  axios
+    .get("/business-gestion/sub-category/?super_category=" + selectedCategory)
+    .then(function (response) {
+      response.data.results.forEach(function (element) {
+        var option = new Option(element.name, element.id);
+        $sub_category.add(option);
+        var filterOption = new Option(element.name, element.id);
+        $filterSubCategory.add(filterOption);
+      });
+
+      // Seleccionar subcategoría si current_subcat no es 0
+      if (current_subcat && current_subcat !== "0") {
+        $sub_category.value = current_subcat;
+        $filterSubCategory.value = current_subcat;
+      }
+    });
 }
 
 function function_delete(id, name, model_name) {

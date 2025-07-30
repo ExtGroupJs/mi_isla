@@ -13,7 +13,7 @@ from apps.common.pagination import AllResultsSetPagination
 
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = Product.objects.all().select_related("category")
+    queryset = Product.objects.all().select_related("category", "sub_category")
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -24,10 +24,11 @@ class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
     pagination_class = AllResultsSetPagination
     filterset_fields = [
         "category",
+        "sub_category",
     ]
     search_fields = [
         "name",
         "description",
     ]
-    ordering = ["name"]
-    ordering_fields = ["name", "category__name", "description"]
+    ordering = ["name", "sub_category__name"]
+    ordering_fields = ["name", "category__name", "sub_category__name", "description"]

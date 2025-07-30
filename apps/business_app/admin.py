@@ -5,6 +5,7 @@ from apps.business_app.models.product import Product
 from apps.business_app.models.product_gallery import ProductGallery
 from apps.business_app.models.sell_order import SellOrder
 from apps.business_app.models.shipping_type import ShippingType
+from apps.business_app.models.sub_category_model import SubCategory
 # from apps.business_app.models.sell import Sell
 # from apps.business_app.models.sell_group import SellGroup
 # from apps.business_app.models.shop_products import ShopProducts
@@ -17,6 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
         "id",
         "name",
         "category",
+        "sub_category",
         "description",
         "image",
         "quantity",
@@ -26,6 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
     fields = [
         "name",
         "category",
+        "sub_category",
         "description",
         "image",
         "quantity",
@@ -89,6 +92,24 @@ class CategoryAdmin(admin.ModelAdmin):
         "price_by_weight",
         "in_cuba",
         "priced_per_unit",
+    ]
+
+
+@admin.register(SubCategory)
+class SubCategoryAdmin(admin.ModelAdmin):
+    empty_value_display = "-empty-"
+    list_display = (
+        "id",
+        "name",
+        "extra_info",
+        "price_by_weight",
+        "super_category",
+    )
+    fields = [
+        "name",
+        "extra_info",
+        "price_by_weight",
+        "super_category",
     ]
 
 
