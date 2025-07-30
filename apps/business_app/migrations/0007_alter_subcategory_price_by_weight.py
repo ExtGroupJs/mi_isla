@@ -5,15 +5,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('business_app', '0006_alter_product_category_subcategory_and_more'),
+        ("business_app", "0006_alter_product_category_subcategory_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='subcategory',
-            name='price_by_weight',
-            field=models.FloatField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(limit_value=0)], verbose_name='Precio por libra'),
+            model_name="subcategory",
+            name="price_by_weight",
+            field=models.FloatField(
+                blank=True,
+                null=True,
+                validators=[django.core.validators.MinValueValidator(limit_value=0)],
+                verbose_name="Precio por libra",
+            ),
         ),
     ]

@@ -34,7 +34,7 @@ class ProductSerializer(serializers.ModelSerializer):
     def validate(self, attr):
         category = attr.get("category")
         sub_category = attr.get("sub_category")
-        if sub_category.super_category_id  != category.id:
+        if sub_category.super_category_id != category.id:
             raise ValidationError(
                 "La subcategoría no pertenece a la categoría escogida"
             )
