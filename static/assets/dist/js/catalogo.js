@@ -1,12 +1,12 @@
 // Variables globales
-let currentPage = 1;
-let productsPerPage = 12;
-let totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos por página
-let totalPages = 0; // Variable global para almacenar la cantidad de páginas
-let product__category = "";
-let searchValue = "";
-let orderingValue = "sub_category__name";
-let currentViewMode = "grid";
+var currentPage = 1;
+var productsPerPage = 12;
+var totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos por página
+var totalPages = 0; // Variable global para almacenar la cantidad de páginas
+var product__category = "";
+var searchValue = "";
+var orderingValue = "sub_category__name";
+var currentViewMode = "grid";
 
 // Función para cargar productos
 function loadProducts(page) {
