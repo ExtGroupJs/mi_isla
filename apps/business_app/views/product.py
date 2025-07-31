@@ -10,10 +10,17 @@ from apps.business_app.serializers.product import (
 from apps.common.common_ordering_filter import CommonOrderingFilter
 from apps.common.mixins.serializer_map import SerializerMapMixin
 from apps.common.pagination import AllResultsSetPagination
+from django.db.models import F
 
 
 class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
-    queryset = Product.objects.all().select_related("category", "sub_category")
+    queryset = Product.objects.all().annotate(
+        category_name=F("category__name"),
+        price_by_weight=F("category__price_by_weight"),
+        sub_category_name=F("sub_category__name"),
+        priced_per_unit=F("category__priced_per_unit"),
+        in_cuba=F("category__in_cuba"),
+    )
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [
@@ -30,13 +37,12 @@ class ProductViewSet(SerializerMapMixin, viewsets.ModelViewSet, GenericAPIView):
         "name",
         "description",
     ]
-    ordering = ["name", "sub_category__name"]
+    ordering = ["name", "sub_category_name"]
 
     ordering_fields = [
         "name",
-        "category__name",
-        "sub_category__name",
+        "category_name",
+        "sub_category_name",
         "description",
         "sub_category",
     ]
-

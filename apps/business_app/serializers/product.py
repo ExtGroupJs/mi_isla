@@ -2,15 +2,14 @@ from jsonschema import ValidationError
 from rest_framework import serializers
 
 from apps.business_app.models.product import Product
-from apps.business_app.serializers.category import (
-    CategorySerializer,
-)
-from apps.business_app.serializers.sub_category_serializer import SubCategorySerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category_info = CategorySerializer(source="category", read_only=True)
-    sub_category_info = SubCategorySerializer(source="sub_category", read_only=True)
+    category_name = serializers.CharField(read_only=True)
+    sub_category_name = serializers.CharField(read_only=True)
+    in_cuba = serializers.BooleanField(read_only=True)
+    priced_per_unit = serializers.BooleanField(read_only=True)
+    price_by_weight = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Product
@@ -19,17 +18,17 @@ class ProductSerializer(serializers.ModelSerializer):
             "name",
             "category",
             "sub_category",
-            "category_info",
-            "sub_category_info",
+            "category_name",
+            "sub_category_name",
             "description",
+            "in_cuba",
+            "priced_per_unit",
+            "price_by_weight",
             "image",
             "quantity",
             "sell_price",
             "weight",
         )
-        extra_kwargs = {
-            "category": {"write_only": True},
-        }
 
     def validate(self, attr):
         category = attr.get("category")
@@ -39,21 +38,3 @@ class ProductSerializer(serializers.ModelSerializer):
                 "La subcategoría no pertenece a la categoría escogida"
             )
         return attr
-
-
-# class CatalogProductSerializer(ProductSerializer):
-#     category = CategorySerializer()
-
-#     class Meta(ProductSerializer.Meta):
-#         model = Product
-#         fields = (
-#             "id",
-#             "name",
-#             "category",
-#             "description",
-#             "image",
-#             "quantity",
-#             "sell_price",
-#             "weight",
-#             "__str__",
-#         )

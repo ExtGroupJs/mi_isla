@@ -4,7 +4,7 @@ from django.core import validators
 from apps.business_app.models.category import Category
 from apps.business_app.models.sub_category_model import SubCategory
 from apps.common.models import BaseModel
-from PIL import Image, ImageOps
+from PIL import Image
 
 
 class Product(BaseModel):

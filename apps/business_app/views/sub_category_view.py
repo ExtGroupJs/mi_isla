@@ -1,11 +1,7 @@
 from rest_framework import filters, viewsets
 from rest_framework.generics import GenericAPIView
 
-from apps.business_app.models.category import Category
 from apps.business_app.models.sub_category_model import SubCategory
-from apps.business_app.serializers.category import (
-    CategorySerializer,
-)
 from django_filters.rest_framework import DjangoFilterBackend
 
 from apps.business_app.serializers.sub_category_serializer import SubCategorySerializer
