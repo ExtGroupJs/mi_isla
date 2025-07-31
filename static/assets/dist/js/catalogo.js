@@ -5,7 +5,7 @@ var totalProducts = 0; // Cambia esto si deseas mostrar más o menos productos p
 var totalPages = 0; // Variable global para almacenar la cantidad de páginas
 var product__category = "";
 var searchValue = "";
-var orderingValue = "sub_category__name";
+var orderingValue = "sub_category_name";
 var currentViewMode = "grid";
 
 // Función para cargar productos
@@ -84,7 +84,7 @@ function renderGridProduct(product) {
           </a>
           ${product.is_new ? '<span class="sticker">New</span>' : ""}
           ${
-            product.category_info.in_cuba
+            product.in_cuba
               ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>'
               : ""
           }
@@ -111,9 +111,9 @@ function renderGridProduct(product) {
             <h4><a class="product_name" href="#">${product.name}</a></h4>
             <div class="price-box">
              ${
-               product.category_info.priced_per_unit
+               product.priced_per_unit
                  ? `<span class="new-price">$${formatToTwoDecimals(
-                     product.category_info.price_by_weight
+                     product.price_by_weight
                    )} por unidad</span>`
                  : parseFloat(product.weight) === 0
                  ? '<span class="new-price">Producto en Cuba</span>'
@@ -127,13 +127,11 @@ function renderGridProduct(product) {
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
               <li class="li-btn " title="Agregar al carrito"><a  onclick="addToCart({id: ${
                 product.id
-              },data_price_by_weight: ${
-    product.category_info.price_by_weight
-  },in_cuba: ${product.category_info.in_cuba},weight:'${formatToTwoDecimals(
-    product.weight
-  )}', name: '${product.name}', image: '${
-    product.image
-  }', sell_price: ${formatToTwoDecimals(
+              },data_price_by_weight: ${product.price_by_weight},in_cuba: ${
+    product.in_cuba
+  },weight:'${formatToTwoDecimals(product.weight)}', name: '${
+    product.name
+  }', image: '${product.image}', sell_price: ${formatToTwoDecimals(
     product.sell_price
   )}})"><i class="fa fa-cart-plus"></i></a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -166,7 +164,7 @@ function renderListProduct(product) {
           </a>
            ${product.is_new ? '<span class="incuba">New</span>' : ""}
           ${
-            product.category_info.in_cuba
+            product.in_cuba
               ? '<span title="Producto en Cuba" class="inCuba"><img src="/static_output/assets/catalogo/images/flagCuba.png "></span>'
               : ""
           }
@@ -193,9 +191,9 @@ function renderListProduct(product) {
             <div class="price-box">
                
                 ${
-                  product.category_info.priced_per_unit
+                  product.priced_per_unit
                     ? `<span class="new-price">$${formatToTwoDecimals(
-                        product.category_info.price_by_weight
+                        product.price_by_weight
                       )} por unidad</span>`
                     : parseFloat(product.weight) === 0
                     ? '<span class="new-price">Producto en Cuba</span>'
@@ -214,11 +212,11 @@ function renderListProduct(product) {
             <ul class="add-actions-link" style="display: flex; gap: 5px; justify-content: center;">
               <li class="li-btn"><a href="#" onclick="addToCart({id: ${
                 product.id
-              },data_price_by_weight: ${
-    product.category_info.price_by_weight
-  },in_cuba: ${product.category_info.in_cuba},weight:'${
-    product.weight
-  }', name: '${product.name}', image: '${product.image}', sell_price: ${
+              },data_price_by_weight: ${product.price_by_weight},in_cuba: ${
+    product.in_cuba
+  },weight:'${product.weight}', name: '${product.name}', image: '${
+    product.image
+  }', sell_price: ${
     product.sell_price
   }})"><i class="fa fa-cart-plus"></i></a></li>
               <li class="li-btn"><a href="#" title="ver detalles" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter" onclick="showProductDetails(${
@@ -461,7 +459,7 @@ async function showProductDetails(productId) {
     document.getElementById("modalProductImage").src = product.image;
     document.getElementById("modalProductName").textContent = product.name;
     document.getElementById("modalCategoryName").textContent =
-      "Categoría: " + product.category_info.name;
+      "Categoría: " + product.category_name;
     // document.getElementById("modalModelName").textContent =
     //   product.product.model.__str__;
     document.getElementById(
@@ -469,9 +467,9 @@ async function showProductDetails(productId) {
     ).textContent = `$${product.sell_price}`;
 
     `${
-      product.category_info.priced_per_unit
+      product.priced_per_unit
         ? `<span class="new-price">${formatToTwoDecimals(
-            product.category_info.price_by_weight
+            product.price_by_weight
           )} por unidad</span>`
         : parseFloat(product.weight) === 0
         ? '<span class="new-price">Producto en Cuba</span>'
@@ -482,9 +480,7 @@ async function showProductDetails(productId) {
 
     document.getElementById("modalWeight").textContent = product.category_info
       .priced_per_unit
-      ? `$${formatToTwoDecimals(
-          product.category_info.price_by_weight
-        )} por unidad`
+      ? `$${formatToTwoDecimals(product.price_by_weight)} por unidad`
       : `${product.weight} Lbs`;
 
     if (parseFloat(product.weight) === 0) {
@@ -494,7 +490,7 @@ async function showProductDetails(productId) {
     }
 
     document.getElementById("modalinCuba").textContent = `${
-      product.category_info.in_cuba ? " Producto en Cuba" : ""
+      product.in_cuba ? " Producto en Cuba" : ""
     }`;
     document.getElementById("modalDescription").textContent =
       product.description || "Sin descripción";
@@ -504,7 +500,7 @@ async function showProductDetails(productId) {
         id: product.id,
         name: product.name,
         image: product.image,
-        data_price_by_weight: product.category_info.price_by_weight,
+        data_price_by_weight: product.price_by_weight,
         sell_price: product.sell_price,
         weight: product.weight,
         detail: true,

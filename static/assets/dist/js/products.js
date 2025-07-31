@@ -125,8 +125,8 @@ $(document).ready(function () {
           }
         },
       },
-      { data: "category_info.name", title: "Categoría" },
-      { data: "sub_category_info.name", title: "Subcategoría" },
+      { data: "category_name", title: "Categoría" },
+      { data: "sub_category_name", title: "Subcategoría" },
       { data: "sell_price", title: "Precio" },
       {
         data: "id",
@@ -225,13 +225,13 @@ $("#modal-crear-products").on("show.bs.modal", function (event) {
         const product = response.data;
         form.elements.name.value = product.name;
         form.elements.description.value = product.description;
-        form.elements.category.value = product.category_info.id;
-        form.elements.subcategory.value = product.sub_category_info.id;
-        current_subcat = product.sub_category_info.id;
+        form.elements.category.value = product.category;
+        form.elements.subcategory.value = product.sub_category;
+        current_subcat = product.sub_category;
         form.elements.weight.value = product.weight;
         form.elements.sell_price.value = product.sell_price;
-        $("#category").val(product.category_info.id).trigger("change");
-        // $("#subcategory").val(product.sub_category_info.id).trigger("change");
+        $("#category").val(product.category).trigger("change");
+        // $("#subcategory").val(product.sub_category).trigger("change");
       })
       .catch(function (error) {});
   } else {
