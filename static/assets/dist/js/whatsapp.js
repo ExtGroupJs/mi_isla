@@ -1,5 +1,5 @@
-//const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
-const STORE_PHONE = "13058770178"; // Sin '+' para compatibilidad
+const STORE_PHONE = "17868936390"; // Sin '+' para compatibilidad
+// const STORE_PHONE = "13058770178"; // Sin '+' para compatibilidad
 //const STORE_PHONE = "5359997418"; // Sin '+' para compatibilidad
 //const STORE_PHONE = "5352112115"; // Sin '+' para compatibilidad
 
@@ -34,8 +34,6 @@ function sendWhatsAppMessage() {
     });
     // Añadir tipo de envío seleccionado
     const shippingType = JSON.parse(localStorage.getItem("category")) || {};
-      // document.querySelector('input[name="shipping-category"]:checked')?.value ||
-      // "No especificado";
     message += `\n *Envío por *: ${shippingType.name}\n\n`;
     // 2. Añadir totales (con verificación)
     const subtotal =
@@ -49,13 +47,29 @@ function sendWhatsAppMessage() {
     // Detectar si es dispositivo móvil
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // Crear el enlace de WhatsApp según el dispositivo
-    const whatsappUrl = isMobile
-      ? `whatsapp://send?phone=${STORE_PHONE}&text=${encodedMessage}` // Enlace para app móvil
-      : `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`; // Enlace para web
+    // URLs para WhatsApp normal y WhatsApp Business
+    const urls = {
+      mobile: `whatsapp://send?phone=${STORE_PHONE}&text=${encodedMessage}`,
+      business: `https://wa.me/${STORE_PHONE}?text=${encodedMessage}&app_absent=1`,
+      web: `https://wa.me/${STORE_PHONE}?text=${encodedMessage}`,
+    };
 
-    // Abrir WhatsApp
-    window.location.href = whatsappUrl;
+    // Lógica para abrir WhatsApp o WhatsApp Business
+    if (isMobile) {
+      // Intentar abrir WhatsApp Business primero
+      window.location.href = urls.business;
+      // Si falla, intentar WhatsApp normal después de 500ms
+      setTimeout(() => {
+        window.location.href = urls.mobile;
+      }, 500);
+    } else {
+      // En escritorio, abrir WhatsApp Web
+      window.open(urls.web, "_blank");
+      // Intentar WhatsApp Business Web después de 300ms
+      setTimeout(() => {
+        window.open(urls.business, "_blank");
+      }, 300);
+    }
   } catch (error) {
     console.error("Error al enviar:", error);
     alert("⚠️ Abre WhatsApp manualmente y pega este mensaje:\n\n" + message);
